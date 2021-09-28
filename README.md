@@ -1,6 +1,10 @@
 # nipa
 2021 NIPA(National IT Industry Promotion Agency) AI online course
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="40%" height="40%">
+</p>
+  
 ## [2021 NIPA AI 온라인 교육](https://2021nipa.elice.io/explore)
 - [AI 실무 기본 과정](https://2021nipa.elice.io/tracks/1328/info)
   - [기본교육과정] 핵심 파이썬 기초 프로그래밍
