@@ -103,5 +103,37 @@ print(matrix[0:2, 1:4])
 '''
 ```
 
+#### Indexing & Slicing
+```
+import numpy as np
+
+matrix = np.arange(1, 13, 1).reshape(3, 4)
+print(matrix)
+
+'''
+[[ 1  2  3  4]
+ [ 5  6  7  8]
+ [ 9 10 11 12]]
+'''
+
+# 1. Indexing을 통해 값 2를 출력해 보세요.
+answer1 = matrix[0, 1]        # 1행 2열
+
+# 2. Slicing을 통해 매트릭스 일부인 9, 10을 가져와 출력해 보세요.
+answer2 = matrix[2:, :2]      # 2행부터 마지막 행까지, 1열부터 2열까지
+
+# 3. Boolean indexing을 통해 5보다 작은 수를 찾아 출력해 보세요.
+answer3 = matrix[matrix < 5]  # Boolean mask를 이용하여 원하는 값을 추출하는 방식
+
+# 4. Fancy indexing을 통해 두 번째 행만 추출하여 출력해 보세요.
+answer4 = matrix[[1]]         # 배열의 각 요소 선택을 Index 배열을 전달하여 지정하는 방식
+
+# 위에서 구한 정답을 출력해 봅시다.
+print(answer1)  # 2
+print(answer2)  # [[ 9 10]]
+print(answer3)  # [1 2 3 4]
+print(answer4)  # [[5 6 7 8]]
+```
+
 ## 학습 계획
 - ~2021-10-31 완료
