@@ -165,6 +165,10 @@ print(answer4)  # [[5 6 7 8]]
 
 ### Pandas
 
+Pandas는 구조화된 데이터를 효과적으로 처리하고 저장할 수 있는 Python 라이브러리입니다.
+
+대용량 데이터를 쉽게 처리할 수 있는 Numpy를 기반으로 설계되어 있으며 Array 계산에 특화되어 있습니다.
+
 #### Series
 Series 데이터란 Numpy array가 보강된 형태로, Data와 index를 가지고 있는 데이터 형식입니다.
 
@@ -204,8 +208,77 @@ dtype: int64
 '''
 ```
 
-#### Dataframe
-시리즈 데이터는 하나의 컬럼 값으로 이루어진 반면 데이터 프레임은 여러 개의 컬럼 값을 가질 수 있습니다.
+#### DataFrame
+DataFrame은 여러 개의 Series가 모여서 행과 열을 이룬 데이터를 말합니다.
+
+따라서 시리즈 데이터는 하나의 컬럼 값으로 이루어진 반면, 데이터 프레임은 여러 개의 컬럼 값을 가질 수 있습니다.
+
+```
+import numpy as np
+import pandas as pd
+
+# 두 개의 시리즈 데이터가 있습니다.
+print("Population series data:")
+population_dict = {
+    'korea': 5180,
+    'japan': 12718,
+    'china': 141500,
+    'usa': 32676
+}
+population = pd.Series(population_dict)
+print(population, "\n")
+
+'''
+Population series data:
+korea      5180
+japan     12718
+china    141500
+usa       32676
+dtype: int64 
+'''
+
+print("GDP series data:")
+gdp_dict = {
+    'korea': 169320000,
+    'japan': 516700000,
+    'china': 1409250000,
+    'usa': 2041280000,
+}
+gdp = pd.Series(gdp_dict)
+print(gdp, "\n")
+
+'''
+GDP series data:
+korea     169320000
+japan     516700000
+china    1409250000
+usa      2041280000
+dtype: int64 
+'''
+
+# 이곳에서 2개의 시리즈 값이 들어간 데이터프레임을 생성합니다.
+print("Country DataFrame")
+country = pd.DataFrame({
+'population' : population,
+'gdp' : gdp
+})
+print(country, "\n")
+
+'''
+Country DataFrame
+       population         gdp
+korea        5180   169320000
+japan       12718   516700000
+china      141500  1409250000
+usa         32676  2041280000 
+'''
+
+# DataFrame의 index, column을 확인해 봅시다.
+print(country.index)    # Index(['korea', 'japan', 'china', 'usa'], dtype='object')
+print(country.columns)  # Index(['population', 'gdp'], dtype='object')
+```
+
+- Series가 DataFrame의 열(column)로 들어간다는 것을 확인할 수 있습니다.
 
 ## 학습 계획
 - ~2021-10-31 완료
