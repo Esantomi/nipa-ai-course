@@ -19,6 +19,28 @@
 - **매개변수(parameter)** : 함수를 정의할 때(만들 때) 넘겨받은 값을 관리하는 변수
 - **인자(argument)** : 함수를 호출할 때(사용할 때) 함수로 넘겨주는 자료
 
+#### 웹페이지 방문
+- Python에서는 쉽게 웹페이지의 정보를 가져올 수 있는 urllib 패키지를 제공합니다.
+- 이 중에서 `urllib.request.urlopen` 함수는 해당 url의 html 파일을 가져옵니다.
+
+```
+from urllib.request import urlopen
+
+webpage = urlopen("https://en.wikipedia.org/wiki/Lorem_ipsum").read().decode("utf-8")
+
+print(webpage)
+
+'''
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+...
+'''
+```
+
+- `urlopen()` : 이 함수에 url을 넣으면 해당 url에 접근한 결과를 얻을 수 있습니다.
+- `read()` : 결과를 해독하여 문자열로 반환합니다.
+- `decode()` : 문자열을 특정 인코딩 방식으로 해독합니다. (유니코드, 아스키 코드 등)
+
 ### Numpy
 Numpy 라이브러리는 효율적인 데이터 분석이 가능하도록 N차원의 배열 객체를 지원합니다.
 
