@@ -12,6 +12,7 @@
   - [기본프로젝트] 공공 데이터를 활용한 파이썬 데이터 분석 프로젝트
 - [AI 실무 응용 과정](https://2021nipa.elice.io/tracks/1329/info)
 
+
 ## 교육 내용
 
 ### Python
@@ -20,8 +21,9 @@
 - **인자(argument)** : 함수를 호출할 때(사용할 때) 함수로 넘겨주는 자료
 
 #### 웹페이지 방문
-- Python에서는 쉽게 웹페이지의 정보를 가져올 수 있는 urllib 패키지를 제공합니다.
-- 이 중에서 `urllib.request.urlopen` 함수는 해당 url의 html 파일을 가져옵니다.
+Python에서는 쉽게 웹페이지의 정보를 가져올 수 있는 urllib 패키지를 제공합니다.
+
+이 중에서 `urllib.request.urlopen` 함수는 해당 url의 html 파일을 가져옵니다.
 
 ```
 from urllib.request import urlopen
@@ -40,6 +42,7 @@ print(webpage)
 - `urlopen()` : 이 함수에 url을 넣으면 해당 url에 접근한 결과를 얻을 수 있습니다.
 - `read()` : 결과를 해독하여 문자열로 반환합니다.
 - `decode()` : 문자열을 특정 인코딩 방식으로 해독합니다. (유니코드, 아스키 코드 등)
+
 
 ### Numpy
 Numpy 라이브러리는 효율적인 데이터 분석이 가능하도록 N차원의 배열 객체를 지원합니다.
@@ -158,6 +161,48 @@ print(answer4)  # [[5 6 7 8]]
 ```
 
 - `answer2 = matrix[2, :2]`로 하거나 `answer4 = matrix[1]`로 하면 각각 `[ 9 10]`, `[5 6 7 8]`이 나온다. 2차원 배열임에 유의할 것!
+
+
+### Pandas
+
+#### Series 데이터
+Series 데이터란 Numpy array가 보강된 형태로, Data와 index를 가지고 있는 데이터 형식입니다.
+
+```
+import numpy as np
+import pandas as pd
+
+# 예시) 시리즈 데이터를 만드는 방법.
+series = pd.Series([1,2,3,4], index = ['a', 'b', 'c', 'd'], name="Title")
+print(series, "\n")
+
+'''
+a    1
+b    2
+c    3
+d    4
+Name: Title, dtype: int64 
+'''
+
+# 국가별 인구 수 시리즈 데이터를 딕셔너리를 사용하여 만들어 보세요.
+dict = {
+'korea' : 5180,
+'japan' : 12718,
+'china' : 141500,
+'usa' : 32676
+}
+
+country = pd.Series(dict)
+print(country)
+
+'''
+korea      5180
+japan     12718
+china    141500
+usa       32676
+dtype: int64
+'''
+```
 
 ## 학습 계획
 - ~2021-10-31 완료
