@@ -383,8 +383,19 @@ df = pd.DataFrame({
 })
 print(df, "\n")
 
+'''
+DataFrame: 
+   col1 col2  col3
+0     2    A     0
+1     1    A     1
+2     9    B     9
+3     8  NaN     4
+4     7    D     2
+5     4    C     3 
+'''
 
-# 정렬 코드 입력해보기    
+
+# 정렬 코드 입력해 보기    
 # 1. col1을 기준으로 오름차순으로 정렬하기.
 sorted_df1 = df.sort_values('col1', ascending = True)
 
@@ -401,11 +412,44 @@ sorted_df3 = df.sort_values(['col2', 'col1'], ascending=[True, False])
 print("sorted_df1: ")
 print(sorted_df1, "\n")
 
+'''
+sorted_df1: 
+   col1 col2  col3
+1     1    A     1
+0     2    A     0
+5     4    C     3
+4     7    D     2
+3     8  NaN     4
+2     9    B     9 
+'''
+
 print("sorted_df2: ")
 print(sorted_df2, "\n")
 
+'''
+sorted_df2: 
+   col1 col2  col3
+4     7    D     2
+5     4    C     3
+2     9    B     9
+0     2    A     0
+1     1    A     1
+3     8  NaN     4 
+'''
+
 print("sorted_df3: ")
 print(sorted_df3)
+
+'''
+sorted_df3: 
+   col1 col2  col3
+0     2    A     0
+1     1    A     1
+2     9    B     9
+5     4    C     3
+4     7    D     2
+3     8  NaN     4
+'''
 ```
 
 ## 학습 계획
