@@ -365,5 +365,48 @@ usa         32676  2041280000    62470.314604
 '''
 ```
 
+#### 데이터프레임 정렬하기
+- `.sort_values` : 값으로 정렬
+- `.sort_index` : 인덱스로 정렬
+  - `axis = 0` : 행 인덱스 기준 정렬 (default가 오름차순이므로 `ascending = True` 생략함)
+  - `axis = 1, ascending = False` : 열 인덱스 기준 정렬 (내림차순)
+
+```
+import numpy as np
+import pandas as pd
+
+print("DataFrame: ")
+df = pd.DataFrame({
+    'col1' : [2, 1, 9, 8, 7, 4],
+    'col2' : ['A', 'A', 'B', np.nan, 'D', 'C'],
+    'col3': [0, 1, 9, 4, 2, 3],
+})
+print(df, "\n")
+
+
+# 정렬 코드 입력해보기    
+# 1. col1을 기준으로 오름차순으로 정렬하기.
+sorted_df1 = df.sort_values('col1', ascending = True)
+
+
+# 2. col2를 기준으로 내림차순으로 정렬하기.
+sorted_df2 = df.sort_values('col2', ascending = False)
+
+
+# 3. col2를 기준으로 오름차순으로, col1를 기준으로 내림차순으로 정렬하기.
+sorted_df3 = df.sort_values(['col2', 'col1'], ascending=[True, False])
+
+
+# 출력
+print("sorted_df1: ")
+print(sorted_df1, "\n")
+
+print("sorted_df2: ")
+print(sorted_df2, "\n")
+
+print("sorted_df3: ")
+print(sorted_df3)
+```
+
 ## 학습 계획
 - ~2021-10-31 완료
