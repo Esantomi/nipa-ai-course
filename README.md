@@ -558,5 +558,12 @@ dtype: float64
 '''
 ```
 
+#### 그룹으로 묶기
+- `.groupby` : 조건부로 집계할 때 사용
+  - `.aggregate` : 한 번의 groupby를 통해 여러 개의 통계 함수를 적용
+  - `.filter` : groupby를 통해서 그룹 속성을 기준으로 데이터 필터링
+  - `.apply` : groupby를 통해서 묶인 데이터에 함수 적용 (패러미터로 lambda 사용)
+  - `.get_group` : groupby로 묶인 데이터에서 key 값으로 데이터를 가져옴
+
 ## 학습 계획
 - ~2021-10-31 완료
