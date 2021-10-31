@@ -466,5 +466,97 @@ sorted_df3:
   - `skipna = True` : NaN 생략
 - `.fillna` : NaN 값을 다른 값으로 대체
 
+```
+import numpy as np
+import pandas as pd
+
+data = {
+    'korean' : [50, 60, 70],
+    'math' : [10, np.nan, 40]
+}
+df = pd.DataFrame(data, index = ['a','b','c'])
+print(df, "\n")
+
+'''
+   korean  math
+a      50  10.0
+b      60   NaN
+c      70  40.0 
+'''
+
+# 각 컬럼별 데이터 개수
+col_num = df.count(axis = 0)
+print(col_num, "\n")
+
+'''
+korean    3
+math      2
+dtype: int64 
+'''
+
+# 각 행별 데이터 개수
+row_num = df.count(axis = 1)
+print(row_num, "\n")
+
+'''
+a    2
+b    1
+c    2
+dtype: int64 
+'''
+
+# 각 컬럼별 최댓값
+col_max = df.max()
+print(col_max, "\n")
+
+'''
+korean    70.0
+math      40.0
+dtype: float64 
+'''
+
+# 각 컬럼별 최솟값
+col_min = df.min()
+print(col_min, "\n")
+
+'''
+korean    50.0
+math      10.0
+dtype: float64 
+'''
+
+# 각 컬럼별 합계
+col_sum = df.sum()
+print(col_sum, "\n")
+
+'''
+korean    180.0
+math       50.0
+dtype: float64 
+'''
+
+# 컬럼의 최솟값으로 NaN값 대체
+math_min = df['math'].min()
+df['math'] = df['math'].fillna(math_min)
+print(df, "\n")
+
+'''
+   korean  math
+a      50  10.0
+b      60  10.0
+c      70  40.0 
+'''
+
+# 각 컬럼별 평균
+col_avg = df.mean()
+print(col_avg, "\n")
+
+'''
+korean    60.0
+math      20.0
+dtype: float64 
+'''
+```
+
 ## 학습 계획
 - ~2021-10-31 완료
