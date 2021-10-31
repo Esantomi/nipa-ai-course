@@ -559,11 +559,58 @@ dtype: float64
 ```
 
 #### 그룹으로 묶기
-- `.groupby` : 조건부로 집계할 때 사용
+- `.groupby` : key 값을 기준으로 group으로 묶기
   - `.aggregate` : 한 번의 groupby를 통해 여러 개의 통계 함수를 적용
   - `.filter` : groupby를 통해서 그룹 속성을 기준으로 데이터 필터링
   - `.apply` : groupby를 통해서 묶인 데이터에 함수 적용 (패러미터로 lambda 사용)
   - `.get_group` : groupby로 묶인 데이터에서 key 값으로 데이터를 가져옴
+
+```
+import numpy as np
+import pandas as pd
+
+df = pd.DataFrame({
+    'key': ['A', 'B', 'C', 'A', 'B', 'C'],
+    'data1': [1, 2, 3, 1, 2, 3],
+    'data2': [4, 4, 6, 0, 6, 1]
+})
+print("DataFrame:")
+print(df, "\n")
+
+'''
+DataFrame:
+  key  data1  data2
+0   A      1      4
+1   B      2      4
+2   C      3      6
+3   A      1      0
+4   B      2      6
+5   C      3      1 
+'''
+
+# groupby 함수를 이용해 봅시다.
+# key를 기준으로 묶어 합계를 구해 출력해 보세요.
+print(df.groupby('key').sum())
+
+'''
+     data1  data2
+key              
+A        2      4
+B        4     10
+C        6      7
+'''
+
+# key와 data1을 기준으로 묶어 합계를 구해 출력해 보세요.
+print(df.groupby(['key', 'data1']).sum())
+
+'''
+           data2
+key data1       
+A   1          4
+B   2         10
+C   3          7
+'''
+```
 
 ## 학습 계획
 - ~2021-10-31 완료
