@@ -565,6 +565,7 @@ dtype: float64
   - `.apply` : groupby를 통해서 묶인 데이터에 함수 적용 (패러미터로 lambda 사용)
   - `.get_group` : groupby로 묶인 데이터에서 key 값으로 데이터를 가져옴
 
+##### groupby()
 ```
 import numpy as np
 import pandas as pd
@@ -609,6 +610,56 @@ key data1
 A   1          4
 B   2         10
 C   3          7
+'''
+```
+
+##### aggregate()
+```
+import numpy as np
+import pandas as pd
+
+df = pd.DataFrame({
+    'key': ['A', 'B', 'C', 'A', 'B', 'C'],
+    'data1': [0, 1, 2, 3, 4, 5],
+    'data2': [4, 4, 6, 0, 6, 1]
+})
+print("DataFrame:")
+print(df, "\n")
+
+'''
+DataFrame:
+  key  data1  data2
+0   A      0      4
+1   B      1      4
+2   C      2      6
+3   A      3      0
+4   B      4      6
+5   C      5      1 
+'''
+
+# aggregate를 이용하여 요약 통계량을 산출해 봅시다.
+# 데이터 프레임을 'key' 칼럼으로 묶고, data1과 data2 각각의 최솟값, 중앙값, 최댓값을 출력하세요.
+print(df.groupby('key').aggregate([min, np.median, max]), "\n")
+
+'''
+    data1            data2           
+      min median max   min median max
+key                                  
+A       0    1.5   3     0    2.0   4
+B       1    2.5   4     4    5.0   6
+C       2    3.5   5     1    3.5   6 
+'''
+
+
+# 데이터 프레임을 'key' 칼럼으로 묶고, data1의 최솟값, data2의 합계를 출력하세요.
+print(df.groupby('key').aggregate({'data1':min, 'data2':sum}))
+
+'''
+     data1  data2
+key              
+A        0      4
+B        1     10
+C        2      7
 '''
 ```
 
