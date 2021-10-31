@@ -284,5 +284,48 @@ print(country.columns)  # Index(['population', 'gdp'], dtype='object')
 
 - Series가 DataFrame의 열(column)로 들어간다는 것을 확인할 수 있습니다.
 
+#### 데이터 선택 및 변경
+- `.loc` : 명시적인 인덱스를 참조하는 인덱싱/슬라이싱
+- `.iloc` : 정수 인덱스를 참조하는 인덱싱/슬라이싱
+- `.query` : 조건에 부합하는 데이터를 추출할 때 사용하는 함수
+  - query 함수 예시 : `country.query("population > 100000")`
+  - masking 연산 예시 : `country[country['population'] < 10000]`
+
+```
+import numpy as np
+import pandas as pd
+
+print("Masking & query")
+df = pd.DataFrame(np.random.rand(5, 2), columns=["A", "B"])
+print(df, "\n")
+
+'''
+Masking & query
+          A         B
+0  0.947358  0.927704
+1  0.238985  0.417608
+2  0.239408  0.178519
+3  0.592118  0.637146
+4  0.955686  0.474632 
+'''
+
+# 데이터 프레임에서 A 컬럼 값이 0.5보다 작고 B 컬럼 값이 0.3보다 큰 값들을 구해 봅시다.
+# 마스킹 연산을 활용하여 출력해 보세요!
+print(df[(df['A'] < 0.5) & (df['B'] > 0.3)])
+
+'''
+          A         B
+1  0.238985  0.417608
+'''
+
+# query 함수를 활용하여 출력해보세요!
+print(df.query("A < 0.5 and B > 0.3"))
+
+'''
+          A         B
+1  0.238985  0.417608
+'''
+```
+
 ## 학습 계획
 - ~2021-10-31 완료
