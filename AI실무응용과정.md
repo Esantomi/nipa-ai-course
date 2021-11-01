@@ -93,4 +93,19 @@ plt.show()
 
 ### 수치형 자료의 요약
 범주형 자료와 달리 수치로 구성되어 있기에 통계값을 사용한 요약이 가능하다.
-- 평균 : `np.mean()`
+- **평균(Mean)** : 관측값의 산술평균
+  - `np.mean()`
+- **분산(Variance)** : 각 관측값이 자료의 평균으로부터 떨어진 정도 (자료가 얼마나 흩어졌는지 숫자로 표현)
+  ```
+  from statistics import variance
+  variance()
+  ```
+- **표준편차(Standard deviation, s)** : 분산의 양의 제곱근
+  ```
+  from statistics import stdev
+  stdev()
+  ```
+- **히스토그램(Histogram)** : 수치형 자료를 일정한 범위를 갖는 범주로 나누고 막대 그래프와 같은 방식으로 그림
+  - `plt.hist()`
+  - x축은 계급, y축은 빈도(도수, 상대 도수)
+  - 도수를 비교할 때, 범주형 자료는 막대 그래프, 수치형 자료는 히스토그램을 쓴다.
