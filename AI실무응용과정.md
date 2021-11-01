@@ -5,9 +5,12 @@
 ## 머신러닝 시작하기
 
 ### 01. 자료 형태의 이해
-- 수치형 자료(Numerical data)
-  - 연속형 자료(Continuous data)
-  - 이산형 자료(Discrete data)
-- 범주형 자료(Categorical data)
-  - 순위형 자료(Ordinal data)
-  - 명목형 자료(Nominal data)
+- **수치형 자료(Numerical data)** : 양적 자료(Quantitative data) `예) 키, 몸무게, 성적, 나이`
+  - 연속형 자료(Continuous data) : 연속적인 관측값을 가짐 `예) 원주율(3.14159...), 시간`
+  - 이산형 자료(Discrete data) : 셀 수 있는 관측값을 가짐 `예) 뉴스 글자 수, 주문 상품 개수`
+- **범주형 자료(Categorical data)** : 질적 자료(Qualitative data) `예) 성별, 지역, 혈액형`
+  - 순위형 자료(Ordinal data) : 범주 사이의 순서에 의미가 있음 `예) 학점 (A+, A, A-)`
+  - 명목형 자료(Nominal data) : 범주 사이의 순서에 의미가 없음 `예) 혈액형 (A, B, O, AB)`
+- 혼동되는 경우
+  - 범주형 자료는 숫자로 표기해도 범주형 자료 (남자 1, 여자 0)
+  - 수치형 자료는 구간화하면 범주형 자료 (10 ~ 19세, 20 ~ 29세)
