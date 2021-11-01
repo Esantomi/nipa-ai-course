@@ -2,9 +2,11 @@
 
 - [2021 NIPA AI 온라인 교육 바로 가기](https://2021nipa.elice.io/tracks/1329/info)
 
-## 머신러닝 시작하기
+# 머신러닝 시작하기
 
-### 01. 자료 형태의 이해
+## 01. 자료 형태의 이해
+
+### 자료 형태
 - **수치형 자료(Numerical data)** : 양적 자료(Quantitative data) `예) 키, 몸무게, 성적, 나이`
   - 연속형 자료(Continuous data) : 연속적인 관측값을 가짐 `예) 원주율(3.14159...), 시간`
   - 이산형 자료(Discrete data) : 셀 수 있는 관측값을 가짐 `예) 뉴스 글자 수, 주문 상품 개수`
@@ -15,7 +17,7 @@
   - 범주형 자료는 숫자로 표기해도 범주형 자료 (남자 1, 여자 0)
   - 수치형 자료는 구간화하면 범주형 자료 (10 ~ 19세, 20 ~ 29세)
 
-### 02. 범주형 자료의 요약
+### 범주형 자료의 요약
 - **도수 분포(Frequency distribution)**
   - 도수(Frequency) : 각 범주에 속하는 관측값의 개수
     - `value_counts()`
@@ -67,3 +69,26 @@ Name: Name, dtype: int64
 '''
 ```
 - `drink[drink['Attend']==1]['Name']` 부분은 `drink[A][B]` 구조로 이해하면 된다. 이는 drink dataframe에서 A 조건, B 조건 모두에 부합하는 것이라는 뜻이다.
+
+#### 막대 그래프
+```
+import matplotlib.pyplot as plt
+
+# 술자리 참석 상대도수 데이터 
+labels = ['A', 'B', 'C', 'D', 'E']
+ratio = [4,3,2,2,1]
+    
+# 막대 그래프
+fig, ax = plt.subplots()
+
+"""
+1. 막대 그래프를 만드는 코드를 작성해 주세요
+"""
+plt.bar(labels, ratio)
+
+# 출력에 필요한 코드
+plt.show()
+```
+![image](https://user-images.githubusercontent.com/61646760/139657061-97d270f2-e617-425a-a83a-79d3ec59844b.png)
+
+### 수치형 자료의 요약
