@@ -92,3 +92,5 @@ plt.show()
 ![image](https://user-images.githubusercontent.com/61646760/139657061-97d270f2-e617-425a-a83a-79d3ec59844b.png)
 
 ### 수치형 자료의 요약
+범주형 자료와 달리 수치로 구성되어 있기에 통계값을 사용한 요약이 가능하다.
+- 평균 : `np.mean()`
