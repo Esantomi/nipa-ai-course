@@ -25,3 +25,45 @@
   - 도수 분포표(Frequency table) : 범주형 자료에서 범주와 그 범주에 대응하는 도수, 상대 도수를 나열해 표로 만든 것
 - **막대 그래프(Bar chart)** : 각 범주에서 도수의 크기를 막대로 그림
   - `plt.bar()`
+
+#### 도수 분포표
+```
+import pandas as pd 
+import numpy as np
+
+# drink 데이터
+drink = pd.read_csv("drink.csv")
+
+# print(drink.head())
+
+'''
+   Attend Name
+0       1    A
+1       0    A
+2       1    A
+3       1    A
+4       1    A
+'''
+
+# Attend : 참석한 경우 1, 참석하지 않은 경우 0
+# Name : 참석자의 이름
+
+"""
+1. 도수 계산
+"""
+drink_freq = drink[drink['Attend']==1]['Name'].value_counts()  # 술자리 참석자(Attend == 1)를 이름으로 도수 구하기 
+
+print("도수 분포표")
+print(drink_freq)
+
+'''
+도수 분포표
+A    4
+B    3
+D    2
+C    2
+E    1
+Name: Name, dtype: int64
+'''
+```
+- `drink[drink['Attend']==1]['Name']` 부분은 `drink[A][B]` 구조로 이해하면 된다. 이는 drink dataframe에서 A 조건, B 조건 모두에 부합하는 것이라는 뜻이다.
