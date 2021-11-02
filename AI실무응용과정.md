@@ -126,3 +126,27 @@ cf_mean = coffee.mean()
 # 소수점 둘째 자리까지 반올림하여 출력합니다. 
 print("Mean :", round(cf_mean,2))  # Mean : 144.12
 ```
+
+#### 표준편차, 분산
+```
+from statistics import stdev, variance
+import numpy as np
+
+# 카페별 카페인 함량 정보
+coffee = np.array([202,177,121,148,89,121,137,158])
+
+"""
+1. 표준편차 계산
+"""
+cf_std = stdev(coffee)
+
+# 소수점 둘째 자리까지 반올림하여 출력합니다. 
+print("Sample std.Dev : ", round(cf_std,2))   # Sample std.Dev :  35.44
+
+"""
+2. 분산 계산
+"""
+cf_var = variance(coffee)
+
+print("Sample variance : ", round(cf_var,2))  # Sample variance :  1256
+```
