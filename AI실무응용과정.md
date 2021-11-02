@@ -109,3 +109,20 @@ plt.show()
   - `plt.hist()`
   - x축은 계급, y축은 빈도(도수, 상대 도수)
   - 도수를 비교할 때, 범주형 자료는 막대 그래프, 수치형 자료는 히스토그램을 쓴다.
+
+#### 평균
+```
+import numpy as np
+
+# 카페별 카페인 함량 정보
+coffee = np.array([202,177,121,148,89,121,137,158])
+
+"""
+1. 평균 계산
+"""
+cf_mean = coffee.mean()
+# cf_mean = np.mean(coffee)        # 위와 동일
+
+# 소수점 둘째 자리까지 반올림하여 출력합니다. 
+print("Mean :", round(cf_mean,2))  # Mean : 144.12
+```
