@@ -150,3 +150,25 @@ cf_var = variance(coffee)
 
 print("Sample variance : ", round(cf_var,2))  # Sample variance :  1256
 ```
+
+#### 히스토그램
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 카페인 함량 데이터
+coffee = np.array([202,177,121,148,89,121,137,158])
+
+fig, ax = plt.subplots()
+
+"""
+1. 히스토그램을 그리는 코드를 작성해 주세요
+"""
+plt.hist(coffee)
+
+# 히스토그램을 출력합니다.
+plt.show()
+fig.savefig("hist_plot.png")
+```
+![image](https://user-images.githubusercontent.com/61646760/139792945-0f5c3b2e-0f4c-4520-a5cc-978f720c0ba9.png)
