@@ -18,7 +18,8 @@
     + [데이터 전 처리의 역할](#데이터-전-처리의-역할)
     + [범주형 자료 전 처리](#범주형-자료-전-처리)
       - [대표적인 범주형 자료 변환 방식](#대표적인-범주형-자료-변환-방식)
-      - [명목형 자료 변환하기 - 수치 맵핑](#명목형-자료-변환하기---수치-맵핑)
+      - [명목형 자료 변환하기 - 수치 맵핑 실습](#명목형-자료-변환하기---수치-맵핑)
+      - [명목형 자료 변환하기 - 더미 방식 실습](#명목형-자료-변환하기---더미-방식)
 
 # 머신러닝 시작하기
 
@@ -253,5 +254,42 @@ print('\n변환 후: \n',titanic['Sex'].head())
 3    1
 4    0
 Name: Sex, dtype: int64
+'''
+```
+
+#### 명목형 자료 변환하기 - 더미 방식
+```
+import pandas as pd
+   
+# 데이터를 읽어 옵니다.
+titanic = pd.read_csv('./data/titanic.csv')
+print('변환 전: \n',titanic['Embarked'].head())
+
+'''
+변환 전: 
+0    S
+1    C
+2    S
+3    S
+4    S
+Name: Embarked, dtype: object
+'''
+
+"""
+1. get_dummies를 사용하여 변환합니다.
+"""
+dummies = pd.get_dummies(titanic[['Embarked']])
+
+# 변환한 Embarked 데이터를 출력합니다.
+print('\n변환 후: \n',dummies.head())
+
+'''
+변환 후: 
+    Embarked_C  Embarked_Q  Embarked_S
+0           0           0           1
+1           1           0           0
+2           0           0           1
+3           0           0           1
+4           0           0           1
 '''
 ```
