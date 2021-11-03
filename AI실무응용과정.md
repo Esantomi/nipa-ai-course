@@ -24,6 +24,7 @@
     + [수치형 자료 전 처리](#수치형-자료-전-처리)
       - [대표적인 수치형 자료 변환 방식](#대표적인-수치형-자료-변환-방식)
       - [수치형 자료 변환하기 - 정규화 실습](#수치형-자료-변환하기---정규화)
+      - [수치형 자료 변환하기 - 표준화 실습](#수치형-자료-변환하기---표준화)
 
 # 머신러닝 시작하기
 
@@ -319,13 +320,15 @@ print('\n변환 후: \n',dummies.head())
   - `예) 시험 점수가 평균 이상이면 1, 미만이면 0으로 범주화 (점수 자체는 중요하지 않음)`
 
 #### 수치형 자료 변환하기 - 정규화
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/140040796-b7d0b27a-f606-4be3-ba7d-bb80144e4ea3.png">
+</p>
+
 - 수치형 자료의 경우 다른 수치형 자료와 범위를 맞추기 위해 정규화 또는 표준화를 수행
 
 ```
 import pandas as pd
-from elice_utils import EliceUtils
-
-elice_utils = EliceUtils()
 
 """
 1. 정규화를 수행하는 함수를 구현합니다.
@@ -336,7 +339,7 @@ def normal(data):
     
     return data
 
-# 데이터를 읽어옵니다.
+# 데이터를 읽어 옵니다.
 titanic = pd.read_csv('./data/titanic.csv')
 print('변환 전: \n',titanic['Fare'].head())
 
@@ -363,6 +366,57 @@ print('\n변환 후: \n',Fare.head())
 2    0.015469
 3    0.103644
 4    0.015713
+Name: Fare, dtype: float64
+'''
+```
+
+#### 수치형 자료 변환하기 - 표준화
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/140042501-6d556634-e829-4282-83b4-7154fcefc7fb.png">
+</p>
+
+- 수치형 자료의 경우 다른 수치형 자료와 범위를 맞추기 위해 정규화 또는 표준화를 수행
+
+```
+import pandas as pd
+
+"""
+1. 표준화를 수행하는 함수를 구현합니다.
+"""
+def standard(data):
+    
+    data = (data - data.mean()) / data.std()
+    
+    return data
+    
+# 데이터를 읽어 옵니다.
+titanic = pd.read_csv('./data/titanic.csv')
+print('변환 전: \n',titanic['Fare'].head())
+
+'''
+변환 전: 
+0     7.2500
+1    71.2833
+2     7.9250
+3    53.1000
+4     8.0500
+Name: Fare, dtype: float64
+'''
+
+# standard 함수를 사용하여 표준화합니다.
+Fare = standard(titanic['Fare'])
+
+# 변환한 Fare 데이터를 출력합니다.
+print('\n변환 후: \n',Fare.head())
+
+'''
+변환 후: 
+0   -0.502163
+1    0.786404
+2   -0.488580
+3    0.420494
+4   -0.486064
 Name: Fare, dtype: float64
 '''
 ```
