@@ -1,6 +1,26 @@
 # AI 실무 기본 과정
 - [2021 NIPA AI 온라인 교육 바로 가기](https://2021nipa.elice.io/tracks/1328/info)
 
+## 목차
+- [Python](#python)
+  * [웹페이지 방문](#웹페이지-방문)
+- [Numpy](#numpy)
+  * [배열의 기초 : 1차원 배열](#배열의-기초-:-1차원-배열)
+  * [배열의 기초 : 2차원 배열](#배열의-기초-:-2차원 배열)
+  * [Indexing & Slicing](#indexing-&-slicing)
+- [Pandas](#pandas)
+  * [Series](#series)
+  * [DataFrame](#dataframe)
+  * [데이터 선택 및 변경](#데이터-선택-및-변경)
+    + [masking & query](#masking-&-query)
+    + [새로운 column 추가하기](#새로운-column-추가하기)
+  * [데이터프레임 정렬하기](#데이터프레임-정렬하기)
+  * [데이터프레임 분석용 함수](#데이터프레임-분석용-함수)
+  * [그룹으로 묶기](#그룹으로-묶기)
+    + [groupby()](#groupby())
+    + [aggregate()](#aggregate())
+- [Matplotlib](#matplotlib)
+
 ## Python
 
 - **매개변수(parameter)** : 함수를 정의할 때(만들 때) 넘겨받은 값을 관리하는 변수
