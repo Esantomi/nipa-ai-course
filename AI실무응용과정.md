@@ -302,13 +302,15 @@ print('\n변환 후: \n',dummies.head())
 #### 대표적인 수치형 자료 변환 방식
 - **스케일링(Scaling)**
   - 변수 값의 범위 및 크기를 변환하는 방식
-  - 변수(feature) 간의 범위가 차이가 나면 사용 
+    - 변수(feature) 간의 범위가 차이가 나면 사용 
   - **정규화(Normalization)**
     - **최소-최대 정규화(Min-Max Normalization)**
-    - 데이터를 모두 최소 0, 최대 1의 값으로 변환하는 것 (서로 다른 Feature의 scale를 통일하기 위해 변환)
-    - ![image](https://user-images.githubusercontent.com/61646760/140040796-b7d0b27a-f606-4be3-ba7d-bb80144e4ea3.png)
+      - ![image](https://user-images.githubusercontent.com/61646760/140040796-b7d0b27a-f606-4be3-ba7d-bb80144e4ea3.png)
+      - 데이터를 모두 최소 0, 최대 1의 값으로 변환하는 것 (서로 다른 Feature의 scale를 통일하기 위해 변환)
   - **표준화(Standardization)**
     - **Z-Score Scaling**
-    - 데이터를 평균이 0, 분산이 1인 가우시안 정규분포로 만들어 주는 것
-    - ![image](https://user-images.githubusercontent.com/61646760/140042501-6d556634-e829-4282-83b4-7154fcefc7fb.png)
+      - ![image](https://user-images.githubusercontent.com/61646760/140042501-6d556634-e829-4282-83b4-7154fcefc7fb.png)
+      - 데이터를 평균이 0, 분산이 1인 가우시안 정규분포로 만들어 주는 것
 - 범주화
+  - 변수의 값보다 범주가 중요한 경우 사용
+  - `예) 시험 점수가 평균 이상이면 1, 미만이면 0으로 범주화 (점수 자체는 중요하지 않음)`
