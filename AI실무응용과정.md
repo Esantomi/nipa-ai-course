@@ -32,6 +32,7 @@
       - [지도학습 데이터 분리](#지도학습-데이터-분리)
       - [결측값 처리하기 실습](#결측값-처리하기)
       - [이상치 처리하기 실습](#이상치-처리하기)
+      - [데이터 분리하기 실습](#데이터-분리하기)
 
 # 머신러닝 시작하기
 
@@ -458,6 +459,7 @@ Name: Fare, dtype: float64
 - **Label 데이터** : 예측해야 할 대상이 되는 데이터
   - `예) '공부 시간(feature)'에 따른 '시험 점수(label)'`
   - `예) titanic 데이터에서 feature data는 나이, 가족 정보, 표 가격 등이고 label data는 '생존 여부'`
+- scikitlearn의 **`train_test_split()`** 사용
 
 #### 결측값 처리하기
 결측값이 있는 데이터는 일반적으로 머신러닝의 입력으로 사용할 수 없습니다. 그렇기에 데이터 전 처리 과정에서는 삭제 또는 대체 방식으로 결측값을 처리합니다.
@@ -613,4 +615,44 @@ Name: Age, dtype: float64
 """
 titanic_3 = titanic_2[titanic_2['Age'] - np.floor(titanic_2['Age']) == 0]  # Age 값 - Age 내림 값이 0이면 이상치 아님
 print('이상치 처리 후 샘플 개수: %d' %(len(titanic_3)))                      # 이상치 처리 후 샘플 개수: 687
+```
+
+#### 데이터 분리하기
+- `train_test_split()` : sklearn 라이브러리의 학습용, 평가용 데이터 분리 메소드
+  - `X_train, X_test, y_train, y_test = train_test_split(feature 데이터, label 데이터, test_size = 0~1 값, random_state = 랜덤 시드 값)`
+
+```
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+# 데이터를 읽어옵니다.
+titanic = pd.read_csv('./data/titanic.csv')
+
+# Cabin 변수를 제거합니다.
+titanic_1 = titanic.drop(columns=['Cabin'])
+
+# 결측값이 존재하는 샘플을 제거합니다.
+titanic_2 = titanic_1.dropna()
+
+# 이상치를 처리합니다.
+titanic_3 = titanic_2[titanic_2['Age']-np.floor(titanic_2['Age']) == 0 ]
+print('전체 샘플 데이터 개수: %d' %(len(titanic_3)))  # 전체 샘플 데이터 개수: 687
+
+"""
+1. feature 데이터와 label 데이터를 분리합니다.
+"""
+X = titanic_3.drop(columns = ['Survived'])
+y = titanic_3['Survived']
+print('X 데이터 개수: %d' %(len(X)))  # X 데이터 개수: 687
+print('y 데이터 개수: %d' %(len(y)))  # y 데이터 개수: 687
+
+"""
+2. 학습용, 평가용 데이터로 분리합니다.
+"""
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# 분리한 데이터의 개수를 출력합니다.
+print('학습용 데이터 개수: %d' %(len(X_train)))  # 학습용 데이터 개수: 480
+print('평가용 데이터 개수: %d' %(len(X_test)))   # 평가용 데이터 개수: 207
 ```
