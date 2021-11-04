@@ -30,6 +30,7 @@
       - [이상치(Outlier) 처리하기](#이상치outlier-처리하기) 
       - [데이터 분리가 필요한 이유](#데이터-분리가-필요한-이유)
       - [지도학습 데이터 분리](#지도학습-데이터-분리)
+      - [결측값 처리하기 실습](#결측값-처리하기)
 
 # 머신러닝 시작하기
 
@@ -456,3 +457,96 @@ Name: Fare, dtype: float64
 - **Label 데이터** : 예측해야 할 대상이 되는 데이터
   - `예) '공부 시간(feature)'에 따른 '시험 점수(label)'`
   - `예) titanic 데이터에서 feature data는 나이, 가족 정보, 표 가격 등이고 label data는 '생존 여부'`
+
+#### 결측값 처리하기
+결측값이 있는 데이터는 일반적으로 머신러닝의 입력으로 사용할 수 없습니다. 그렇기에 데이터 전 처리 과정에서는 삭제 또는 대체 방식으로 결측값을 처리합니다.
+- **`drop(columns = ['feature'])`** : pandas의 DataFrame에서 특정 변수(columns)를 삭제하기 위해 사용
+- **`dropna()`** : DataFrame에서 결측값이 있는 샘플을 제거하기 위해서 사용 (NaN 제거)
+
+```
+import pandas as pd
+    
+# 데이터를 읽어 옵니다.
+titanic = pd.read_csv('./data/titanic.csv')
+# 변수별 데이터 수를 확인하여 결측값이 어디에 많은지 확인합니다.
+print(titanic.info(),'\n')  # cabin feature가 204/891로 결측치가 제일 많음
+
+'''
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 12 columns):
+PassengerId    891 non-null int64
+Survived       891 non-null int64
+Pclass         891 non-null int64
+Name           891 non-null object
+Sex            891 non-null object
+Age            714 non-null float64
+SibSp          891 non-null int64
+Parch          891 non-null int64
+Ticket         891 non-null object
+Fare           891 non-null float64
+Cabin          204 non-null object
+Embarked       889 non-null object
+dtypes: float64(2), int64(5), object(5)
+memory usage: 83.6+ KB
+None 
+'''
+
+"""
+1. Cabin 변수를 제거합니다.
+"""
+titanic_1 = titanic.drop(columns = ['Cabin'])
+# Cabin 변수를 제거 후 결측값이 어디에 남아 있는지 확인합니다.
+print('Cabin 변수 제거')
+print(titanic_1.info(),'\n')
+
+'''
+Cabin 변수 제거
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 891 entries, 0 to 890
+Data columns (total 11 columns):
+PassengerId    891 non-null int64
+Survived       891 non-null int64
+Pclass         891 non-null int64
+Name           891 non-null object
+Sex            891 non-null object
+Age            714 non-null float64
+SibSp          891 non-null int64
+Parch          891 non-null int64
+Ticket         891 non-null object
+Fare           891 non-null float64
+Embarked       889 non-null object
+dtypes: float64(2), int64(5), object(4)
+memory usage: 76.6+ KB
+None 
+'''
+
+"""
+2. 결측값이 존재하는 샘플 제거합니다.
+"""
+titanic_2 = titanic_1.dropna()
+# 결측값이 존재하는지 확인합니다.
+print('결측값이 존재하는 샘플 제거')
+print(titanic_2.info())
+
+'''
+결측값이 존재하는 샘플 제거
+<class 'pandas.core.frame.DataFrame'>
+Int64Index: 712 entries, 0 to 890
+Data columns (total 11 columns):
+PassengerId    712 non-null int64
+Survived       712 non-null int64
+Pclass         712 non-null int64
+Name           712 non-null object
+Sex            712 non-null object
+Age            712 non-null float64
+SibSp          712 non-null int64
+Parch          712 non-null int64
+Ticket         712 non-null object
+Fare           712 non-null float64
+Embarked       712 non-null object
+dtypes: float64(2), int64(5), object(4)
+memory usage: 66.8+ KB
+None
+'''
+```
