@@ -454,3 +454,5 @@ Name: Fare, dtype: float64
 지도학습의 경우 feature 데이터와 label 데이터를 분리하여 저장
 - **Feature 데이터** : label을 예측하기 위한 입력 값
 - **Label 데이터** : 예측해야 할 대상이 되는 데이터
+  - `예) '공부 시간(feature)'에 따른 '시험 점수(label)'`
+  - `예) titanic 데이터에서 feature data는 나이, 가족 정보, 표 가격 등이고 label data는 '생존 여부'`
