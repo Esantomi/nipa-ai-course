@@ -674,7 +674,18 @@ print('평가용 데이터 개수: %d' %(len(X_test)))   # 평가용 데이터 �
         - 즉, 적절한 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png)와 ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png)을 찾으면 된다.
 
 ### 단순 선형 회귀
-- **단순 선형 회귀(Simple linear regression)**
+- **단순 선형 회귀(Simple Linear Regression)**
   - 데이터를 설명하는 모델을 직선 형태로 가정
     - ![image](https://user-images.githubusercontent.com/61646760/140510646-e44461c8-c449-43c3-ad6d-2f0bb3cd56c7.png)
     - 직선을 구성하는 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편)와 ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기)를 구해야 함
+- **손실 함수(Loss function)**
+  - 실제 값과 예측 값 차이의 제곱의 합
+    - ![image](https://user-images.githubusercontent.com/61646760/140515451-9b2c9f1c-def4-4090-93fd-d52a7066ee1d.png)
+    - 손실 함수가 작을수록 좋은 모델이다.
+  - 손실 함수 줄이기
+    - ![image](https://user-images.githubusercontent.com/61646760/140517279-bd8734c9-c3e0-46d7-9a62-c175adc4778f.png)
+      - ![image](https://user-images.githubusercontent.com/61646760/140517368-aad92e73-10c4-41bf-9571-7f88b6b77afd.png) (arguments of minimum) : 함수 ![image](https://user-images.githubusercontent.com/61646760/140516833-752063c9-6072-4a16-81d8-9d0c50d3d555.png)를 최솟값으로 만드는 정의역(![image](https://user-images.githubusercontent.com/61646760/140516872-37a9d24e-4c30-4fb0-ad9e-182726014faa.png))의 값
+    - ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기) 값을 조절하여 Loss 함수의 크기를 작게 할 수 있다.
+    -  Loss 함수의 크기를 작게 하는 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기)를 찾는 방법
+        1. **Gradient descent (경사 하강법)**
+        2. **Normal equation (least squres)**
