@@ -686,6 +686,6 @@ print('평가용 데이터 개수: %d' %(len(X_test)))   # 평가용 데이터 �
     - ![image](https://user-images.githubusercontent.com/61646760/140517279-bd8734c9-c3e0-46d7-9a62-c175adc4778f.png)
       - ![image](https://user-images.githubusercontent.com/61646760/140517368-aad92e73-10c4-41bf-9571-7f88b6b77afd.png) (arguments of minimum) : 함수 ![image](https://user-images.githubusercontent.com/61646760/140516833-752063c9-6072-4a16-81d8-9d0c50d3d555.png)를 최솟값으로 만드는 정의역(![image](https://user-images.githubusercontent.com/61646760/140516872-37a9d24e-4c30-4fb0-ad9e-182726014faa.png))의 값
     - ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기) 값을 조절하여 Loss 함수의 크기를 작게 할 수 있다.
-    -  Loss 함수의 크기를 작게 하는 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기)를 찾는 방법
-        1. **Gradient descent (경사 하강법)**
-        2. **Normal equation (least squres)**
+  - Loss 함수의 크기를 작게 하는 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기)를 찾는 방법
+      1. **Gradient descent (경사 하강법)**
+      2. **Normal equation (least squres)**
