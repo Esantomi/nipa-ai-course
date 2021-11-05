@@ -674,3 +674,7 @@ print('평가용 데이터 개수: %d' %(len(X_test)))   # 평가용 데이터 �
         - 즉, 적절한 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png)와 ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png)을 찾으면 된다.
 
 ### 단순 선형 회귀
+- **단순 선형 회귀(Simple linear regression)**
+  - 데이터를 설명하는 모델을 직선 형태로 가정
+    - ![image](https://user-images.githubusercontent.com/61646760/140510646-e44461c8-c449-43c3-ad6d-2f0bb3cd56c7.png)
+    - 직선을 구성하는 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png) (y 절편)와 ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) (기울기)를 구해야 함
