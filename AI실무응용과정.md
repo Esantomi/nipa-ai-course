@@ -712,7 +712,7 @@ print('평가용 데이터 개수: %d' %(len(X_test)))   # 평가용 데이터 �
 ![image](https://user-images.githubusercontent.com/61646760/140540230-183b469c-3d54-4fdb-9ff0-5021a7cf0fc0.png)
 
 #### 단순 선형 회귀 분석하기 - 데이터 전 처리
-- `LinearRegression` : 선형 회귀를 위한 기계학습 라이브러리 scikit-learn의 
+- `LinearRegression` : 기계학습 라이브러리 scikit-learn의 선형 회귀를 위한 클래스
   - `from sklearn.linear_model import LinearRegression`
 
 ```
