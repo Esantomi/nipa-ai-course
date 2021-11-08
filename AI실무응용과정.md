@@ -833,5 +833,54 @@ plt.savefig("test.png")
 
 #### 단순 선형 회귀 분석하기 - 예측하기
 바로 위에서 학습한 모델을 바탕으로 예측 값을 구해 봅시다.
-
 - `predict()` : `LinearRegression`으로 예측을 할 때 사용하는 메서드. `predict` 함수는 DataFrame 또는 numpy array인 X 데이터에 대한 예측값을 리스트로 출력한다.
+  - `pred_X = lrmodel.predict(X)`
+
+```
+import matplotlib as mpl
+mpl.use("Agg")
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+
+X = [8.70153760, 3.90825773, 1.89362433, 3.28730045, 7.39333004, 2.98984649, 2.25757240, 9.84450732, 9.94589513, 5.48321616]
+Y = [5.64413093, 3.75876583, 3.87233310, 4.40990425, 6.43845020, 4.02827829, 2.26105955, 7.15768995, 6.29097441, 5.19692852]
+
+train_X = pd.DataFrame(X, columns=['X'])
+train_Y = pd.Series(Y)
+
+# 모델을 트레이닝합니다.
+lrmodel = LinearRegression()
+lrmodel.fit(train_X, train_Y)
+
+"""
+1. train_X에 대해서 예측합니다.
+"""
+pred_X = lrmodel.predict(train_X)
+print('train_X에 대한 예측값 : \n{}\n'.format(pred_X))
+
+'''
+train_X에 대한 예측값 : 
+[6.2546398  4.18978504 3.32191889 3.92228833 5.6910886  3.79415077
+ 3.47870087 6.74700964 6.7906856  4.86824749]
+'''
+
+print('실제값 : \n{}'.format(train_Y))
+
+'''
+실제값 : 
+0    5.644131
+1    3.758766
+2    3.872333
+3    4.409904
+4    6.438450
+5    4.028278
+6    2.261060
+7    7.157690
+8    6.290974
+9    5.196929
+dtype: float64
+'''
+```
