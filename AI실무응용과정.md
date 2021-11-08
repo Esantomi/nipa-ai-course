@@ -39,6 +39,7 @@
       - [손실 함수(Loss function)](#손실-함수)
       - [경사 하강법(Gradient descent)](#경사-하강법) 
       - [단순 선형 회귀 분석하기 - 데이터 전 처리 실습](#단순-선형-회귀-분석하기---데이터-전-처리)
+      - [단순 선형 회귀 분석하기 - 학습하기](#단순-선형-회귀-분석하기---학습하기)
 
 # 머신러닝 시작하기
 
@@ -775,3 +776,17 @@ dtype: float64
 전 처리한 Y 데이터 shape: (10,)
 '''
 ```
+
+#### 단순 선형 회귀 분석하기 - 학습하기
+바로 위에서 전 처리한 데이터를 `LinearRegression` 모델에 입력하여 학습을 수행해 보자.
+
+- LinearRegression (sklearn) 사용법
+  - `LinearRegression`을 사용하기 위해서는 우선 해당 모델 객체를 불러와 초기화해야 한다.
+    - `lrmodel = LinearRegression()`
+  - 모델 초기화를 수행했다면 전 처리된 데이터를 사용하여 학습을 수행할 수 있다. 아래 코드와 같이 `fit` 함수에 학습에 필요한 데이터를 입력하여 학습을 수행한다.
+    - `lrmodel.fit(train_X, train_Y)`
+  - LinearRegression의 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) 값을 구하기 위해서는 아래 코드를 사용하면 된다.
+    ```
+    beta_0 = lrmodel.intercept_
+    beta_1 = lrmodel.coef_[0]
+    ```
