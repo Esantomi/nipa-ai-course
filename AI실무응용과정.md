@@ -781,12 +781,51 @@ dtype: float64
 바로 위에서 전 처리한 데이터를 `LinearRegression` 모델에 입력하여 학습을 수행해 보자.
 
 - LinearRegression (sklearn) 사용법
-  - `LinearRegression`을 사용하기 위해서는 우선 해당 모델 객체를 불러와 초기화해야 한다.
-    - `lrmodel = LinearRegression()`
-  - 모델 초기화를 수행했다면 전 처리된 데이터를 사용하여 학습을 수행할 수 있다. 아래 코드와 같이 `fit` 함수에 학습에 필요한 데이터를 입력하여 학습을 수행한다.
-    - `lrmodel.fit(train_X, train_Y)`
-  - LinearRegression의 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) 값을 구하기 위해서는 아래 코드를 사용하면 된다.
-    ```
-    beta_0 = lrmodel.intercept_
-    beta_1 = lrmodel.coef_[0]
-    ```
+  1. `LinearRegression`을 사용하기 위해서는 우선 해당 모델 객체를 불러와 초기화해야 한다.
+      - `lrmodel = LinearRegression()`
+  2. 모델 초기화를 수행했다면 전 처리된 데이터를 사용하여 학습을 수행할 수 있다. 아래 코드와 같이 `fit` 함수에 학습에 필요한 데이터를 입력하여 학습을 수행한다.
+      - `lrmodel.fit(train_X, train_Y)`
+  3. LinearRegression의 ![image](https://user-images.githubusercontent.com/61646760/140510991-70ef4523-52e2-4360-87eb-093d55107db8.png), ![image](https://user-images.githubusercontent.com/61646760/140511012-753ddb9d-d758-4522-9853-280250a50d2a.png) 값을 구하기 위해서는 아래 코드를 사용하면 된다.
+      ```
+      beta_0 = lrmodel.intercept_
+      beta_1 = lrmodel.coef_[0]
+      ```
+```
+import matplotlib as mpl
+mpl.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# import elice_utils
+# eu = elice_utils.EliceUtils()
+
+
+X = [8.70153760, 3.90825773, 1.89362433, 3.28730045, 7.39333004, 2.98984649, 2.25757240, 9.84450732, 9.94589513, 5.48321616]
+Y = [5.64413093, 3.75876583, 3.87233310, 4.40990425, 6.43845020, 4.02827829, 2.26105955, 7.15768995, 6.29097441, 5.19692852]
+
+train_X = pd.DataFrame(X, columns=['X'])
+train_Y = pd.Series(Y)
+
+"""
+1. 모델을 초기화합니다.
+"""
+lrmodel = LinearRegression()
+
+"""
+2. train_X, train_Y 데이터를 학습합니다.
+"""
+lrmodel.fit(train_X, train_Y)
+
+
+# 학습한 결과를 시각화하는 코드입니다.
+plt.scatter(X, Y) 
+plt.plot([0, 10], [lrmodel.intercept_, 10 * lrmodel.coef_[0] + lrmodel.intercept_], c='r') 
+plt.xlim(0, 10) 
+plt.ylim(0, 10) 
+plt.title('Training Result')
+plt.savefig("test.png") 
+# eu.send_image("test.png")
+```
+![image](https://user-images.githubusercontent.com/61646760/140742957-59635673-f019-4de9-adc0-5e56a912aa9d.png)
