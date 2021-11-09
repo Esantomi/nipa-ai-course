@@ -41,6 +41,7 @@
       - [단순 선형 회귀 분석하기 - 데이터 전 처리 실습](#단순-선형-회귀-분석하기---데이터-전-처리)
       - [단순 선형 회귀 분석하기 - 학습하기 실습](#단순-선형-회귀-분석하기---학습하기)
       - [단순 선형 회귀 분석하기 - 예측하기 실습](#단순-선형-회귀-분석하기---예측하기)
+    + [다중 선형 회귀](#다중-선형-회귀)
 
 # 머신러닝 시작하기
 
@@ -884,3 +885,11 @@ print('실제값 : \n{}'.format(train_Y))
 dtype: float64
 '''
 ```
+
+### 다중 선형 회귀
+- **다중 선형 회귀((Multiple Linear Regression)**
+  - 입력값 ![image](https://user-images.githubusercontent.com/61646760/140957356-e421f52e-0067-4cd6-921d-3f68e1fd5bdb.png)가 여러 개(2개 이상)인 경우 활용할 수 있는 회귀 알고리즘
+    - 여러 개의 입력값(![image](https://user-images.githubusercontent.com/61646760/140957356-e421f52e-0067-4cd6-921d-3f68e1fd5bdb.png))으로 결괏값(![image](https://user-images.githubusercontent.com/61646760/140957508-73a8350e-1b1f-4d46-9b5d-29ea92c24d54.png))을 예측하고자 하는 경우
+    - 각 개별 ![image](https://user-images.githubusercontent.com/61646760/140958263-a2a0679a-c66e-43a0-8173-cc264dbe7d98.png)에 해당하는 최적의 ![image](https://user-images.githubusercontent.com/61646760/140958332-84f665c2-7bbb-4071-ba41-1d8bc8f178f2.png)를 찾아야 함
+  - 다중 선형 회귀 모델
+    - ![image](https://user-images.githubusercontent.com/61646760/140958761-d525039a-3bbc-4e0a-882a-8d0838e6cc53.png)
