@@ -673,5 +673,33 @@ C        2      7
 ![image](https://user-images.githubusercontent.com/61646760/141137423-fc24ca96-5566-4583-89df-87767e0f07a5.png)
 
 ```
+# from elice_utils import EliceUtils
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
+# elice_utils = EliceUtils()
+
+# 이미 입력되어 있는 코드의 다양한 속성 값들을 변경해 봅시다.
+x = np.arange(10)
+fig, ax = plt.subplots()
+ax.plot(
+    x, x, label='y=x',
+    linestyle='-',   # 실선
+    marker='.',      # 점
+    color='blue'     # 파란색
+)
+ax.plot(
+    x, x**2, label='y=x^2',
+    linestyle='-.',  # 대시 점선
+    marker=',',      # 픽셀
+    color='red'      # 빨간색
+)
+
+# elice에서 그래프를 확인
+fig.savefig("plot.png")
+# elice_utils.send_image("plot.png")
 ```
+
+![image](https://user-images.githubusercontent.com/61646760/141138053-43942eb7-ce0c-475a-83ce-12dd25d79ef2.png)
+- 상기 예시 코드에서 figure와 ax가 각각 1개인데, `ax.plot` 함수를 두 번 호출했다. 이렇게 하나의 ax에 여러 번 그래프를 그리면, 그래프를 겹쳐서 그릴 수 있다.
