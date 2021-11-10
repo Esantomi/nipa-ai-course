@@ -21,6 +21,7 @@
     + [groupby()](#groupby)
     + [aggregate()](#aggregate)
 - [Matplotlib](#matplotlib)
+  * [선 그래프](#선-그래프Line-Graph) 
 
 ## Python
 
@@ -667,4 +668,10 @@ C        2      7
 ```
 
 ## Matplotlib
-이후 작성
+
+### 선 그래프(Line Graph)
+![image](https://user-images.githubusercontent.com/61646760/141137423-fc24ca96-5566-4583-89df-87767e0f07a5.png)
+
+```
+
+```
