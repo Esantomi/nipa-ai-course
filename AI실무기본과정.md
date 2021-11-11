@@ -1,6 +1,6 @@
 # AI 실무 기본 과정
 파이썬 기초부터 데이터 분석까지, 실습을 통해 인공지능을 위한 기초 체력을 다져요!
-- [2021 NIPA AI 온라인 교육 바로 가기](https://2021nipa.elice.io/tracks/1328/info)
+- [2021 NIPA AI 온라인 교육 - AI 실무 기본 과정](https://2021nipa.elice.io/tracks/1328/info)
 
 ## 목차
 - [Python](#python)
