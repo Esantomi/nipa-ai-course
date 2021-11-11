@@ -21,7 +21,8 @@
     + [groupby()](#groupby)
     + [aggregate()](#aggregate)
 - [Matplotlib](#matplotlib)
-  * [선 그래프](#선-그래프Line-Graph) 
+  * [선 그래프](#선-그래프Line-Graph)
+  * [그래프 범례](#그래프-범례)
 
 ## Python
 
@@ -703,3 +704,47 @@ fig.savefig("plot.png")
 
 ![image](https://user-images.githubusercontent.com/61646760/141138053-43942eb7-ce0c-475a-83ce-12dd25d79ef2.png)
 - 상기 예시 코드에서 figure와 ax가 각각 1개인데, `ax.plot` 함수를 두 번 호출했다. 이렇게 하나의 ax에 여러 번 그래프를 그리면, 그래프를 겹쳐서 그릴 수 있다.
+
+### 그래프 범례
+- `ax.legend()` : 그래프의 데이터 정보, 즉 범례(legend)를 띄워 주는 메서드
+  - 위치 옵션  
+  ![image](https://user-images.githubusercontent.com/61646760/141326070-8e5383a5-8945-470b-98dc-d9acf9b0aaf8.png)
+
+```
+# from elice_utils import EliceUtils
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# elice_utils = EliceUtils()
+
+x = np.arange(10)
+fig, ax = plt.subplots()
+ax.plot(
+    x, x, label='y=x',
+    linestyle='-',
+    marker='.',
+    color='blue'
+)
+ax.plot(
+    x, x**2, label='y=x^2',
+    linestyle='-.',
+    marker=',',
+    color='red'
+)
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+
+# 이미 입력되어 있는 코드의 다양한 속성값들을 변경해 봅시다.
+ax.legend(
+    loc='center left',  # 중간 왼쪽
+    shadow=True,
+    fancybox=True,
+    borderpad=2
+)
+
+# elice에서 그래프를 확인
+fig.savefig("plot.png")
+# elice_utils.send_image("plot.png")
+```
+![image](https://user-images.githubusercontent.com/61646760/141326511-d0ddcbd7-a8c7-419d-9518-9cf0d1437027.png)
