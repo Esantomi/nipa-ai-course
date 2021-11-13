@@ -23,6 +23,7 @@
 - [Matplotlib](#matplotlib)
   * [선 그래프](#선-그래프Line-Graph)
   * [그래프 범례](#그래프-범례)
+  * [막대 그래프 & 히스토그램](#막대-그래프--히스토그램)
 
 ## Python
 
@@ -748,3 +749,55 @@ fig.savefig("plot.png")
 # elice_utils.send_image("plot.png")
 ```
 ![image](https://user-images.githubusercontent.com/61646760/141326511-d0ddcbd7-a8c7-419d-9518-9cf0d1437027.png)
+
+### 막대 그래프 & 히스토그램
+- **막대 그래프(Bar chart)** : 여러 값을 비교하는 데 적합하다. 여러 개의 값을 입력받고 그 값들을 한눈에 비교할 수 있다.
+- **히스토그램(Histogram)** : 일정 시간 동안의 숫자 데이터 분포를 시각화하는 데 적합하다.
+
+```
+# from elice_utils import EliceUtils
+# elice_utils = EliceUtils()
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+fname='./NanumBarunGothic.ttf'
+font = fm.FontProperties(fname = fname).get_name()
+plt.rcParams["font.family"] = font
+
+# Data set
+x = np.array(["축구", "야구", "농구", "배드민턴", "탁구"])  # 스포츠 종목
+y = np.array([13, 10, 17, 8, 7])                            # 선호하는 학생 수
+z = np.random.randn(1000)                                   # 1,000개의 정규분포 난수
+
+fig, axes = plt.subplots(1, 2, figsize=(8, 4))
+
+# Bar 그래프
+axes[0].bar(x, y)
+
+# 히스토그램
+axes[1].hist(z, bins = 200)
+
+# elice에서 그래프 확인하기
+fig.savefig("plot.png")
+# elice_utils.send_image("plot.png")
+```
+
+![image](https://user-images.githubusercontent.com/61646760/141612559-9a95f217-00cd-4b8f-9ceb-3ac0e5ed8371.png)
+
+- 아래 코드는, 하나의 도화지(figure)에 `1*2`의 모양으로 그래프를 그리도록 합니다. 즉, 그래프를 2개 그리고, 가로로 배치한다는 의미입니다.  
+  ```
+  fig, axes = plt.subplots(1, 2, figsize=(8, 4))
+  ```
+  - `axes[0]`은 막대 그래프를, `axes[1]`은 히스토그램을 그립니다.
+- matplotlib의 pyplot으로 그래프를 그릴 때, 기본 폰트는 한글을 지원하지 않습니다. 아래는 한글을 지원하는 나눔바른고딕 폰트로 바꾼 코드입니다.
+  ```
+  import matplotlib.font_manager as fm
+  
+  fname='./NanumBarunGothic.ttf'
+  font = fm.FontProperties(fname = fname).get_name()
+  plt.rcParams["font.family"] = font
+  ```
+  - 위 코드 덕분에, 막대 그래프에서 `축구, 야구, 농구, 배드민턴, 탁구`가 올바르게 출력되었습니다.
