@@ -809,3 +809,50 @@ Pandas를 이용해 csv 파일을 불러와 시각화를 진행해 보도록 한
 포켓몬에 대한 데이터가 담긴 csv 파일을 불러와서 공격 타입에 따라 다른 색상을 띠는 산점도 그래프를 그리고 라벨을 한번 붙여 보도록 하자.
 
 공격 능력치와 수비 능력치가 x와 y축으로 주어지고, 물 타입 포켓몬은 파란색, 불 타입 포켓몬은 빨간색으로 표현하도록 하자.
+
+데이터는 아래 표를 참고하자.
+
+![image](https://user-images.githubusercontent.com/61646760/141674715-24f63aff-709c-4815-91a9-ef1a9b79819d.png)
+
+```
+# from elice_utils import EliceUtils
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# elice_utils = EliceUtils()
+
+# 아래 경로에서 csv 파일을 읽어서 df 변수에 저장해 보세요.
+# 경로: "./data/pokemon.csv"
+df = pd.read_csv('./data/pokemon.csv')
+
+# print(df.head())
+'''
+   #                   Name Type 1    ...     Speed  Generation  Legendary
+0  1              Bulbasaur  Grass    ...        45           1      False
+1  2                Ivysaur  Grass    ...        60           1      False
+2  3               Venusaur  Grass    ...        80           1      False
+3  3  VenusaurMega Venusaur  Grass    ...        80           1      False
+4  4             Charmander   Fire    ...        65           1      False
+'''
+
+# 공격 타입 Type 1, Type 2 중에 Fire 속성이 존재하는 데이터들만 추출해 보세요.
+fire = df[(df['Type 1'] == 'Fire') | (df['Type 2'] == 'Fire')]
+# 공격 타입 Type 1, Type 2 중에 Water 속성이 존재하는 데이터들만 추출해 보세요.
+water = df[(df['Type 1'] == 'Water') | (df['Type 2'] == 'Water')]
+
+fig, ax = plt.subplots()
+# 상기 표를 참고하여 아래 코드를 완성해 보세요.
+ax.scatter(fire['Attack'], fire['Defense'],
+    marker='*', color='red', label='Fire', s=50)
+ax.scatter(water['Attack'], water['Defense'],
+    marker='.', color='blue', label='Water', s=25)
+
+ax.set_xlabel("Attack")
+ax.set_ylabel("Defense")
+ax.legend(loc="upper right")
+
+# elice에서 그래프 확인하기
+fig.savefig("plot.png")
+# elice_utils.send_image("plot.png")
+```
