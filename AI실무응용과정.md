@@ -897,6 +897,10 @@ dtype: float64
     - 각 개별 ![image](https://user-images.githubusercontent.com/61646760/140958263-a2a0679a-c66e-43a0-8173-cc264dbe7d98.png)에 해당하는 최적의 ![image](https://user-images.githubusercontent.com/61646760/140958332-84f665c2-7bbb-4071-ba41-1d8bc8f178f2.png)를 찾아야 함
   - 다중 선형 회귀 모델
     - ![image](https://user-images.githubusercontent.com/61646760/140958761-d525039a-3bbc-4e0a-882a-8d0838e6cc53.png)
+  - 특징
+    - 여러 개의 입력값과 결괏값 간의 관계 확인 가능
+    - 어떤 입력값이 결괏값에 어떠한 영향을 미치는지 알 수 있음
+    - 여러 개의 입력값 간의 상관관계가 높을 경우 결과에 대한 신뢰성을 잃을 가능성이 있음
 
 #### 다중 선형 회귀 모델의 손실 함수
   - **손실 함수(Loss function)**
