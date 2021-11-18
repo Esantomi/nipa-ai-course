@@ -925,4 +925,92 @@ dtype: float64
 - 우선 데이터를 전 처리 하기 위해서 3개의 변수를 갖는 feature 데이터와 Sales 변수를 label 데이터로 분리하고 학습용, 평가용 데이터로 나눠 보자.
 
 ```
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+
+
+df = pd.read_csv("data/Advertising.csv")
+
+print('원본 데이터 샘플 :')
+print(df.head(),'\n')
+
+'''
+원본 데이터 샘플 :
+   Unnamed: 0     FB    TV  Newspaper  Sales
+0           1  230.1  37.8       69.2   22.1
+1           2   44.5  39.3       45.1   10.4
+2           3   17.2  45.9       69.3    9.3
+3           4  151.5  41.3       58.5   18.5
+4           5  180.8  10.8       58.4   12.9 
+'''
+
+# 입력 변수로 사용하지 않는 Unnamed: 0 변수 데이터를 삭제합니다.
+df = df.drop(columns=['Unnamed: 0'])
+
+"""
+1. Sales 변수는 label 데이터로 Y에 저장하고 나머진 X에 저장합니다.
+"""
+X = df.drop(columns=['Sales'])
+Y = df['Sales']
+
+"""
+2. 학습용 평가용 데이터로 분리합니다.
+"""
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+# 전 처리한 데이터를 출력합니다.
+print('train_X : ')
+print(train_X.head(),'\n')
+
+'''
+train_X : 
+        FB    TV  Newspaper
+79   116.0   7.7       23.1
+197  177.0   9.3        6.4
+38    43.1  26.7       35.1
+24    62.3  12.6       18.3
+122  224.0   2.4       15.6 
+'''
+
+print('train_Y : ')
+print(train_Y.head(),'\n')
+
+'''
+train_Y : 
+79     11.0
+197    12.8
+38     10.1
+24      9.7
+122    11.6
+Name: Sales, dtype: float64 
+'''
+
+print('test_X : ')
+print(test_X.head(),'\n')
+
+'''
+test_X : 
+        FB    TV  Newspaper
+95   163.3  31.6       52.9
+15   195.4  47.7       52.9
+30   292.9  28.3       43.2
+158   11.7  36.9       45.2
+128  220.3  49.0        3.2 
+'''
+
+print('test_Y : ')
+print(test_Y.head())
+
+'''
+test_Y : 
+95     16.9
+15     22.4
+30     21.4
+158     7.3
+128    24.7
+Name: Sales, dtype: float64
+'''
 ```
