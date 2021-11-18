@@ -44,6 +44,7 @@
     + [다중 선형 회귀](#다중-선형-회귀)
       - [손실 함수(Loss fucntion)](#다중-선형-회귀-모델의-손실-함수) 
       - [경사 하강법(Gradient descent)](#다중-선형-회귀-모델의-경사-하강법) 
+      - [다중 회귀 분석하기 - 데이터 전 처리 실습](#다중-회귀-분석하기---데이터-전-처리)
 
 # 머신러닝 시작하기
 
@@ -916,3 +917,12 @@ dtype: float64
     3. 현재 ![image](https://user-images.githubusercontent.com/61646760/140962218-22234c8c-5147-4601-b0b3-5af6ffaa1fc6.png) 값을 어떻게 변화해야 Loss 값을 줄일 수 있는지 알 수 있는 Gradient 값 계산
     4. Gradient 값을 활용하여 ![image](https://user-images.githubusercontent.com/61646760/140962218-22234c8c-5147-4601-b0b3-5af6ffaa1fc6.png) 값 업데이트
     5. Loss 값의 차이가 거의 없어질 때까지 2~4번 과정을 반복(Loss 값과 차이가 줄어들면 Gradient 값도 작아짐)
+
+#### 다중 회귀 분석하기 - 데이터 전 처리
+- <strong>다중 회귀 분석(Multiple Linear Regression)</strong>은 데이터의 여러 변수(features) ![image](https://user-images.githubusercontent.com/61646760/140957356-e421f52e-0067-4cd6-921d-3f68e1fd5bdb.png)를 이용해 결과 ![image](https://user-images.githubusercontent.com/61646760/140957508-73a8350e-1b1f-4d46-9b5d-29ea92c24d54.png)를 예측하는 모델
+- 아래와 같이 `FB`, `TV`, `Newspaper` 광고에 대한 비용 대비 `Sales` 데이터가 주어졌을 때, 이를 다중 회귀 분석으로 분석해 보자.
+  ![image](https://user-images.githubusercontent.com/61646760/142372861-1edc2251-0f05-429a-9c89-4123e88e3d9c.png)
+- 우선 데이터를 전 처리 하기 위해서 3개의 변수를 갖는 feature 데이터와 Sales 변수를 label 데이터로 분리하고 학습용, 평가용 데이터로 나눠 보자.
+
+```
+```
