@@ -45,6 +45,7 @@
       - [손실 함수(Loss fucntion)](#다중-선형-회귀-모델의-손실-함수) 
       - [경사 하강법(Gradient descent)](#다중-선형-회귀-모델의-경사-하강법) 
       - [다중 회귀 분석하기 - 데이터 전 처리 실습](#다중-회귀-분석하기---데이터-전-처리)
+      - [다중 회귀 분석하기 - 학습하기 실습](#다중-회귀-분석하기---학습하기)
 
 # 머신러닝 시작하기
 
@@ -1014,3 +1015,20 @@ test_Y :
 Name: Sales, dtype: float64
 '''
 ```
+
+#### 다중 회귀 분석하기 - 학습하기
+앞에서 전 처리한 데이터를 바탕으로 다중 선형 회귀 모델을 적용해 보자.
+
+- 다중 선형 회귀 모델의 형태는 아래 수식과 같다.
+  - ![image](https://user-images.githubusercontent.com/61646760/142715604-d47855f9-68cd-4238-9d88-9b67251e77f2.png)
+  - 여기서 ![image](https://user-images.githubusercontent.com/61646760/142715624-5edc38d5-5f9b-49e7-b35a-f9b62fac9d13.png)은 페이스북, ![image](https://user-images.githubusercontent.com/61646760/142715629-60252968-7266-4946-8899-35791add9e39.png)는 TV, ![image](https://user-images.githubusercontent.com/61646760/142715639-735f4388-a739-4fe6-ab8a-45948099950e.png)은 신문 광고를 의미한다.
+
+- 다중 선형 회귀 또한 선형 회귀 모델과 마찬가지로 `LinearRegression`을 사용할 수 있다.
+  - `LinearRegression`의 ![image](https://user-images.githubusercontent.com/61646760/142715716-ae01e5da-546a-4466-bfec-1b020a4e7d4f.png) 등 패러미터 구현
+    ```
+    lrmodel = LinearRegression()
+    lrmodel.intercept_
+    lrmodel.coef_[i]
+    ```
+    - `intercept_`는 ![image](https://user-images.githubusercontent.com/61646760/142715774-e80e590e-0d2c-4bcb-986e-ec9419da7d32.png)에 해당하는 값이고, `coef_[i]`는 i+1번째 변수에 곱해지는 패러미터 값을 의미한다.
+- 그럼 이번에는 학습용 데이터를 다중 선형 회귀 모델을 사용하여 학습하고, 학습된 패러미터를 출력해 보자.
