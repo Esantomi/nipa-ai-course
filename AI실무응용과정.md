@@ -46,6 +46,7 @@
       - [경사 하강법(Gradient descent)](#다중-선형-회귀-모델의-경사-하강법) 
       - [다중 회귀 분석하기 - 데이터 전 처리 실습](#다중-회귀-분석하기---데이터-전-처리)
       - [다중 회귀 분석하기 - 학습하기 실습](#다중-회귀-분석하기---학습하기)
+      - [다중 회귀 분석하기 - 예측하기 실습](#다중-회귀-분석하기---예측하기)
 
 # 머신러닝 시작하기
 
@@ -1030,7 +1031,8 @@ Name: Sales, dtype: float64
     lrmodel.intercept_
     lrmodel.coef_[i]
     ```
-    - `intercept_`는 ![image](https://user-images.githubusercontent.com/61646760/142715774-e80e590e-0d2c-4bcb-986e-ec9419da7d32.png)에 해당하는 값이고, `coef_[i]`는 i+1번째 변수에 곱해지는 패러미터 값을 의미한다.
+    - `intercept_` : ![image](https://user-images.githubusercontent.com/61646760/142715774-e80e590e-0d2c-4bcb-986e-ec9419da7d32.png)에 해당하는 값
+    - `coef_[i]` : i+1번째 변수에 곱해지는 패러미터 값
 - 그럼 이번에는 학습용 데이터를 다중 선형 회귀 모델을 사용하여 학습하고, 학습된 패러미터를 출력해 보자.
 
 ```
@@ -1078,3 +1080,9 @@ print("beta_1: %f" % beta_1)  # beta_1: 0.044730
 print("beta_2: %f" % beta_2)  # beta_2: 0.189195
 print("beta_3: %f" % beta_3)  # beta_3: 0.002761
 ```
+
+#### 다중 회귀 분석하기 - 예측하기
+위에서 학습한 다중 선형 회귀 모델을 바탕으로 이번엔 새로운 광고 비용에 따른 `Sales` 값을 예측해 보자.
+
+- `predict()` : `LinearRegression`의 예측을 위한 함수
+  - `pred_X = lrmodel.predict(X)`
