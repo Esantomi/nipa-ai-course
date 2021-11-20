@@ -1032,3 +1032,49 @@ Name: Sales, dtype: float64
     ```
     - `intercept_`는 ![image](https://user-images.githubusercontent.com/61646760/142715774-e80e590e-0d2c-4bcb-986e-ec9419da7d32.png)에 해당하는 값이고, `coef_[i]`는 i+1번째 변수에 곱해지는 패러미터 값을 의미한다.
 - 그럼 이번에는 학습용 데이터를 다중 선형 회귀 모델을 사용하여 학습하고, 학습된 패러미터를 출력해 보자.
+
+```
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+
+# 데이터를 읽고 전 처리합니다
+df = pd.read_csv("data/Advertising.csv")
+df = df.drop(columns=['Unnamed: 0'])
+
+# print(df.head())
+'''
+      FB    TV  Newspaper  Sales
+0  230.1  37.8       69.2   22.1
+1   44.5  39.3       45.1   10.4
+2   17.2  45.9       69.3    9.3
+3  151.5  41.3       58.5   18.5
+4  180.8  10.8       58.4   12.9
+'''
+
+X = df.drop(columns=['Sales'])
+Y = df['Sales']
+
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+"""
+1. 다중 선형 회귀 모델을 초기화하고 학습합니다
+"""
+lrmodel = LinearRegression()   # 모델 초기화
+lrmodel.fit(train_X, train_Y)  # train data로 학습
+
+"""
+2. 학습된 패러미터 값을 불러옵니다
+"""
+beta_0 = lrmodel.intercept_   # y절편 (기본 판매량)
+beta_1 = lrmodel.coef_[0]     # 1번째 변수에 대한 계수 (페이스북)
+beta_2 = lrmodel.coef_[1]     # 2번째 변수에 대한 계수 (TV)
+beta_3 = lrmodel.coef_[2]     # 3번째 변수에 대한 계수 (신문)
+
+print("beta_0: %f" % beta_0)  # beta_0: 2.979067
+print("beta_1: %f" % beta_1)  # beta_1: 0.044730
+print("beta_2: %f" % beta_2)  # beta_2: 0.189195
+print("beta_3: %f" % beta_3)  # beta_3: 0.002761
+```
