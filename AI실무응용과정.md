@@ -1215,7 +1215,7 @@ df1에 대한 예측값 :
   <img src="https://user-images.githubusercontent.com/61646760/142760068-08dc44aa-2393-40fc-8206-469b206a11ae.png" />
 </p>
 
-- **잔차제곱합(RSS: residual sum of squares)**
+- **잔차 제곱 합(RSS: residual sum of squares)**
   - 실제 값과 예측 값의 단순 오차 제곱 합 
   - 값이 작을수록 모델의 성능이 높음 
   - 전체 데이터에 대한 실제 값과 예측하는 값의 오차 제곱의 총합
@@ -1225,3 +1225,22 @@ df1에 대한 예측값 :
   - 절대적인 값과 비교가 불가능함
 
 #### MSE, MAE - 절대적인 크기에 의존한 지표
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/142760333-4ecafd8d-d7d0-499a-882d-54a8a119ab0a.png" /><br>
+  <img src="https://user-images.githubusercontent.com/61646760/142760435-ef233285-b219-4b67-96a7-490740a7003c.png" />
+</p>
+
+- **평균 제곱 오차 (MSE: Mean Squared Error)**
+  - RSS에서 데이터 수만큼 나눈 값
+  - 작을수록 모델의 성능이 높다고 평가할 수 있음
+- **평균 절대 오차 (MAE: Mean Absolute Error)**
+  - 평균 절댓값 오차
+  - 실제 값과 예측값의 오차의 절댓값의 평균
+  - 작을수록 모델의 성능이 높다고 평가할 수 있음
+- MSE, MAE 특징
+  - **MSE** : 이상치(Outlier) 즉, 데이터들 중 크게 떨어진 값에 민감함 
+  - **MAE** : 변동성이 큰 지표와 낮은 지표를 같이 예측할 시 유용 
+  - 가장 간단한 평가 방법들로 직관적인 해석이 가능함 
+  - 그러나 평균을 그대로 이용하기 때문에 입력 값의 크기에 의존적임 
+  - 절대적인 값과 비교가 불가능함
