@@ -48,6 +48,8 @@
       - [다중 회귀 분석하기 - 학습하기 실습](#다중-회귀-분석하기---학습하기)
       - [다중 회귀 분석하기 - 예측하기 실습](#다중-회귀-분석하기---예측하기)
     + [회귀 평가 지표](#회귀-평가-지표)
+      - [RSS - 단순 오차](#RSS---단순-오차) 
+      - [MSE, MAE - 절대적인 크기에 의존한 지표](#MSE,-MAE---절대적인-크기에-의존한-지표)
 
 # 머신러닝 시작하기
 
@@ -1206,3 +1208,20 @@ df1에 대한 예측값 :
 - 모델링 이후에는 해당 모델이 얼마나 목표를 잘 달성했는지 그 정도를 평가해야 한다.
   - 실제 값과 모델이 예측하는 값의 차이에 기반한 평가 방법 사용
     - 예) ![image](https://user-images.githubusercontent.com/61646760/142759412-84aacf7b-bd95-4071-a264-5f3e8e46d014.png), ![image](https://user-images.githubusercontent.com/61646760/142759437-1d45dec5-2f97-497d-b0d3-5648a1cd73c3.png), ![image](https://user-images.githubusercontent.com/61646760/142759469-0800fe04-7336-4023-a420-705fa33d6723.png), ![image](https://user-images.githubusercontent.com/61646760/142759471-dc4bdb78-9b84-4a4b-8f00-8d4ec18794bc.png), ![image](https://user-images.githubusercontent.com/61646760/142759478-c9256bbc-7d68-4353-8486-07eb139bc986.png)
+
+#### RSS - 단순 오차
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/142760068-08dc44aa-2393-40fc-8206-469b206a11ae.png" />
+</p>
+
+- **잔차제곱합(RSS: residual sum of squares)**
+  - 실제 값과 예측 값의 단순 오차 제곱 합 
+  - 값이 작을수록 모델의 성능이 높음 
+  - 전체 데이터에 대한 실제 값과 예측하는 값의 오차 제곱의 총합
+- RSS 특징
+  - 가장 간단한 평가 방법으로 직관적인 해석이 가능함
+  - 그러나 오차를 그대로 이용하기 때문에 입력값의 **크기에 의존적**임
+  - 절대적인 값과 비교가 불가능함
+
+#### MSE, MAE - 절대적인 크기에 의존한 지표
