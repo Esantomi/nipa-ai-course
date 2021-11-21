@@ -47,6 +47,7 @@
       - [다중 회귀 분석하기 - 데이터 전 처리 실습](#다중-회귀-분석하기---데이터-전-처리)
       - [다중 회귀 분석하기 - 학습하기 실습](#다중-회귀-분석하기---학습하기)
       - [다중 회귀 분석하기 - 예측하기 실습](#다중-회귀-분석하기---예측하기)
+    + [회귀 평가 지표](#회귀-평가-지표)
 
 # 머신러닝 시작하기
 
@@ -1200,3 +1201,8 @@ df1에 대한 예측값 :
 [2.97906734 3.02379686 3.16826239 2.98182845 3.21575302]
 '''
 ```
+
+### 회귀 평가 지표
+- 모델링 이후에는 해당 모델이 얼마나 목표를 잘 달성했는지 그 정도를 평가해야 한다.
+  - 실제 값과 모델이 예측하는 값의 차이에 기반한 평가 방법 사용
+    - 예) ![image](https://user-images.githubusercontent.com/61646760/142759412-84aacf7b-bd95-4071-a264-5f3e8e46d014.png), ![image](https://user-images.githubusercontent.com/61646760/142759437-1d45dec5-2f97-497d-b0d3-5648a1cd73c3.png), ![image](https://user-images.githubusercontent.com/61646760/142759469-0800fe04-7336-4023-a420-705fa33d6723.png), ![image](https://user-images.githubusercontent.com/61646760/142759471-dc4bdb78-9b84-4a4b-8f00-8d4ec18794bc.png), ![image](https://user-images.githubusercontent.com/61646760/142759478-c9256bbc-7d68-4353-8486-07eb139bc986.png)
