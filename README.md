@@ -3,7 +3,7 @@
 ### [2021 NIPA(National IT Industry Promotion Agency) AI online course](https://2021nipa.elice.io/explore)
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="35%" height="35%">
+  <img src="https://user-images.githubusercontent.com/61646760/142892240-472c6ee1-5153-4ade-9e3d-4618774de73a.png" />
 </p>
 
 - [AI 실무 기본 과정](https://2021nipa.elice.io/tracks/1328/info)
@@ -28,3 +28,7 @@
 - ~~2021-10-31 완료~~
 - ~~2021-11-14 완료~~
 - 끝까지 간다.
+
+<!-- <p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="35%" height="35%">
+</p> -->
