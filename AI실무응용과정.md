@@ -51,7 +51,7 @@
       - [RSS - 단순 오차](#RSS---단순-오차) 
       - [MSE, MAE - 절대적인 크기에 의존한 지표](#MSE,-MAE---절대적인-크기에-의존한-지표)
       - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#R-squared---결정-계수)
-      - [회귀 알고리즘 평가 지표 - MSE, MAE 실습](#회귀-알고리즘-평가-지표---MSE,-MAE)
+      - [회귀 알고리즘 평가 지표 - MSE, MAE 실습](#회귀-알고리즘-평가-지표---MSE-MAE)
 
 # 머신러닝 시작하기
 
