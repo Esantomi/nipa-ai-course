@@ -1257,7 +1257,8 @@ df1에 대한 예측값 :
   - 1에 가까울수록 높은 성능의 모델이라고 해석할 수 있음
     - ![image](https://user-images.githubusercontent.com/61646760/142835778-6a263452-12e5-416c-b2a8-835f481a3946.png) (total sum of squares)는 데이터 평균 값(![image](https://user-images.githubusercontent.com/61646760/142835971-0fb7ebf0-85cd-4a52-abe4-ee67a805f2ea.png))과 실제 값(![image](https://user-images.githubusercontent.com/61646760/142836027-edc66423-27c4-4874-b951-44b9b3d929b4.png)) 차이의 제곱
     - ![image](https://user-images.githubusercontent.com/61646760/142836736-379942fe-236a-44e2-bb41-8c8a3086e935.png)
-    - ![image](https://user-images.githubusercontent.com/61646760/142836946-8afdbc19-385e-4455-b340-d0b2b0280d4b.png)
+    - ![image](https://user-images.githubusercontent.com/61646760/142836946-8afdbc19-385e-4455-b340-d0b2b0280d4b.png)  
+      ![image](https://user-images.githubusercontent.com/61646760/142837658-7271caa9-919a-4e9b-ad57-f27753031457.png)
   - ![image](https://user-images.githubusercontent.com/61646760/142835228-38f1151c-22ba-4ad5-b8d7-15b8b0664685.png) 특징
     - 오차가 없을수록 1에 가까운 값을 가짐
     - 값이 0인 경우, 데이터의 평균 값을 출력하는 직선 모델을 의미함
