@@ -1259,6 +1259,10 @@ df1에 대한 예측값 :
       ![image](https://user-images.githubusercontent.com/61646760/142836736-379942fe-236a-44e2-bb41-8c8a3086e935.png)  
       ![image](https://user-images.githubusercontent.com/61646760/142836946-8afdbc19-385e-4455-b340-d0b2b0280d4b.png)  
         ![image](https://user-images.githubusercontent.com/61646760/142837658-7271caa9-919a-4e9b-ad57-f27753031457.png)
+    - ![image](https://user-images.githubusercontent.com/61646760/142835228-38f1151c-22ba-4ad5-b8d7-15b8b0664685.png) 특징
+      - 오차가 없을수록 1에 가까운 값을 가짐
+      - 값이 0인 경우, 데이터의 평균 값을 출력하는 직선 모델을 의미함
+      - 음수 값이 나온 경우, 평균값 예측보다 성능이 좋지 않음
     - ![image](https://user-images.githubusercontent.com/61646760/142838432-328771fa-e7d5-42fa-8a34-5764a585133f.png)
       - **total sum of squares (SST)**
         - 개별 y의 편차 제곱의 합  
@@ -1274,7 +1278,3 @@ df1에 대한 예측값 :
       - **squared-R (![image](https://user-images.githubusercontent.com/61646760/142839092-d7a1a1af-69a9-4463-93e1-bab7b62c9484.png))**
         - 총 변동 중에 설명된 변동의 비율  
           ![image](https://user-images.githubusercontent.com/61646760/142841179-f33fb439-1149-4906-9418-4b0d11dd4361.png)
-  - ![image](https://user-images.githubusercontent.com/61646760/142835228-38f1151c-22ba-4ad5-b8d7-15b8b0664685.png) 특징
-    - 오차가 없을수록 1에 가까운 값을 가짐
-    - 값이 0인 경우, 데이터의 평균 값을 출력하는 직선 모델을 의미함
-    - 음수 값이 나온 경우, 평균값 예측보다 성능이 좋지 않음
