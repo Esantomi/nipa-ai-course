@@ -50,6 +50,7 @@
     + [회귀 평가 지표](#회귀-평가-지표)
       - [RSS - 단순 오차](#RSS---단순-오차) 
       - [MSE, MAE - 절대적인 크기에 의존한 지표](#MSE,-MAE---절대적인-크기에-의존한-지표)
+      - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#![image](https://user-images.githubusercontent.com/61646760/142835189-101a3971-37e1-40ea-bb37-b54e91779e9f.png)---결정-계수)
 
 # 머신러닝 시작하기
 
@@ -1215,7 +1216,7 @@ df1에 대한 예측값 :
   <img src="https://user-images.githubusercontent.com/61646760/142760068-08dc44aa-2393-40fc-8206-469b206a11ae.png" />
 </p>
 
-- **잔차 제곱 합(RSS: residual sum of squares)**
+- **잔차 제곱 합 (RSS: residual sum of squares)**
   - 실제 값과 예측 값의 단순 오차 제곱 합 
   - 값이 작을수록 모델의 성능이 높음 
   - 전체 데이터에 대한 실제 값과 예측하는 값의 오차 제곱의 총합
@@ -1244,3 +1245,14 @@ df1에 대한 예측값 :
   - 가장 간단한 평가 방법들로 직관적인 해석이 가능함 
   - 그러나 평균을 그대로 이용하기 때문에 입력 값의 크기에 의존적임 
   - 절대적인 값과 비교가 불가능함
+
+#### ![image](https://user-images.githubusercontent.com/61646760/142835228-38f1151c-22ba-4ad5-b8d7-15b8b0664685.png) - 결정 계수
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/142835658-c586442c-0709-4651-be33-2f40603126d4.png" />
+</p>
+
+- **결정 계수(![image](https://user-images.githubusercontent.com/61646760/142835228-38f1151c-22ba-4ad5-b8d7-15b8b0664685.png): coefficient of determination)**
+  - 회귀 모델의 설명력을 표현하는 지표
+  - 1에 가까울수록 높은 성능의 모델이라고 해석할 수 있음
+    - ![image](https://user-images.githubusercontent.com/61646760/142835778-6a263452-12e5-416c-b2a8-835f481a3946.png)는 데이터 평균 값(![image](https://user-images.githubusercontent.com/61646760/142835971-0fb7ebf0-85cd-4a52-abe4-ee67a805f2ea.png))과 실제 값(![image](https://user-images.githubusercontent.com/61646760/142836027-edc66423-27c4-4874-b951-44b9b3d929b4.png)) 차이의 제곱
