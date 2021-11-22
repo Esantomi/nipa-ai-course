@@ -51,6 +51,7 @@
       - [RSS - 단순 오차](#RSS---단순-오차) 
       - [MSE, MAE - 절대적인 크기에 의존한 지표](#MSE,-MAE---절대적인-크기에-의존한-지표)
       - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#R-squared---결정-계수)
+      - [회귀 알고리즘 평가 지표 - MSE, MAE 실습](#회귀-알고리즘-평가-지표---MSE,-MAE)
 
 # 머신러닝 시작하기
 
@@ -1278,3 +1279,21 @@ df1에 대한 예측값 :
       - **squared-R (![image](https://user-images.githubusercontent.com/61646760/142839092-d7a1a1af-69a9-4463-93e1-bab7b62c9484.png))**
         - 총 변동 중에 설명된 변동의 비율  
           ![image](https://user-images.githubusercontent.com/61646760/142841179-f33fb439-1149-4906-9418-4b0d11dd4361.png)
+
+#### 회귀 알고리즘 평가 지표 - MSE, MAE
+앞에 이어 `Sales` 예측 모델의 성능을 평가하기 위해서 다양한 회귀 알고리즘 평가 지표를 사용하여 비교해 보자.
+
+이번 실습에서는 학습용 및 평가용 데이터에 대해서 MSE와 MAE을 계산해 보겠다.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/142760333-4ecafd8d-d7d0-499a-882d-54a8a119ab0a.png" /><br>
+  <img src="https://user-images.githubusercontent.com/61646760/142760435-ef233285-b219-4b67-96a7-490740a7003c.png" />
+</p>
+
+MSE와 MAE는 위와 같이 정의할 수 있고 sklearn 라이브러리 함수를 통하여 쉽게 구할 수 있다. (![image](https://user-images.githubusercontent.com/61646760/142907687-86aa68bc-6ba8-41e2-a4c7-f6df94183369.png)은 전체 샘플의 개수를 의미함)
+- MSE, MAE 평가 지표를 계산하기 위한 sklearn 함수
+  - `mean_squared_error(y_true, y_pred)`: MSE 값 계산하기
+  - `mean_absolute_error(y_true, y_pred)`: MAE 값 계산하기
+
+```
+```
