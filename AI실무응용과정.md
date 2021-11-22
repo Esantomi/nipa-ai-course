@@ -50,7 +50,7 @@
     + [회귀 평가 지표](#회귀-평가-지표)
       - [RSS - 단순 오차](#RSS---단순-오차) 
       - [MSE, MAE - 절대적인 크기에 의존한 지표](#MSE,-MAE---절대적인-크기에-의존한-지표)
-      - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#![image](https://user-images.githubusercontent.com/61646760/142835189-101a3971-37e1-40ea-bb37-b54e91779e9f.png)---결정-계수)
+      - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#The-square-of-R---결정-계수)
 
 # 머신러닝 시작하기
 
@@ -1246,7 +1246,7 @@ df1에 대한 예측값 :
   - 그러나 평균을 그대로 이용하기 때문에 입력 값의 크기에 의존적임 
   - 절대적인 값과 비교가 불가능함
 
-#### ![image](https://user-images.githubusercontent.com/61646760/142835228-38f1151c-22ba-4ad5-b8d7-15b8b0664685.png) - 결정 계수
+#### The square of R - 결정 계수
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/61646760/142835658-c586442c-0709-4651-be33-2f40603126d4.png" />
