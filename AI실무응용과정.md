@@ -52,6 +52,7 @@
       - [MSE, MAE - 절대적인 크기에 의존한 지표](#MSE,-MAE---절대적인-크기에-의존한-지표)
       - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#R-squared---결정-계수)
       - [회귀 알고리즘 평가 지표 - MSE, MAE 실습](#회귀-알고리즘-평가-지표---MSE-MAE)
+      - [회귀 알고리즘 평가 지표 - ![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) 실습](#회귀-알고리즘-평가-지표---R2)
 
 # 머신러닝 시작하기
 
@@ -1346,3 +1347,20 @@ MAE_test = mean_absolute_error(test_Y, pred_test)
 print('MSE_test : %f' % MSE_test)  # MSE_test : 3.174097
 print('MAE_test : %f' % MAE_test)  # MAE_test : 1.460757
 ```
+
+#### 회귀 알고리즘 평가 지표 - R2
+앞에 이어 `Sales` 예측 모델의 성능을 평가하기 위해서 다양한 회귀 알고리즘 평가 지표를 사용하여 비교해 보자.
+
+이번 실습에서는 학습용 및 평가용 데이터에 대해 R2 score를 계산해 보겠다.
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/142977821-c348dc4d-6f6a-43d9-a73b-4303d2f99b0a.png" /><br>
+  <img src="https://user-images.githubusercontent.com/61646760/142977844-a60c50f7-eb40-437a-a029-172bd6a51df0.png" />
+</p>
+
+R2 score는 위와 같이 정의할 수 있고 sklearn 라이브러리 함수를 통하여 쉽게 구할 수 있다. (![image](https://user-images.githubusercontent.com/61646760/142907687-86aa68bc-6ba8-41e2-a4c7-f6df94183369.png)은 전체 샘플의 개수를 의미함)
+
+- R2 평가 지표를 계산하기 위한 sklearn 함수
+  - `r2_score(y_true, y_pred)`
+    - R2 score 값 계산하기
+    - `from sklearn.metrics import r2_score`
