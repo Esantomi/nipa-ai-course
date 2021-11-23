@@ -1286,14 +1286,63 @@ df1에 대한 예측값 :
 이번 실습에서는 학습용 및 평가용 데이터에 대해서 MSE와 MAE을 계산해 보겠다.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/61646760/142760333-4ecafd8d-d7d0-499a-882d-54a8a119ab0a.png" /><br>
-  <img src="https://user-images.githubusercontent.com/61646760/142760435-ef233285-b219-4b67-96a7-490740a7003c.png" />
+  <img src="https://user-images.githubusercontent.com/61646760/142976680-752e8f73-2be7-4808-b5c6-22f261b9e0af.png" /><br>
+  <img src="https://user-images.githubusercontent.com/61646760/142976743-a2f65b8c-5d13-49e0-85c0-d9666134ba6e.png" />
 </p>
 
 MSE와 MAE는 위와 같이 정의할 수 있고 sklearn 라이브러리 함수를 통하여 쉽게 구할 수 있다. (![image](https://user-images.githubusercontent.com/61646760/142907687-86aa68bc-6ba8-41e2-a4c7-f6df94183369.png)은 전체 샘플의 개수를 의미함)
 - MSE, MAE 평가 지표를 계산하기 위한 sklearn 함수
-  - `mean_squared_error(y_true, y_pred)`: MSE 값 계산하기
-  - `mean_absolute_error(y_true, y_pred)`: MAE 값 계산하기
+  - `mean_squared_error(y_true, y_pred)`
+    - MSE 값 계산하기
+    - `from sklearn.metrics import mean_squared_error`
+  - `mean_absolute_error(y_true, y_pred)`
+    - MAE 값 계산하기
+    - `from sklearn.metrics import mean_absolute_error` 
 
 ```
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_squared_error
+
+
+# 데이터를 읽고 전 처리합니다
+df = pd.read_csv("data/Advertising.csv")
+df = df.drop(columns=['Unnamed: 0'])
+
+X = df.drop(columns=['Sales'])
+Y = df['Sales']
+
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state=42)
+
+
+# 다중 선형 회귀 모델을 초기화하고 학습합니다
+lrmodel = LinearRegression()
+lrmodel.fit(train_X, train_Y)
+
+
+# train_X 의 예측값을 계산합니다
+pred_train = lrmodel.predict(train_X)
+
+"""
+1. train_X 의 MSE, MAE 값을 계산합니다
+"""
+MSE_train = mean_squared_error(train_Y, pred_train)
+MAE_train = mean_absolute_error(train_Y, pred_train)
+print('MSE_train : %f' % MSE_train)  # MSE_train : 2.705129
+print('MAE_train : %f' % MAE_train)  # MAE_train : 1.198468
+
+# test_X 의 예측값을 계산합니다
+pred_test = lrmodel.predict(test_X)
+
+"""
+2. test_X 의 MSE, MAE 값을 계산합니다
+"""
+MSE_test = mean_squared_error(test_Y, pred_test)
+MAE_test = mean_absolute_error(test_Y, pred_test)
+print('MSE_test : %f' % MSE_test)  # MSE_test : 3.174097
+print('MAE_test : %f' % MAE_test)  # MAE_test : 1.460757
 ```
