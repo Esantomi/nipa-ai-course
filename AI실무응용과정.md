@@ -53,6 +53,7 @@
       - [![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) - 결정 계수](#R-squared---결정-계수)
       - [회귀 알고리즘 평가 지표 - MSE, MAE 실습](#회귀-알고리즘-평가-지표---MSE-MAE)
       - [회귀 알고리즘 평가 지표 - ![image](https://user-images.githubusercontent.com/61646760/142835165-4f274d30-afec-40f0-bd7c-448be230194d.png) 실습](#회귀-알고리즘-평가-지표---R2)
+  * [04. 지도학습 - 분류](#04-지도학습---분류)
 
 # 머신러닝 시작하기
 
@@ -1409,3 +1410,15 @@ pred_test = lrmodel.predict(test_X)
 R2_test = r2_score(test_Y, pred_test)
 print('R2_test : %f' % R2_test)  # R2_test : 0.899438
 ```
+
+## 04. 지도학습 - 분류
+### 분류 개념 알아보기
+- **분류(Classification)**
+  - 주어진 입력 값이 어떤 클래스에 속할지에 대한 결괏값을 도출하는 알고리즘
+    - `예) 풍속 4m/s를 기준으로 항공 지연/지연 없음 나누기`
+      ![image](https://user-images.githubusercontent.com/61646760/143068295-b0c06cea-ee9f-4568-aa0a-550573eab5f2.png)
+  - 다양한 분류 알고리즘이 존재하며, 예측 목표와 데이터 유형에 따라 다양한 머신러닝 모델 적용
+    - 트리 구조 기반 : 의사 결정 트리, 랜덤 포레스트
+    - 확률 모델 기반 : 나이브 베이즈 분류기
+    - 결정 경계 기반 : 선형 분류기, 로지스틱 회귀 분류기, SVM
+    - 신경망 : 퍼셉트론, 딥러닝 모델
