@@ -1490,7 +1490,7 @@ print(data,'\n')
 
 """
 1. binary_tree 모델을 사용하여 항공 지연 여부를 예측합니다.
-   (threshold 에 값을 넣어서 결과를 확인)
+   (threshold에 값을 넣어서 결과를 확인)
 """
 # 지연 여부 == 예상 지연 여부가 되도록 data_pred에 할당
 data_pred = binary_tree(data, threshold = 3)  # 3으로 설정해야 data = data_pred가 됨
