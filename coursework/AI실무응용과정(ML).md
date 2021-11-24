@@ -1436,6 +1436,11 @@ print('R2_test : %f' % R2_test)  # R2_test : 0.899438
     ![image](https://user-images.githubusercontent.com/61646760/143176725-2ed7a357-13fd-4442-8dcc-5af36eec1f36.png)
   - <strong>중간 마디(Internal Node)</strong>를 통한 분리 기준 추가 가능 [`예)`](https://user-images.githubusercontent.com/61646760/143177517-511b6253-6c97-4c64-8202-74112c1c6475.png) [`예)`](https://user-images.githubusercontent.com/61646760/143177704-372d47ad-cb46-490e-b826-c12cbce3f069.png)
     ![image](https://user-images.githubusercontent.com/61646760/143177100-a45fc285-8077-4254-88a2-37f65c8f6d5e.png)
+  - 의사 결정 나무 특징
+    - 결과가 직관적이며, 해석하기 쉬움
+    - 나무 깊이가 깊어질수록 과적합(Overfitting) 문제 발생 가능성이 매우 높음
+      - 의사 결정 나무가 너무 깊으면 과적합을 야기할 수 있으므로 깊이의 균형(trade-off)이 중요함
+    - 학습이 끝난 트리의 작업 속도가 매우 빠름
     
 #### 간단한 의사 결정 나무 만들기
 분류 설명에서 언급한 항공 지연 데이터를 기반으로 간단한 의사 결정 나무를 구현해 보자.
@@ -1521,6 +1526,18 @@ print(data_pred,'\n')
     - 그렇다면 데이터 개수가 엄청 많을 때 불순도 측정은? 지니 불순도!
 - **지니 계수(Gini Index)**
   - 해당 구역 안에서 특정 클래스에 속하는 데이터의 비율을 모두 제외한 값
-  - 즉, **다양성**을 계산하는 방법
-- **지니 불순도(Gini Impurity)
-  - 
+    - 즉, **다양성**을 계산하는 방법
+
+<p align="center">
+ <image src="https://user-images.githubusercontent.com/61646760/143277757-abae407c-0f22-40c5-b710-bacd438bf20a.png" />
+</p>
+
+- **지니 불순도(Gini Impurity)**  
+  - [지니 불순도 계산 과정](https://user-images.githubusercontent.com/61646760/143280573-8461ba58-a905-4a97-b744-352b66b28942.png)
+    - [가장 낮은 지니 불순도 선택](https://user-images.githubusercontent.com/61646760/143281064-b13eded6-afaf-4edd-9bd9-4d24ab9d4c9d.png)
+  - ![image](https://user-images.githubusercontent.com/61646760/143278477-2ada2df1-bfbd-4c72-915a-053669fd9014.png) : i번째 자식 마디의 데이터 개수
+  - ![image](https://user-images.githubusercontent.com/61646760/143278540-b07146a0-835b-4026-b6f1-e73fbacc0c5f.png) : 부모 마디의 데이터 개수
+
+<p align="center">
+ <image src="https://user-images.githubusercontent.com/61646760/143278422-08459a10-968b-485b-abb0-165366c4d087.png" />  
+</p>
