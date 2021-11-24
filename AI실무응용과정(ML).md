@@ -1432,6 +1432,6 @@ print('R2_test : %f' % R2_test)  # R2_test : 0.899438
   - 스무 고개와 같이 특정 질문들을 통해 정답을 찾아가는 모델
   - 최상단의 뿌리 마디에서 마지막 끝 마디까지 아래 방향으로 진행  
     ![image](https://user-images.githubusercontent.com/61646760/143176725-2ed7a357-13fd-4442-8dcc-5af36eec1f36.png)
-  - <strong>중간 마디(Internal Node)</strong>를 통한 분리 기준 추가 가능
+  - <strong>중간 마디(Internal Node)</strong>를 통한 분리 기준 추가 가능 [`예)`](https://user-images.githubusercontent.com/61646760/143177517-511b6253-6c97-4c64-8202-74112c1c6475.png) [`예)`](https://user-images.githubusercontent.com/61646760/143177704-372d47ad-cb46-490e-b826-c12cbce3f069.png)
     ![image](https://user-images.githubusercontent.com/61646760/143177100-a45fc285-8077-4254-88a2-37f65c8f6d5e.png)
     
