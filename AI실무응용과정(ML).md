@@ -1447,3 +1447,5 @@ print('R2_test : %f' % R2_test)  # R2_test : 0.899438
 
 ```
 ```
+- `binary_tree` 함수는 입력하는 `threshold` 풍속을 기준으로 지연 여부를 예측한 결과를 DataFrame 형태로 출력
+- `threshold`에 값을 넣어서 결과를 확인 `예) 1, 2, 3.5, …`
