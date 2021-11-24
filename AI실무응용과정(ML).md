@@ -1446,6 +1446,65 @@ print('R2_test : %f' % R2_test)  # R2_test : 0.899438
   ![image](https://user-images.githubusercontent.com/61646760/143177997-b865f09e-1f33-4ffe-8d5e-0528f7643001.png)
 
 ```
+import numpy as np
+import pandas as pd
+
+# 풍속을 threshold 값에 따라 분리하는 의사결정나무 모델 함수
+def binary_tree(data, threshold):
+    
+    yes = []
+    no = []
+    
+    # data로부터 풍속 값마다 비교를 하기 위한 반복문
+    for wind in data['풍속']:
+    
+        # threshold 값과 비교하여 분리합니다.
+        if wind > threshold:
+            yes.append(wind)
+        else:
+            no.append(wind)
+    
+    # 예측한 결과를 DataFrame 형태로 저장합니다.
+    data_yes = pd.DataFrame({'풍속': yes, '예상 지연 여부': ['Yes']*len(yes)})  # yes의 길이만큼 지연 여부에 'Yes'를 넣어줌
+    data_no = pd.DataFrame({'풍속': no, '예상 지연 여부': ['No']*len(no)})      # no의 길이만큼 지연 여 부에 'No'를 넣어줌
+    
+    return data_no.append(data_yes, ignore_index=True)  # 열 이름(column name) 무시하고 정수 번호 자동 부여
+
+# 풍속에 따른 항공 지연 여부 데이터
+Wind = [1, 1.5, 2.5, 5, 5.5, 6.5]
+Delay  = ['No', 'No', 'No', 'Yes', 'Yes', 'Yes']
+
+# 위 데이터를 DataFrame 형태로 저장합니다.
+data = pd.DataFrame({'풍속': Wind, '지연 여부': Delay})
+print(data,'\n')
+
+'''
+    풍속 지연 여부
+0  1.0    No
+1  1.5    No
+2  2.5    No
+3  5.0   Yes
+4  5.5   Yes
+5  6.5   Yes 
+'''
+
+"""
+1. binary_tree 모델을 사용하여 항공 지연 여부를 예측합니다.
+   (threshold 에 값을 넣어서 결과를 확인)
+"""
+# 지연 여부 == 예상 지연 여부가 되도록 data_pred에 할당
+data_pred = binary_tree(data, threshold = 3)  # 3으로 설정해야 data = data_pred가 됨
+print(data_pred,'\n')
+
+'''
+    풍속 예상 지연 여부
+0  1.0       No
+1  1.5       No
+2  2.5       No
+3  5.0      Yes
+4  5.5      Yes
+5  6.5      Yes 
+'''
 ```
 - `binary_tree` 함수는 입력하는 `threshold` 풍속을 기준으로 지연 여부를 예측한 결과를 DataFrame 형태로 출력
 - `threshold`에 값을 넣어서 결과를 확인 `예) 1, 2, 3.5, …`
