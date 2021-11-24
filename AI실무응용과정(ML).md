@@ -57,6 +57,7 @@
     + [분류 개념 알아보기](#분류-개념-알아보기)
     + [의사 결정 나무](#의사-결정-나무)
       - [의사 결정 나무 – 모델 구조](#의사-결정-나무---모델-구조) 
+      - [간단한 의사 결정 나무 만들기 실습](#간단한-의사-결정-나무-만들기)
 
 # 머신러닝 시작하기
 
@@ -1435,3 +1436,14 @@ print('R2_test : %f' % R2_test)  # R2_test : 0.899438
   - <strong>중간 마디(Internal Node)</strong>를 통한 분리 기준 추가 가능 [`예)`](https://user-images.githubusercontent.com/61646760/143177517-511b6253-6c97-4c64-8202-74112c1c6475.png) [`예)`](https://user-images.githubusercontent.com/61646760/143177704-372d47ad-cb46-490e-b826-c12cbce3f069.png)
     ![image](https://user-images.githubusercontent.com/61646760/143177100-a45fc285-8077-4254-88a2-37f65c8f6d5e.png)
     
+#### 간단한 의사 결정 나무 만들기
+분류 설명에서 언급한 항공 지연 데이터를 기반으로 간단한 의사 결정 나무를 구현해 보자.
+
+- 항공 지연 데이터는 아래와 같다.  
+  ![image](https://user-images.githubusercontent.com/61646760/143177938-106246b4-daf0-4471-8b4d-748ae3ccb662.png)
+
+- 풍속에 따른 지연 여부를 알아내기 위하여 의사 결정 나무인 `binary_tree`의 기준값(`threshold`)을 변경해 가며 완벽하게 지연 여부를 분리할 수 있는 모델을 만들어 보자.  
+  ![image](https://user-images.githubusercontent.com/61646760/143177997-b865f09e-1f33-4ffe-8d5e-0528f7643001.png)
+
+```
+```
