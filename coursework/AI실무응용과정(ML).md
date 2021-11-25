@@ -1709,3 +1709,6 @@ fig.savefig("decision_tree.png")
 ```
 
 ![image](https://user-images.githubusercontent.com/61646760/143437769-216ecc5f-8517-483c-9503-27805c48bfad.png)
+
+- sklearn의 `DecisionTreeClassifier()` 모델을 `DTmodel`에 초기화
+- `fit`을 사용하여 `train_X`, `train_Y` 데이터를 학습
