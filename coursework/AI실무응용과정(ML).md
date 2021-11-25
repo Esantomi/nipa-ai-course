@@ -65,6 +65,7 @@
     + [분류 평가 지표](#분류-평가-지표)
       - [혼동 행렬(Confusion Matrix)](#혼동-행렬)
       - [정확도(Accuracy)](#정확도Accuracy)
+      - [정밀도(Precision)](#정밀도Precision)
 
 # 머신러닝 시작하기
 
@@ -1791,3 +1792,17 @@ test_X에 대한 예측값 :
   - 전체 데이터 중에서 제대로 분류된 데이터의 비율로, **모델이 얼마나 정확하게 분류하는지**를 나타냄  
   - 일반적으로 분류 모델의 주요 평가 방법으로 사용됨
   - 그러나, 클래스 비율이 불균형할 경우 평가 지표의 신뢰성을 잃을 가능성이 있음
+
+#### 정밀도(Precision)
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/61646760/143486879-aa177d38-93d0-4aa3-8407-bac19211af6e.png">
+</p>
+
+- **정밀도(Precision)**
+  - 모델이 Positive라고 분류한 데이터 중에서 실제로 Positive인 데이터의 비율
+  - **Negative가 중요한 경우**
+    - 즉, 실제로 Negative인 데이터를 Positive라고 판단하면 안 되는 경우 사용되는 지표
+    - `예) 스팸 메일 판결을 위한 분류 문제`
+      - 해당 메일이 스팸일 경우 Positive, 스팸이 아닐 경우 즉, 일반 메일일 경우 Negative
+      - 일반 메일을 스팸 메일(Positive)로 잘못 예측했을 경우 중요한 메일을 전달받지 못하는 상황이 발생할 수 있음 
