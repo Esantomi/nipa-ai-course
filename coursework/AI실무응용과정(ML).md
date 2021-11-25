@@ -61,6 +61,7 @@
       - [의사 결정 나무 - 불순도](#의사-결정-나무---불순도)
       - [sklearn을 사용한 의사결정나무 - 데이터 전 처리 실습](#sklearn을-사용한-의사결정나무---데이터-전-처리)
       - [sklearn을 사용한 의사결정나무 - 학습하기 실습](#sklearn을-사용한-의사결정나무---학습하기)
+      - [sklearn을 사용한 의사결정나무 - 예측하기 실습](#sklearn을-사용한-의사결정나무---예측하기)
 
 # 머신러닝 시작하기
 
@@ -1712,3 +1713,12 @@ fig.savefig("decision_tree.png")
 
 - sklearn의 `DecisionTreeClassifier()` 모델을 `DTmodel`에 초기화
 - `fit`을 사용하여 `train_X`, `train_Y` 데이터를 학습
+
+#### sklearn을 사용한 의사결정나무 - 예측하기
+위에서 학습한 모델을 바탕으로 새로운 데이터에 대해서 예측해 보자.
+
+`test_X` 데이터에 따른 예측값을 구해 보자.
+
+- `predict()`
+  - `DecisionTreeClassifier`를 사용하여 예측하는 함수
+  - `pred_X = DTmodel.predict(test_X)`
