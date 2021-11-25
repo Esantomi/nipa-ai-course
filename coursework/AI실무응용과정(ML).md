@@ -66,6 +66,8 @@
       - [혼동 행렬(Confusion Matrix)](#혼동-행렬)
       - [정확도(Accuracy)](#정확도Accuracy)
       - [정밀도(Precision)](#정밀도Precision)
+      - [재현율(Recall,TPR)](#재현율Recall,-TPR)
+
 
 # 머신러닝 시작하기
 
@@ -1803,4 +1805,17 @@ test_X에 대한 예측값 :
 
 <p align="center">
  <img src="https://user-images.githubusercontent.com/61646760/143486879-aa177d38-93d0-4aa3-8407-bac19211af6e.png">
+</p>
+
+#### 재현율(Recall, TPR)
+- **재현율(Recall, TPR)**
+  - 실제로 Positive인 데이터 중에서 모델이 Positive로 분류한 데이터의 비율
+  - **Positive가 중요한 경우**
+    - 즉, 실제로 Positive인 데이터를 Negative라고 판단하면 안 되는 경우 사용되는 지표
+    - `예) 악성 종양 여부 판결을 위한 검사`
+      - 악성 종양일 경우 Positive, 악성 종양이 아닐 경우 즉, 양성 종양일 경우 Negative
+      - 악성 종양(Positive)을 양성 종양(Negative)으로 잘못 예측했을 경우 제때 치료를 받지 못하게 되어 생명이 위급해질 수 있음
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/61646760/143487539-af49a3ed-9981-442e-83eb-5bc9d5148fa3.png">
 </p>
