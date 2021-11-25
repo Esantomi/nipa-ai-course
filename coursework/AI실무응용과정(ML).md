@@ -59,7 +59,8 @@
       - [의사 결정 나무 – 모델 구조](#의사-결정-나무---모델-구조) 
       - [간단한 의사 결정 나무 만들기 실습](#간단한-의사-결정-나무-만들기)
       - [의사 결정 나무 - 불순도](#의사-결정-나무---불순도)
-      - [sklearn을 사용한 의사결정나무 - 데이터 전 처리](#sklearn을-사용한-의사결정나무---데이터-전-처리)
+      - [sklearn을 사용한 의사결정나무 - 데이터 전 처리 실습](#sklearn을-사용한-의사결정나무---데이터-전-처리)
+      - [sklearn을 사용한 의사결정나무 - 학습하기 실습](#sklearn을-사용한-의사결정나무---학습하기)
 
 # 머신러닝 시작하기
 
@@ -1648,3 +1649,17 @@ Name: 클래스, dtype: int64
 '''
 ```
 - `load_iris`로 읽어 온 데이터 `X`에서 `Y`를 바탕으로 `train_test_split`을 사용하여 학습용:평가용 = 8:2 비율로 분리 (`random_state=42` 고정)
+
+#### sklearn을 사용한 의사결정나무 - 학습하기
+위에서 전 처리한 데이터를 바탕으로 의사결정나무 모델을 학습해 보자.
+
+각 노드에서 불순도를 최소로 하는 의사결정나무 모델을 구현하기 위해서는 sklearn의 `DecisionTreeClassifier`을 사용한다.
+
+- `DecisionTreeClassifier`
+  - sklearn의 결정 트리 분류기
+  - 먼저 해당 모델 객체를 불러와 초기화한다.
+    - `DTmodel = DecisionTreeClassifier()`
+    - 초기화를 수행할 때 `max_depth`를 설정하여 의사결정나무의 최대 깊이를 조절할 수 있다.
+      - `DTmodel = DecisionTreeClassifier(max_depth=2)`
+  - 초기화를 수행했다면 `fit` 함수와 전 처리된 데이터를 사용하여 학습을 수행한다.
+    - `DTmodel.fit(train_X, train_Y)`
