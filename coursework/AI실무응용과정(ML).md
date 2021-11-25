@@ -67,6 +67,7 @@
       - [정확도(Accuracy)](#정확도Accuracy)
       - [정밀도(Precision)](#정밀도Precision)
       - [재현율(Recall, TPR)](#재현율Recall-TPR)
+      - [다양한 분류 지표의 활용](#다양한-분류-지표의-활용)
 
 
 # 머신러닝 시작하기
@@ -1819,3 +1820,9 @@ test_X에 대한 예측값 :
 <p align="center">
  <img src="https://user-images.githubusercontent.com/61646760/143487539-af49a3ed-9981-442e-83eb-5bc9d5148fa3.png">
 </p>
+
+#### 다양한 분류 지표의 활용
+분류 목적에 따라 다양한 지표를 계산하여 평가
+- 분류 결과를 전체적으로 보고 싶다면 → **혼동 행렬(Confusion Matrix)**
+- 정답을 얼마나 잘 맞췄는지 → **정확도(Accuracy)**
+- FP 또는 FN의 중요도가 높다면 → **정밀도(Precision)**, **재현율(Recall)**
