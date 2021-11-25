@@ -64,7 +64,7 @@
       - [sklearn을 사용한 의사결정나무 - 예측하기 실습](#sklearn을-사용한-의사결정나무---예측하기)
     + [분류 평가 지표](#분류-평가-지표)
       - [혼동 행렬(Confusion Matrix)](#혼동-행렬)
-      - [정확도(Accuracy)](#정확도(Accuracy))
+      - [정확도(Accuracy)](#정확도Accuracy)
 
 # 머신러닝 시작하기
 
