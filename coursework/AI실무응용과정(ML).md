@@ -63,7 +63,8 @@
       - [sklearn을 사용한 의사결정나무 - 학습하기 실습](#sklearn을-사용한-의사결정나무---학습하기)
       - [sklearn을 사용한 의사결정나무 - 예측하기 실습](#sklearn을-사용한-의사결정나무---예측하기)
     + [분류 평가 지표](#분류-평가-지표)
-      - [혼동 행렬(Confusion Matrix)](#혼동-행렬) 
+      - [혼동 행렬(Confusion Matrix)](#혼동-행렬)
+      - [정확도(Accuracy)](#정확도(Accuracy))
 
 # 머신러닝 시작하기
 
@@ -1779,3 +1780,14 @@ test_X에 대한 예측값 :
     - **True Negative** : 실제 Negative인 값을 Negative라고 예측(정답)
     - **False Positive** : 실제 Negative인 값을 Positive라고 예측(오답) - **1형 오류**
     - **False Negative** : 실제 Positive인 값을 Negative라고 예측(오답) - **2형 오류**
+
+#### 정확도(Accuracy)
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/61646760/143470289-3d3dea7d-35a6-4805-b920-265f876c7300.png">
+</p>
+
+- **정확도(Accuracy)**  
+  - 전체 데이터 중에서 제대로 분류된 데이터의 비율로, **모델이 얼마나 정확하게 분류하는지**를 나타냄  
+  - 일반적으로 분류 모델의 주요 평가 방법으로 사용됨
+  - 그러나, 클래스 비율이 불균형할 경우 평가 지표의 신뢰성을 잃을 가능성이 있음
