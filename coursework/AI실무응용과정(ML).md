@@ -62,6 +62,8 @@
       - [sklearn을 사용한 의사결정나무 - 데이터 전 처리 실습](#sklearn을-사용한-의사결정나무---데이터-전-처리)
       - [sklearn을 사용한 의사결정나무 - 학습하기 실습](#sklearn을-사용한-의사결정나무---학습하기)
       - [sklearn을 사용한 의사결정나무 - 예측하기 실습](#sklearn을-사용한-의사결정나무---예측하기)
+    + [분류 평가 지표](#분류-평가-지표)
+      - [혼동 행렬(Confusion Matrix)](#혼동-행렬) 
 
 # 머신러닝 시작하기
 
@@ -1766,3 +1768,14 @@ test_X에 대한 예측값 :
 ```
 
 - `DTmodel`을 학습하고 `test_X`의 예측값을 구하여 `pred_X`에 저장
+
+
+### 분류 평가 지표
+#### 혼동 행렬
+- **혼동 행렬(Confusion Matrix)**
+  - 분류 모델의 성능을 평가하기 위함  
+    ![image](https://user-images.githubusercontent.com/61646760/143467232-f0e1b4f3-548b-47c8-b9e2-595c37fcb833.png)
+    - **True Positive** : 실제 Positive인 값을 Positive라고 예측(정답)
+    - **True Negative** : 실제 Negative인 값을 Negative라고 예측(정답)
+    - **False Positive** : 실제 Negative인 값을 Positive라고 예측(오답) - **1형 오류**
+    - **False Negative** : 실제 Positive인 값을 Negative라고 예측(오답) - **2형 오류**
