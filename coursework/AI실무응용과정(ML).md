@@ -66,7 +66,7 @@
       - [혼동 행렬(Confusion Matrix)](#혼동-행렬)
       - [정확도(Accuracy)](#정확도Accuracy)
       - [정밀도(Precision)](#정밀도Precision)
-      - [재현율(Recall,TPR)](#재현율Recall,-TPR)
+      - [재현율(Recall, TPR)](#재현율Recall-TPR)
 
 
 # 머신러닝 시작하기
