@@ -1546,7 +1546,9 @@ print(data_pred,'\n')
 #### sklearn을 사용한 의사결정나무 - 데이터 전 처리
 Iris 데이터는 아래와 같이 꽃받침 길이, 꽃받침 넓이, 꽃잎 길이, 꽃잎 넓이의 네 가지 변수와 세 종류의 붓꽃 클래스로 구성되어 있다.
 
-![image](https://user-images.githubusercontent.com/61646760/143429627-1f1f43dc-d1bf-436a-a6da-5f35129ee133.png)
+<p align="center">
+ <image src="https://user-images.githubusercontent.com/61646760/143429627-1f1f43dc-d1bf-436a-a6da-5f35129ee133.png" />
+</p>
 
 **꽃받침 길이, 꽃받침 넓이, 꽃잎 길이, 꽃잎 넓이** 네 가지 변수가 주어졌을 때, 어떠한 붓꽃 종류인지 예측하는 분류 모델을 구현해 보자.
 
