@@ -1647,3 +1647,4 @@ test_Y :
 Name: 클래스, dtype: int64
 '''
 ```
+- `load_iris`로 읽어 온 데이터 `X`에서 `Y`를 바탕으로 `train_test_split`을 사용하여 학습용:평가용 = 8:2 비율로 분리 (`random_state=42` 고정)
