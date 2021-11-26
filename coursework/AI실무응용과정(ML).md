@@ -68,6 +68,7 @@
       - [정밀도(Precision)](#정밀도Precision)
       - [재현율(Recall, TPR)](#재현율Recall-TPR)
       - [다양한 분류 지표의 활용](#다양한-분류-지표의-활용)
+      - [혼동 행렬 계산하기 실습](#혼동-행렬-계산하기)
 
 
 # 머신러닝 시작하기
@@ -1780,10 +1781,10 @@ test_X에 대한 예측값 :
 - **혼동 행렬(Confusion Matrix)**
   - 분류 모델의 성능을 평가하기 위함  
     ![image](https://user-images.githubusercontent.com/61646760/143467232-f0e1b4f3-548b-47c8-b9e2-595c37fcb833.png)
-    - **True Positive** : 실제 Positive인 값을 Positive라고 예측(정답)
-    - **True Negative** : 실제 Negative인 값을 Negative라고 예측(정답)
-    - **False Positive** : 실제 Negative인 값을 Positive라고 예측(오답) - **1형 오류**
-    - **False Negative** : 실제 Positive인 값을 Negative라고 예측(오답) - **2형 오류**
+    - **True Positive (TP)** : 실제 Positive인 값을 Positive라고 예측(정답)
+    - **True Negative (TN)** : 실제 Negative인 값을 Negative라고 예측(정답)
+    - **False Positive (FP)** : 실제 Negative인 값을 Positive라고 예측(오답) - **1형 오류**
+    - **False Negative (FN)** : 실제 Positive인 값을 Negative라고 예측(오답) - **2형 오류**
 
 #### 정확도(Accuracy)
 - **정확도(Accuracy)**  
@@ -1826,3 +1827,20 @@ test_X에 대한 예측값 :
 - 분류 결과를 전체적으로 보고 싶다면 → **혼동 행렬(Confusion Matrix)**
 - 정답을 얼마나 잘 맞췄는지 → **정확도(Accuracy)**
 - FP 또는 FN의 중요도가 높다면 → **정밀도(Precision)**, **재현율(Recall)**
+
+#### 혼동 행렬 계산하기
+- <strong>혼동 행렬(Confusion matrix)</strong>은 분류 문제에서 모델을 학습시킨 뒤, 모델에서 데이터의 X값을 집어넣어 얻은 **예상되는 y값과, 실제 데이터의 y값을 비교**하여 정확히 분류 되었는지 확인하는 메트릭(metric)이라고 할 수 있다.
+  - 아래 표가 바로 혼동 행렬이며, 각 표에 속한 값은 다음을 의미한다.
+    ![image](https://user-images.githubusercontent.com/61646760/143521047-f321251e-0103-4469-a04d-425515c45f24.png)
+    - **True Positive (TP)** : 실제 값은 Positive, 예측된 값도 Positive.
+    - **False Positive (FP)** : 실제 값은 Negative, 예측된 값은 Positive.
+    - **False Negative (FN)** : 실제 값은 Positive, 예측된 값은 Negative.
+    - **True Negative (TN)** : 실제 값은 Negative, 예측된 값도 Negative.
+  - sklearn 안에는 위 4개 평가 값을 얻기 위해 사용할 수 있는 기능이 정의되어 있다.
+    - `confusion_matrix(y_true, y_pred)`
+      - Confusion matrix의 값을 `np.ndarray`로 반환해 준다.
+  - `load_breast_cancer`
+    - 유방암 유무 판별 데이터를 불러오는 함수
+    - `X` (Feature 데이터) : 30개의 환자 데이터
+    - `Y` (Label 데이터) : 0 음성(악성), 1 양성(정상)
+- 이번 실습에서는 2개의 클래스를 가진 분류 데이터를 이용하여 혼동 행렬을 직접 출력해 보고, 확인해 보자.
