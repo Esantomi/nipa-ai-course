@@ -2111,3 +2111,6 @@ recall_test = recall_score(test_Y, y_pred_test)
 print('train_X Recall: %f' % (recall_train))  # train_X Recall: 1.000000
 print('test_X Recall: %f' % (recall_test))    # test_X Recall: 0.957746
 ```
+
+- `precision_score`를 사용하여 학습용, 평가용 데이터에 대한 정밀도를 계산하여 `precision_train`, `precision_test`에 저장
+- `recall_score`를 사용하여 학습용, 평가용 데이터에 대한 재현율을 계산하여 `recall_train`, `recall_test`에 저장
