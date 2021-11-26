@@ -1920,3 +1920,5 @@ fig.savefig("decistion_tree.png")
 ```
 
 ![image](https://user-images.githubusercontent.com/61646760/143522190-4b4cbcc8-5599-43d1-b5eb-d5fe92076245.png)
+
+- `confusion_matrix`를 사용하여 `test_Y`에 대한 confusion matrix를 계산하여 `cm`에 저장
