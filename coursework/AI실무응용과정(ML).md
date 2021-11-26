@@ -69,6 +69,7 @@
       - [재현율(Recall, TPR)](#재현율Recall-TPR)
       - [다양한 분류 지표의 활용](#다양한-분류-지표의-활용)
       - [혼동 행렬 계산하기 실습](#혼동-행렬-계산하기)
+      - [정확도(Accuracy) 계산하기 실습](#정확도Accuracy-계산하기)
 
 
 # 머신러닝 시작하기
@@ -1664,7 +1665,7 @@ Name: 클래스, dtype: int64
 
 각 노드에서 불순도를 최소로 하는 의사결정나무 모델을 구현하기 위해서는 sklearn의 `DecisionTreeClassifier`을 사용한다.
 
-- `DecisionTreeClassifier`
+- **`DecisionTreeClassifier`**
   - sklearn의 결정 트리 분류기
   - 먼저 해당 모델 객체를 불러와 초기화한다.
     - `DTmodel = DecisionTreeClassifier()`
@@ -1922,3 +1923,18 @@ fig.savefig("decistion_tree.png")
 ![image](https://user-images.githubusercontent.com/61646760/143522190-4b4cbcc8-5599-43d1-b5eb-d5fe92076245.png)
 
 - `confusion_matrix`를 사용하여 `test_Y`에 대한 confusion matrix를 계산하여 `cm`에 저장
+
+#### 정확도(Accuracy) 계산하기
+위의 결과를 바탕으로 분류 성능에 간단하면서도 중요한 정확도를 계산하여 모델의 성능을 판별해 보자.
+
+이번 실습에서는 학습용 데이터와 평가용 데이터의 정확도를 계산하고 그 성능을 비교해 보겠다.
+
+- 정확도 계산을 위한 sklearn 함수
+  - **`DTmodel.score(train_X, train_Y)`**
+    - `train_X` 데이터에 대한 정확도(accuracy) 값을 계산
+    - `accuracy_score(Y_true, Y_pred)`을 이용하여 정확도를 구할 수 있다.
+      - `Y_true`, `Y_pred`는 각각 실제값과 예측값을 의미
+  - `load_breast_cancer`
+    - 유방암 유무 판별 데이터를 불러오는 함수
+    - `X`(Feature 데이터) : 30개의 환자 데이터
+    - `Y`(Label 데이터) : 0 음성(악성), 1 양성(정상)
