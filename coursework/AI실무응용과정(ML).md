@@ -2021,3 +2021,6 @@ acc_test = DTmodel.score(test_X, test_Y)
 print('train_X Accuracy: %f' % (acc_train))  # train_X Accuracy: 1.000000
 print('test_X Accuracy: %f' % (acc_test))    # test_X Accuracy: 0.947368
 ```
+
+- `score`를 사용하여 `train_X`에 대한 정확도를 계산하여 `acc_train`에 저장
+- `score`를 사용하여 `test_X`에 대한 정확도를 계산하여 `acc_test`에 저장
