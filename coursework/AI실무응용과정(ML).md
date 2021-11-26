@@ -1932,7 +1932,7 @@ fig.savefig("decistion_tree.png")
 - 정확도 계산을 위한 sklearn 함수
   - **`DTmodel.score(train_X, train_Y)`**
     - `train_X` 데이터에 대한 정확도(accuracy) 값을 계산
-    - **`accuracy_score(Y_true, Y_pred)`**을 이용하여 정확도를 구할 수도 있다.
+    - <strong>`accuracy_score(Y_true, Y_pred)`</strong>을 이용하여 정확도를 구할 수도 있다.
       - `Y_true`, `Y_pred`는 각각 실제값과 예측값을 의미
   - `load_breast_cancer`
     - 유방암 유무 판별 데이터를 불러오는 함수
