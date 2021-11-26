@@ -1918,3 +1918,5 @@ ax.set(title='Confusion Matrix',
 fig.savefig("decistion_tree.png")
 # elice_utils.send_image("decistion_tree.png")
 ```
+
+![image](https://user-images.githubusercontent.com/61646760/143522190-4b4cbcc8-5599-43d1-b5eb-d5fe92076245.png)
