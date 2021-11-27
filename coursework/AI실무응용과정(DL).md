@@ -59,6 +59,49 @@
 - 아래 그래프는 ![image](https://user-images.githubusercontent.com/61646760/143670437-e53cf659-1f79-437f-9758-3025311cd0a7.png) 값을 갖는 Perceptron 함수의 결과를 출력한 것이다. 학습 여부(**출력값** ![image](https://user-images.githubusercontent.com/61646760/143670362-6c93eb80-836e-47ae-9388-ca92b970d587.png))가 1이 나오도록 ![image](https://user-images.githubusercontent.com/61646760/143670483-35b54a97-d460-46c6-805d-2410bf8b0e61.png) 값을 입력하자.  
   ![image](https://user-images.githubusercontent.com/61646760/143670502-d6919200-0e13-4ac3-9810-35434f513e4c.png)
 
+```
+# 학습 여부를 예측하는 퍼셉트론 함수
+def Perceptron(x_1,x_2):
+    
+    # 설정한 가중치값을 적용
+    w_0 = -5 
+    w_1 = -1
+    w_2 = 5
+    
+    # 활성화 함수에 들어갈 값을 계산
+    output = w_0 + w_1 * x_1 + w_2 * x_2
+    
+    # 활성화 함수 결과를 계산
+    if output < 0:
+        y = 0
+    else:
+        y = 1
+    
+    return y, output
+
+
+"""
+1. perceptron의 예측 결과가 '학습한다:1'이 나오도록
+   x_1, x_2에 적절한 값을 입력하세요. (상단 그래프 참고)
+"""
+x_1 = 2
+x_2 = 4
+
+result, go_out = Perceptron(x_1,x_2)
+
+print("신호의 총합 : %d" % go_out)  # 신호의 총합 : 13
+
+if go_out > 0:
+    print("학습 여부 : %d\n ==> 학습한다!" % result)
+else:
+    print("학습 여부 : %d\n ==> 학습하지 않는다!" % result)
+
+'''
+학습 여부 : 1
+ ==> 학습한다!
+'''
+```
+
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
   - 단층 퍼셉트론을 여러 개 쌓아 입력층과 출력층 사이에 은닉층(hidden layer)으로 추가한 것
