@@ -101,6 +101,8 @@ else:
  ==> 학습한다!
 '''
 ```
+- perceptron의 예측 결과가 '학습한다:1'이 나오도록 ![image](https://user-images.githubusercontent.com/61646760/143670483-35b54a97-d460-46c6-805d-2410bf8b0e61.png)에 적절한 값을 입력
+  - 활성화 함수는 '**신호의 총합이 0 이상이면 학습하고, 0 미만이라면 학습하지 않는다**'는 규칙을 가진다.
 
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
