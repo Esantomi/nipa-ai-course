@@ -56,7 +56,7 @@
   - 변수 설명  
     ![image](https://user-images.githubusercontent.com/61646760/143670403-470e059d-f759-46ab-884e-4dfded7792ce.png)
 
-- 아래 그래프는 ![image](https://user-images.githubusercontent.com/61646760/143670437-e53cf659-1f79-437f-9758-3025311cd0a7.png) 값을 갖는 Perceptron 함수의 결과를 출력한 것이다. 학습 여부(**출력값** ![image](https://user-images.githubusercontent.com/61646760/143670362-6c93eb80-836e-47ae-9388-ca92b970d587.png))가 1이 나오도록 ![image](https://user-images.githubusercontent.com/61646760/143670483-35b54a97-d460-46c6-805d-2410bf8b0e61.png) 값을 입력하자.
+- 아래 그래프는 ![image](https://user-images.githubusercontent.com/61646760/143670437-e53cf659-1f79-437f-9758-3025311cd0a7.png) 값을 갖는 Perceptron 함수의 결과를 출력한 것이다. 학습 여부(**출력값** ![image](https://user-images.githubusercontent.com/61646760/143670362-6c93eb80-836e-47ae-9388-ca92b970d587.png))가 1이 나오도록 ![image](https://user-images.githubusercontent.com/61646760/143670483-35b54a97-d460-46c6-805d-2410bf8b0e61.png) 값을 입력하자.  
   ![image](https://user-images.githubusercontent.com/61646760/143670502-d6919200-0e13-4ac3-9810-35434f513e4c.png)
 
 ### 다층 퍼셉트론
