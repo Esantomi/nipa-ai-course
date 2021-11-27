@@ -29,6 +29,8 @@
 - **인공신경망(ANN, Artificial Neural Network)**
   - 생물학의 신경망에서 영감을 얻은 학습 알고리즘
   - 사람의 신경 시스템을 모방함
+- 딥러닝의 역사
+  ![image](https://user-images.githubusercontent.com/61646760/143669699-0e2ec31a-1e6b-42a1-9be5-7c9c8a5a0dd3.png)
 
 ### 퍼셉트론(Perceptron)
 - **퍼셉트론(Perceptron)**
