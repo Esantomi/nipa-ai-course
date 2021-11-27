@@ -8,6 +8,7 @@
   - [01. 퍼셉트론](#01-퍼셉트론)
     - [딥러닝 개론](#딥러닝-개론)
     - [퍼셉트론(Perceptron)](#퍼셉트론Perceptron)
+      - [퍼셉트론 작동 예시 구현하기](#퍼셉트론-작동-예시-구현하기)
     - [다층 퍼셉트론](#다층-퍼셉트론)
   - [02. 텐서플로우와 신경망](#02-텐서플로우와-신경망)
   - [03. 다양한 신경망](#03-다양한-신경망)
@@ -46,6 +47,17 @@
     - [예시 그래프](https://user-images.githubusercontent.com/61646760/143669470-d93987db-8dc4-4bcf-9a8b-c1cfba0aca79.png)
   - 하나의 선으로 분류할 수 없는 문제의 등장
     - 1969년 첫 번째 AI 겨울
+
+#### 퍼셉트론 작동 예시 구현하기
+이번 실습에서는 학습한 퍼셉트론의 작동 예시를 직접 수행해 보자.
+
+- 신작 드라마 수(![image](https://user-images.githubusercontent.com/61646760/143670340-dca44f9e-17e6-4d1f-b926-69e24e431c35.png))와 확보한 여가 시간(![image](https://user-images.githubusercontent.com/61646760/143670350-d49d932f-3133-4b53-b004-df002a22c763.png))에 따른 엘리스 코딩 학습 여부(![image](https://user-images.githubusercontent.com/61646760/143670362-6c93eb80-836e-47ae-9388-ca92b970d587.png))를 예측하는 모델을 구현했을 때, 아래와 같은 변수들을 가정한다.
+
+  - 변수 설명  
+    ![image](https://user-images.githubusercontent.com/61646760/143670403-470e059d-f759-46ab-884e-4dfded7792ce.png)
+
+- 아래 그래프는 ![image](https://user-images.githubusercontent.com/61646760/143670437-e53cf659-1f79-437f-9758-3025311cd0a7.png) 값을 갖는 Perceptron 함수의 결과를 출력한 것이다. 학습 여부(**출력값** ![image](https://user-images.githubusercontent.com/61646760/143670362-6c93eb80-836e-47ae-9388-ca92b970d587.png))가 1이 나오도록 ![image](https://user-images.githubusercontent.com/61646760/143670483-35b54a97-d460-46c6-805d-2410bf8b0e61.png) 값을 입력하자.
+  ![image](https://user-images.githubusercontent.com/61646760/143670502-d6919200-0e13-4ac3-9810-35434f513e4c.png)
 
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
