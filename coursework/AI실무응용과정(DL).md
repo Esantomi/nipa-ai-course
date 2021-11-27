@@ -31,6 +31,20 @@
   - 사람의 신경 시스템을 모방함
 
 ### 퍼셉트론(Perceptron)
+- **퍼셉트론(Perceptron)**
+  - 프랑크 로젠블라트(Frank Rosenblatt)가 1957년에 제안한 초기 형태의 인공 신경망으로 다수의 입력으로부터 하나의 결과를 내보내는 알고리즘
+  - 각 노드의 가중치와 입력치를 곱한 것을 모두 합한 값이 <strong>활성화 함수(activation function)</strong>에 의해 판단되는데, 그 값이 임계치(보통 0)보다 크면 뉴런이 활성화되고 결과값으로 1을 출력한다. 뉴런이 활성화되지 않으면 결과값으로 -1을 출력한다.
+    - [퍼셉트론 동작 예시](https://user-images.githubusercontent.com/61646760/143669359-7ae38bf5-fd08-4fb4-af2a-4f5c15e9862f.png)
+  - 마빈 민스키와 시모어 페퍼트는 저서 "퍼셉트론"에서 단층 퍼셉트론은 XOR 연산이 불가능하지만, **다층 퍼셉트론으로는 XOR 연산이 가능함**을 보였다.
+- 퍼셉트론의 기본 구조
+  ![image](https://user-images.githubusercontent.com/61646760/143669215-0c6477c4-2aca-4150-b428-f65dfaa8738c.png)
+  - [활성화 함수 그래프](https://user-images.githubusercontent.com/61646760/143669307-7a29d20a-9dc6-4fa4-baf0-bf3e79885786.png)
+- 퍼셉트론을 활용한 선형 분류기
+  - 퍼셉트론은 선형 분류기로써 데이터 분류 가능함
+    - [예시 그래프](https://user-images.githubusercontent.com/61646760/143669470-d93987db-8dc4-4bcf-9a8b-c1cfba0aca79.png)
+  - 하나의 선으로 분류할 수 없는 문제의 등장
+    - 1969년 첫 번째 AI 겨울
+
 
 ### 다층 퍼셉트론
 
