@@ -9,6 +9,7 @@
     - [딥러닝 개론](#딥러닝-개론)
     - [퍼셉트론(Perceptron)](#퍼셉트론Perceptron)
       - [퍼셉트론 작동 예시 구현하기](#퍼셉트론-작동-예시-구현하기)
+      - [DIY 퍼셉트론 만들기](#DIY-퍼셉트론-만들기)
     - [다층 퍼셉트론](#다층-퍼셉트론)
   - [02. 텐서플로우와 신경망](#02-텐서플로우와-신경망)
   - [03. 다양한 신경망](#03-다양한-신경망)
@@ -103,6 +104,16 @@ else:
 ```
 - perceptron의 예측 결과가 '학습한다:1'이 나오도록 ![image](https://user-images.githubusercontent.com/61646760/143670483-35b54a97-d460-46c6-805d-2410bf8b0e61.png)에 적절한 값을 입력
   - 활성화 함수는 '**신호의 총합이 0 이상이면 학습하고, 0 미만이라면 학습하지 않는다**'는 규칙을 가진다.
+
+#### DIY 퍼셉트론 만들기
+![image](https://user-images.githubusercontent.com/61646760/143774048-8e6fefd3-83ea-47bf-9ed1-b870200de201.png)
+
+이번 실습에선 위 그림과 같은 퍼셉트론을 구현해 보자.
+- 위 그림에서 **m = 4**로 설정하겠다. 따라서 <strong>입력값(Input)</strong>은 ![image](https://user-images.githubusercontent.com/61646760/143774121-57ff7d74-4b01-44fa-9c4d-e95a4967a4ba.png)로 총 4개, <strong>가중치(Weight)</strong>도 ![image](https://user-images.githubusercontent.com/61646760/143774161-af35ed76-6f4a-46d8-afa7-002fe55706eb.png)로 총 4개이다.
+- 가중치 ![image](https://user-images.githubusercontent.com/61646760/143774230-4d234b85-3520-4547-95d4-b0f9d41e9018.png)에 대한 입력값은 1이므로 두 값이 곱해진 값은 **상수** ![image](https://user-images.githubusercontent.com/61646760/143774230-4d234b85-3520-4547-95d4-b0f9d41e9018.png)이고, 이는 곧 **Bias**이다.
+- 입력값 ![image](https://user-images.githubusercontent.com/61646760/143774121-57ff7d74-4b01-44fa-9c4d-e95a4967a4ba.png)와 가중치 ![image](https://user-images.githubusercontent.com/61646760/143774161-af35ed76-6f4a-46d8-afa7-002fe55706eb.png)까지 입력되면 ![image](https://user-images.githubusercontent.com/61646760/143774340-73e6ca34-2922-4cec-999b-f430c5054029.png), 즉 **신호의 총합** 값이 나오게 된다.
+- ![image](https://user-images.githubusercontent.com/61646760/143774367-0865f5cc-c32d-4d37-a2e8-544bc4b3accb.png)은 이제 Activation function, 즉 활성화 함수에 입력값으로 들어가게 되고, 퍼셉트론은 ![image](https://user-images.githubusercontent.com/61646760/143774382-362f813b-f0bc-41f4-98c7-40e15386a895.png) 값으로 0 또는 1을 반환하게 된다.
+
 
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
