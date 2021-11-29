@@ -181,7 +181,7 @@ X = [[0,0], [0,1], [1,0], [1,1]]  # x1, x2
 1. perceptron 함수의 입력으로 들어갈 가중치 값을 입력해 주세요.
    순서대로 w_0, w_1, w_2에 해당됩니다.
 '''
-w = [-2, 1, 1]
+w = [-2, 1, 1]  # x1, x2가 0일 때 y가 0이려면 w_0이 음수여야 한다. (활성화 함수는 값이 0 이상이면 활성화됨)
 
 # AND Gate를 만족하는지 출력하여 확인
 print('perceptron 출력')
@@ -191,12 +191,15 @@ for x in X:
 
 '''
 perceptron 출력
-Input:  0 0 , Output:  0
-Input:  0 1 , Output:  0
-Input:  1 0 , Output:  0
-Input:  1 1 , Output:  1
+Input: 0 0 , Output: 0
+Input: 0 1 , Output: 0
+Input: 1 0 , Output: 0
+Input: 1 1 , Output: 1
 '''
 ```
+
+- `perceptron` 함수의 입력으로 들어갈 가중치 값을 입력
+  - `w` 리스트 안의 값들은 순서대로 ![image](https://user-images.githubusercontent.com/61646760/143897909-7f2a6281-15a7-420f-a6d7-f36e370b9373.png)에 해당됨
 
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
