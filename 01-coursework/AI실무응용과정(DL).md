@@ -158,6 +158,45 @@ print('y:', y)            # y: 1
 - 단층 퍼셉트론을 직접 구현해 보며 적절한 **가중치(Weight), Bias** 값을 찾아보자.  
   ![image](https://user-images.githubusercontent.com/61646760/143895227-fe6f11fb-42b9-4a2e-8784-8151d9254367.png)
 
+```
+import numpy as np
+
+
+def perceptron(w, x):
+    
+    output = w[1] * x[0] + w[2] * x[1] + w[0]
+    
+    if output >= 0:
+        y = 1
+    else:
+        y = 0
+    
+    return y
+
+
+# Input 데이터
+X = [[0,0], [0,1], [1,0], [1,1]]  # x1, x2
+
+'''
+1. perceptron 함수의 입력으로 들어갈 가중치 값을 입력해 주세요.
+   순서대로 w_0, w_1, w_2에 해당됩니다.
+'''
+w = [-2, 1, 1]
+
+# AND Gate를 만족하는지 출력하여 확인
+print('perceptron 출력')
+
+for x in X:
+    print('Input: ',x[0], x[1], ', Output: ',perceptron(w, x))
+
+'''
+perceptron 출력
+Input:  0 0 , Output:  0
+Input:  0 1 , Output:  0
+Input:  1 0 , Output:  0
+Input:  1 1 , Output:  1
+'''
+```
 
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
