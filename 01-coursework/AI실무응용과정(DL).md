@@ -150,6 +150,7 @@ y, output = perceptron(w,x)
 print('output:', output)  # output: 4
 print('y:', y)            # y: 1
 ```
+- 신호의 총합 `output`을 정의하고, `output`이 0 이상이면 1을, 그렇지 않으면 0인 `y`를 반환하는 활성화 함수를 작성해 `perceptron` 함수를 완성
 
 ### 다층 퍼셉트론
 - **다층 퍼셉트론(Multi-Layer Perceptron)**
