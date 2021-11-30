@@ -14,6 +14,7 @@
     - [다층 퍼셉트론](#다층-퍼셉트론)
   - [02. 텐서플로우와 신경망](#02-텐서플로우와-신경망)
     - [딥러닝 모델의 학습 방법](#딥러닝-모델의-학습-방법)
+      - [딥러닝 모델의 학습 순서 (정리)](#딥러닝-모델의-학습-순서)
     - [텐서플로우로 딥러닝 구현하기 - 데이터 전 처리](#텐서플로우로-딥러닝-구현하기---데이터-전-처리)
     - [텐서플로우로 딥러닝 구현하기 - 모델 구현](#텐서플로우로-딥러닝-구현하기---모델-구현)
   - [03. 다양한 신경망](#03-다양한-신경망)
@@ -227,17 +228,29 @@ Input: 1 1 , Output: 1
   - 딥러닝 모델의 학습 방법
     - 예측값과 실제값 간의 오차값을 최소화하기 위해 **오차값을 최소화하는 모델의 인자를 찾는 알고리즘**을 적용
     - **Loss function을 최소화하는 가중치**를 찾기 위해 **최적화 알고리즘**을 적용
-  - 딥러닝 모델이 예측값 구하는 방식
-    - **순전파(Forward propagation)**
-      ![image](https://user-images.githubusercontent.com/61646760/144076803-6a647f4e-eae2-4144-87f1-d2aaec91013e.png)
-      - 입력값을 바탕으로 출력값을 계산하는 과정
-        - [순전파 예시](https://user-images.githubusercontent.com/61646760/144076957-1db5e0a9-b527-4e94-93d7-d063aa19baf1.png)
-      - 순전파를 사용하면 예측값과 실제값 간의 오차값을 구하여 Loss function을 구할 수 있음
-        - 그렇다면 어떻게 최적화를 해야 할까? <strong>경사하강법(Gradient descent)</strong>을 사용
-    - **경사 하강법(Gradient descent)**
-      - 가중치를 Loss function 값이 작아지게 업데이트하는 방법
-      - 가중치는 **Gradient 값**을 사용하여 업데이트를 수행함
-      - Gradient 값은 각 가중치마다 정해지며, <strong>역전파(Backpropagation)</strong>를 통하여 구할 수 있음
+- 딥러닝 모델이 예측값 구하는 방식
+  - **순전파(Forward propagation)**
+    ![image](https://user-images.githubusercontent.com/61646760/144076803-6a647f4e-eae2-4144-87f1-d2aaec91013e.png)
+    - 입력값을 바탕으로 출력값을 계산하는 과정
+      - [순전파 예시](https://user-images.githubusercontent.com/61646760/144076957-1db5e0a9-b527-4e94-93d7-d063aa19baf1.png)
+    - 순전파를 사용하면 예측값과 실제값 간의 오차값을 구하여 Loss function을 구할 수 있음
+      - 그렇다면 어떻게 최적화를 해야 할까? <strong>경사하강법(Gradient descent)</strong>을 사용
+  - **경사 하강법(Gradient descent)**
+    - 가중치를 Loss function 값이 작아지게 업데이트하는 방법
+    - 가중치는 **Gradient 값**을 사용하여 업데이트를 수행함
+    - Gradient 값은 각 가중치마다 정해지며, <strong>역전파(Backpropagation)</strong>를 통하여 구할 수 있음
+  - **역전파(Backpropagation)**
+    ![image](https://user-images.githubusercontent.com/61646760/144083591-6ce72c04-079e-40d7-8243-93e56a65255c.png)
+    - Forward propagation의 반대 방향으로 이루어지는 과정
+  - 가중치 업데이트 과정
+    ![image](https://user-images.githubusercontent.com/61646760/144083781-9b309a09-ec26-4901-bf1a-9a42cfef5df4.png) 
+    - 위 과정을 수행하여 가중치들을 업데이트할 수 있으며, 이를 반복하여 **Loss function을 제일 작게 만드는 가중치**를 구함
+
+#### 딥러닝 모델의 학습 순서
+  1. 학습용 feature 데이터를 입력하여 예측값 구하기 **(순전파)**
+  2. 예측값과 실제값 사이의 오차 구하기 **(Loss 계산)**
+  3. Loss를 줄일 수 있는 가중치 업데이트하기 **(역전파)**
+  4. 1~3번 반복으로 Loss를 최소로 하는 가중치 얻기
 
 ### 텐서플로우로 딥러닝 구현하기 - 데이터 전 처리
 
