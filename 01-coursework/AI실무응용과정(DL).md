@@ -216,6 +216,28 @@ Input: 1 1 , Output: 1
 ## 02. 텐서플로우와 신경망
 
 ### 딥러닝 모델의 학습 방법
+- 딥러닝 모델
+  - 히든층이 많아진다면, 깊은 신경망이라는 의미의 Deep Learning이라는 단어를 사용
+    ![image](https://user-images.githubusercontent.com/61646760/144074964-3dac63cc-b64c-4325-b2f0-c77724771706.png)
+  - 딥러닝 모델의 구성 요소
+    - 레이어(Layer) : 모델을 구성하는 층
+    - 노드(Node)/유닛(Unit) : 각 층을 구성하는 요소
+    - 가중치(Weight) : 노드 간의 연결 강도
+      - [구성 요소 이미지](https://user-images.githubusercontent.com/61646760/144075290-b0902cce-51e6-48fd-a799-2ab181932a6c.png)
+  - 딥러닝 모델의 학습 방법
+    - 예측값과 실제값 간의 오차값을 최소화하기 위해 **오차값을 최소화하는 모델의 인자를 찾는 알고리즘**을 적용
+    - **Loss function을 최소화하는 가중치**를 찾기 위해 **최적화 알고리즘**을 적용
+- 딥러닝 모델이 예측값 구하는 방식
+  - **순전파(Forward propagation)**
+    ![image](https://user-images.githubusercontent.com/61646760/144076803-6a647f4e-eae2-4144-87f1-d2aaec91013e.png)
+    - 입력값을 바탕으로 출력값을 계산하는 과정
+      - [순전파 예시](https://user-images.githubusercontent.com/61646760/144076957-1db5e0a9-b527-4e94-93d7-d063aa19baf1.png)
+    - 순전파를 사용하면 예측값과 실제값 간의 오차값을 구하여 Loss function을 구할 수 있음
+      - 그렇다면 어떻게 최적화를 해야 할까? <strong>경사하강법(Gradient descent)</strong>을 사용
+  - **경사 하강법(Gradient descent)**
+    - 가중치를 Loss function 값이 작아지게 업데이트하는 방법
+    - 가중치는 **Gradient 값**을 사용하여 업데이트를 수행함
+    - Gradient 값은 각 가중치마다 정해지며, <strong>역전파(Backpropagation)</strong>를 통하여 구할 수 있음
 
 ### 텐서플로우로 딥러닝 구현하기 - 데이터 전 처리
 
