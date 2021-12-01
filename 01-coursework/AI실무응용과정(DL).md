@@ -397,4 +397,19 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
 
 ### 텐서플로우로 딥러닝 구현하기 - 모델 구현
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/144272320-1508437c-30bd-4e1d-98e8-178fb8a0515c.png">
+</p>
+
+- **케라스(Keras)**
+  - 텐서플로우의 패키지로 제공되는 고수준 API
+  - 딥러닝 모델을 간단하고 빠르게 구현 가능
+- 딥러닝 모델 구축을 위한 Keras 메소드
+  - `tf.keras.models.Sequential()`
+    - 모델 클래스 객체 생성
+  - `tf.keras.layers.Dense(units, activation)`
+    - 모델의 각 Layer 구성
+    - `units` : 레이어 안의 Node의 수
+    - `activation` : 적용할 activation 함수 설정
+
 ## 03. 다양한 신경망
