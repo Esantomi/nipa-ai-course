@@ -391,6 +391,10 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
 '''
 ```
 
+- pandas DataFrame `df`에서 `Sales` 변수는 label 데이터로 `Y`에 저장하고 나머진 `X`에 저장한다.
+- 학습용 데이터 `train_X`, `train_Y`를 `tf.data.Dataset` 형태로 변환한다.
+  - `from_tensor_slices` 함수를 사용하여 변환한다.
+
 ### 텐서플로우로 딥러닝 구현하기 - 모델 구현
 
 ## 03. 다양한 신경망
