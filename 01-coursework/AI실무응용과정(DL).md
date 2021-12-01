@@ -431,6 +431,7 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
     tf.keras.layers.Dense(1, activation='sigmoid'),                # 1개의 노드
   ])
   ```
+- 모델에 Layer 추가하기
   ```
   # model 생성
   model = tf.keras.models.Sequential()
