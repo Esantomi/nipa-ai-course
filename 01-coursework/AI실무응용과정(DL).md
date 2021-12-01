@@ -16,6 +16,8 @@
     - [딥러닝 모델의 학습 방법](#딥러닝-모델의-학습-방법)
       - [딥러닝 모델의 학습 순서 (정리)](#딥러닝-모델의-학습-순서)
     - [텐서플로우로 딥러닝 구현하기 - 데이터 전 처리](#텐서플로우로-딥러닝-구현하기---데이터-전-처리)
+      - [딥러닝 모델 구현 순서](#딥러닝-모델-구현-순서)
+      - [1. 데이터 전 처리하기](#1-데이터-전-처리하기)
     - [텐서플로우로 딥러닝 구현하기 - 모델 구현](#텐서플로우로-딥러닝-구현하기---모델-구현)
   - [03. 다양한 신경망](#03-다양한-신경망)
 
@@ -253,6 +255,53 @@ Input: 1 1 , Output: 1
   4. 1~3번 반복으로 Loss를 최소로 하는 가중치 얻기
 
 ### 텐서플로우로 딥러닝 구현하기 - 데이터 전 처리
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/144258907-95520e72-7b7e-49e3-9bed-2270de30235c.png">
+</p>
+
+- **텐서플로우(TensorFlow)**  
+  - 유연하고, 효율적이며, 확장성 있는 딥러닝 프레임워크
+  - 대형 클러스터 컴퓨터부터 스마트폰까지 다양한 디바이스에서 동작 가능
+
+#### 딥러닝 모델 구현 순서
+1. 데이터 전 처리하기
+2. 딥러닝 모델 구축하기
+3. 모델 학습시키기
+4. 평가 및 예측하기
+
+#### 1. 데이터 전 처리하기
+- Tensorflow 딥러닝 모델은 Tensor 형태의 데이터를 입력받는다.
+  - **Tensor** : 다차원 배열로서 tensorflow에서 사용하는 객체
+  - 따라서, 기존 데이터를 Tensor 형태로 변환한 뒤 모델에 사용
+- `tf.data.Dataset`
+  - Dataset API를 사용하여 딥러닝 모델용 Dataset을 생성
+    ```
+    # pandas를 사용하여 데이터 불러오기
+    df=pd.read_csv('data.csv')
+    feature = df.drop(columns=['label'])
+    label=df['label']
+    
+    # tensor 형태로 데이터 변환
+    dataset= tf.data.Dataset.from_tensor_slices((feature.values, label.values))
+    ```
+- Epoch와 Batch
+  - 딥러닝에 사용하는 데이터는 추가적인 전 처리 작업이 필요함 => **Epoch, Batch**  
+    ![image](https://user-images.githubusercontent.com/61646760/144260545-06bb13ac-3151-402e-ac6c-b6f2f5af0351.png)  
+    - **Epoch** : 한 번의 epoch는 전체 데이터 셋에 대해 **한 번 학습을 완료한 상태**
+    - **Batch** : 나눠진 데이터 셋 (보통 mini-batch라고 표현)
+      - **iteration** : epoch를 나누어서 실행하는 횟수를 의미
+  - `예) 총 데이터가 1000개, Batch size = 100`
+    - 1 iteration = 100개 데이터에 대해서 학습
+    - 1 epoch = 100 Batch size = 10 iteration
+  - `tf.data.Dataset`
+    ```
+    # tensor 형태로 데이터 변환
+    dataset= tf.data.Dataset.from_tensor_slices((feature.values, label.values))
+    
+    # dataset의 batch 사이즈를 32로 설정
+    dataset = dataset.batch(32)
+    ```
 
 ### 텐서플로우로 딥러닝 구현하기 - 모델 구현
 
