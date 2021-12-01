@@ -422,10 +422,17 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
     - 모델 학습 방식을 설정하기 위한 함수
     - `optimizer` : 모델 학습 최적화 방법
     - `loss` : 손실 함수 설정
-  - `[model].fit(x,y)`
+  - `[model].fit(x, y)`
     - 모델을 학습시키기 위한 함수
     - `x` : 학습 데이터
     - `y` : 학습 데이터의 label
+  - `[model].evaluate(x, y)`
+    - 모델을 평가하기 위한 함수
+    - `x` : 테스트 데이터
+    - `y` : 테스트 데이터의 label
+  - `[model].predict(x)`
+    - 모델로 예측을 수행하기 위한 함수
+    - `x` : 예측하고자 하는 데이터
 
 #### 2. 딥러닝 모델 구축하기
 
@@ -440,7 +447,7 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
     tf.keras.layers.Dense(1, activation='sigmoid'),                # 1개의 노드
   ])
   ```
-- 모델에 Layer 추가하기
+- 모델에 Layer 추가하기 (add)
   ```
   # model 생성
   model = tf.keras.models.Sequential()
@@ -462,5 +469,17 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
   ```
 
 #### 4. 평가 및 예측하기
+- evaluate, predict
+  ```
+  # MSE를 loss로 설정, 최적화 방식은 SGD 사용
+  model.compile(loss='mean_squared_error', optimizer='SGD')
+  
+  # dataset에 저장된 데이터를 입력하고, epochs를 100으로 설정하고 학습
+  model.fit(dataset, epochs=100)
+  
+  # 모델 평가 및 예측하기
+  model.evaluate(X_test, Y_test)
+  predicted_labels_test = model.predict(X_test)
+  ```
 
 ## 03. 다양한 신경망
