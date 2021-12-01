@@ -16,10 +16,12 @@
     - [딥러닝 모델의 학습 방법](#딥러닝-모델의-학습-방법)
       - [딥러닝 모델의 학습 순서 (정리)](#딥러닝-모델의-학습-순서)
     - [텐서플로우로 딥러닝 구현하기 - 데이터 전 처리](#텐서플로우로-딥러닝-구현하기---데이터-전-처리)
-      - [딥러닝 모델 구현 순서](#딥러닝-모델-구현-순서)
+      - [딥러닝 모델 구현 순서](#딥러닝-모델-구현-순서) 
       - [1. 데이터 전 처리하기](#1-데이터-전-처리하기)
       - [텐서플로우를 활용하여 신경망 구현하기 - 데이터 전 처리 실습](#텐서플로우를-활용하여-신경망-구현하기---데이터-전-처리)
     - [텐서플로우로 딥러닝 구현하기 - 모델 구현](#텐서플로우로-딥러닝-구현하기---모델-구현)
+      - [2. 딥러닝 모델 구축하기](#2-딥러닝-모델-구축하기)
+      - [3. 딥러닝 모델 학습시키기](#3-딥러닝-모델-학습시키기)
   - [03. 다양한 신경망](#03-다양한-신경망)
 
 # 딥러닝 시작하기
@@ -411,5 +413,34 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
     - 모델의 각 Layer 구성
     - `units` : 레이어 안의 Node의 수
     - `activation` : 적용할 activation 함수 설정
+  - `[model].add(tf.keras.layers.Dense(units, activation))`
+    - 모델에 Layer 추가하기
+    - `units` : 레이어 안의 Node의 수
+    - `activation` : 적용할 activation 함수 설정
+
+#### 2. 딥러닝 모델 구축하기
+
+- Input Layer의 입력 형태 지정하기
+  - 첫 번째 즉, Input Layer는 입력 형태에 대한 정보를 필요로 함 ([Input Layer](https://user-images.githubusercontent.com/61646760/144274003-c4b504aa-3825-44b5-aa98-caedb552681a.png))
+    - `input_shape` / `input_dim` 인자 설정하기
+  ```
+  # model 생성 및 layer 추가
+  model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(10, input_dim=2, activation='sigmoid'),  # 2개의 입력 변수, 10개의 노드
+    tf.keras.layers.Dense(10, activation='sigmoid'),               # 10개의 노드
+    tf.keras.layers.Dense(1, activation='sigmoid'),                # 1개의 노드
+  ])
+  ```
+  ```
+  # model 생성
+  model = tf.keras.models.Sequential()
+  
+  # model에 layer 추가 (위와 동일)
+  model.add(tf.keras.layers.Dense(10, input_dim=2, activation='sigmoid'))
+  model.add(tf.keras.layers.Dense(10, activation='sigmoid'))
+  model.add(tf.keras.layers.Dense(1, activation='sigmoid'))
+  ```
+
+#### 3. 딥러닝 모델 학습시키기
 
 ## 03. 다양한 신경망
