@@ -22,6 +22,7 @@
     - [텐서플로우로 딥러닝 구현하기 - 모델 구현](#텐서플로우로-딥러닝-구현하기---모델-구현)
       - [2. 딥러닝 모델 구축하기](#2-딥러닝-모델-구축하기)
       - [3. 딥러닝 모델 학습시키기](#3-딥러닝-모델-학습시키기)
+      - [4. 평가 및 예측하기](#4-평가-및-예측하기)
   - [03. 다양한 신경망](#03-다양한-신경망)
 
 # 딥러닝 시작하기
@@ -417,6 +418,14 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
     - 모델에 Layer 추가하기
     - `units` : 레이어 안의 Node의 수
     - `activation` : 적용할 activation 함수 설정
+  - `[model].compile(optimizer, loss)`
+    - 모델 학습 방식을 설정하기 위한 함수
+    - `optimizer` : 모델 학습 최적화 방법
+    - `loss` : 손실 함수 설정
+  - `[model].fit(x,y)`
+    - 모델을 학습시키기 위한 함수
+    - `x` : 학습 데이터
+    - `y` : 학습 데이터의 label
 
 #### 2. 딥러닝 모델 구축하기
 
@@ -443,5 +452,15 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
   ```
 
 #### 3. 딥러닝 모델 학습시키기
+- compile, fit
+  ```
+  # MSE를 loss로 설정, 최적화 방식은 SGD 사용
+  model.compile(loss='mean_squared_error', optimizer='SGD')
+  
+  # dataset에 저장된 데이터를 입력하고, epochs를 100으로 설정하고 학습
+  model.fit(dataset, epochs=100)
+  ```
+
+#### 4. 평가 및 예측하기
 
 ## 03. 다양한 신경망
