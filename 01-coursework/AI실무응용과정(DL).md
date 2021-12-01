@@ -281,7 +281,7 @@ Input: 1 1 , Output: 1
     # pandas를 사용하여 데이터 불러오기
     df=pd.read_csv('data.csv')
     feature = df.drop(columns=['label'])
-    label=df['label']
+    label = df['label']
     
     # tensor 형태로 데이터 변환
     dataset= tf.data.Dataset.from_tensor_slices((feature.values, label.values))
@@ -298,7 +298,7 @@ Input: 1 1 , Output: 1
   - `tf.data.Dataset`
     ```
     # tensor 형태로 데이터 변환
-    dataset= tf.data.Dataset.from_tensor_slices((feature.values, label.values))
+    dataset = tf.data.Dataset.from_tensor_slices((feature.values, label.values))
     
     # dataset의 batch 사이즈를 32로 설정
     dataset = dataset.batch(32)
@@ -323,6 +323,73 @@ Input: 1 1 , Output: 1
       - `batch` : `batch_size`에 batch 크기를 넣게 되면 해당 크기로 batch를 수행하는 메서드
   - **`take()`**
     - 이렇게 처리한 `ds`에서 `take()` 메서드를 사용하면 batch로 분리된 데이터를 확인할 수 있다.
+
+```
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # 환경 변수 설정
+
+np.random.seed(100)
+tf.random.set_seed(100)
+
+# 데이터를 DataFrame 형태로 불러옵니다.
+df = pd.read_csv("data/Advertising.csv")
+
+# DataFrame 데이터 샘플 5개를 출력합니다.
+print('원본 데이터 샘플 :')
+print(df.head(),'\n')
+
+'''
+원본 데이터 샘플 :
+   Unnamed: 0     FB    TV  Newspaper  Sales
+0           1  230.1  37.8       69.2   22.1
+1           2   44.5  39.3       45.1   10.4
+2           3   17.2  45.9       69.3    9.3
+3           4  151.5  41.3       58.5   18.5
+4           5  180.8  10.8       58.4   12.9 
+'''
+
+# 의미 없는 변수는 삭제합니다.
+df = df.drop(columns=['Unnamed: 0'])
+
+"""
+1. Sales 변수는 label 데이터로 Y에 저장하고 나머진 X에 저장합니다.
+"""
+X = df.drop(columns=['Sales'])
+Y = df['Sales']
+
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.3)
+
+"""
+2. 학습용 데이터를 tf.data.Dataset 형태로 변환합니다.
+   from_tensor_slices 함수를 사용하여 변환하고 batch를 수행하게 합니다.
+"""
+train_ds = tf.data.Dataset.from_tensor_slices((train_X.values, train_Y.values))
+train_ds = train_ds.shuffle(len(train_X)).batch(batch_size=5)
+
+# 하나의 batch를 뽑아서 feature와 label로 분리합니다.
+[(train_features_batch, label_batch)] = train_ds.take(1)
+
+# batch 데이터를 출력합니다.
+print('FB, TV, Newspaper batch 데이터:\n', train_features_batch)
+print('\nSales batch 데이터:', label_batch)
+
+'''
+FB, TV, Newspaper batch 데이터:
+ tf.Tensor(
+[[296.4  36.3 100.9]
+ [228.   37.7  32. ]
+ [  5.4  29.9   9.4]
+ [ 57.5  32.8  23.5]
+ [240.1   7.3   8.7]], shape=(5, 3), dtype=float64)
+ 
+Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=float64)
+'''
+```
 
 ### 텐서플로우로 딥러닝 구현하기 - 모델 구현
 
