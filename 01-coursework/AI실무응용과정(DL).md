@@ -600,4 +600,270 @@ None
       - `1` : 진행 바
       - `2` : 에포크당 한 줄 출력
 
+```
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+np.random.seed(100)
+tf.random.set_seed(100)
+
+# 데이터를 DataFrame 형태로 불러옵니다.
+df = pd.read_csv("data/Advertising.csv")
+
+# DataFrame 데이터 샘플 5개를 출력합니다.
+print('원본 데이터 샘플 :')
+print(df.head(),'\n')
+
+'''
+원본 데이터 샘플 :
+   Unnamed: 0     FB    TV  Newspaper  Sales
+0           1  230.1  37.8       69.2   22.1
+1           2   44.5  39.3       45.1   10.4
+2           3   17.2  45.9       69.3    9.3
+3           4  151.5  41.3       58.5   18.5
+4           5  180.8  10.8       58.4   12.9 
+'''
+
+# 의미 없는 변수는 삭제합니다.
+df = df.drop(columns=['Unnamed: 0'])
+
+X = df.drop(columns=['Sales'])
+Y = df['Sales']
+
+# 학습용 테스트용 데이터로 분리합니다.
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.3)
+
+# Dataset 형태로 변환합니다.
+train_ds = tf.data.Dataset.from_tensor_slices((train_X.values, train_Y))
+train_ds = train_ds.shuffle(len(train_X)).batch(batch_size=5)
+
+
+# keras를 활용하여 신경망 모델을 생성합니다.
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(10, input_shape=(3,)),
+    tf.keras.layers.Dense(1)
+    ])
+
+
+"""
+1. 학습용 데이터를 바탕으로 모델의 학습을 수행합니다.
+    
+step1. compile 메서드를 사용하여 최적화 모델을 설정합니다.
+       loss는 mean_squared_error, optimizer는 adam으로 설정합니다.
+       
+step2. fit 메서드를 사용하여 Dataset으로 변환된 학습용 데이터를 학습합니다.
+       epochs는 100으로 설정합니다.
+"""
+model.compile(loss='mean_squared_error', optimizer='adam')
+history = model.fit(train_ds, epochs=100, verbose=2)
+
+'''
+Epoch 1/100
+28/28 - 0s - loss: 1639.5788
+Epoch 2/100
+28/28 - 0s - loss: 281.0369
+Epoch 3/100
+28/28 - 0s - loss: 139.9947
+Epoch 4/100
+28/28 - 0s - loss: 98.7728
+Epoch 5/100
+28/28 - 0s - loss: 66.9869
+Epoch 6/100
+28/28 - 0s - loss: 46.4901
+Epoch 7/100
+28/28 - 0s - loss: 33.6584
+Epoch 8/100
+28/28 - 0s - loss: 24.5128
+Epoch 9/100
+28/28 - 0s - loss: 17.3948
+Epoch 10/100
+28/28 - 0s - loss: 15.0934
+Epoch 11/100
+28/28 - 0s - loss: 13.0036
+Epoch 12/100
+28/28 - 0s - loss: 10.7213
+Epoch 13/100
+28/28 - 0s - loss: 9.2237
+Epoch 14/100
+28/28 - 0s - loss: 8.2051
+Epoch 15/100
+28/28 - 0s - loss: 7.4424
+Epoch 16/100
+28/28 - 0s - loss: 6.2867
+Epoch 17/100
+28/28 - 0s - loss: 6.0592
+Epoch 18/100
+28/28 - 0s - loss: 5.6608
+Epoch 19/100
+28/28 - 0s - loss: 4.5156
+Epoch 20/100
+28/28 - 0s - loss: 5.1645
+Epoch 21/100
+28/28 - 0s - loss: 4.7275
+Epoch 22/100
+28/28 - 0s - loss: 4.7179
+Epoch 23/100
+28/28 - 0s - loss: 4.5683
+Epoch 24/100
+28/28 - 0s - loss: 4.5556
+Epoch 25/100
+28/28 - 0s - loss: 4.4095
+Epoch 26/100
+28/28 - 0s - loss: 4.2198
+Epoch 27/100
+28/28 - 0s - loss: 4.4354
+Epoch 28/100
+28/28 - 0s - loss: 4.4298
+Epoch 29/100
+28/28 - 0s - loss: 4.3224
+Epoch 30/100
+28/28 - 0s - loss: 4.2932
+Epoch 31/100
+28/28 - 0s - loss: 4.2893
+Epoch 32/100
+28/28 - 0s - loss: 4.2396
+Epoch 33/100
+28/28 - 0s - loss: 4.2788
+Epoch 34/100
+28/28 - 0s - loss: 4.1441
+Epoch 35/100
+28/28 - 0s - loss: 4.0707
+Epoch 36/100
+28/28 - 0s - loss: 4.0699
+Epoch 37/100
+28/28 - 0s - loss: 4.2229
+Epoch 38/100
+28/28 - 0s - loss: 4.3146
+Epoch 39/100
+28/28 - 0s - loss: 4.2231
+Epoch 40/100
+28/28 - 0s - loss: 4.2952
+Epoch 41/100
+28/28 - 0s - loss: 4.1489
+Epoch 42/100
+28/28 - 0s - loss: 4.2076
+Epoch 43/100
+28/28 - 0s - loss: 4.0038
+Epoch 44/100
+28/28 - 0s - loss: 4.1169
+Epoch 45/100
+28/28 - 0s - loss: 4.3562
+Epoch 46/100
+28/28 - 0s - loss: 4.1704
+Epoch 47/100
+28/28 - 0s - loss: 4.2968
+Epoch 48/100
+28/28 - 0s - loss: 4.1475
+Epoch 49/100
+28/28 - 0s - loss: 4.0728
+Epoch 50/100
+28/28 - 0s - loss: 4.1516
+Epoch 51/100
+28/28 - 0s - loss: 3.9765
+Epoch 52/100
+28/28 - 0s - loss: 4.2054
+Epoch 53/100
+28/28 - 0s - loss: 4.0494
+Epoch 54/100
+28/28 - 0s - loss: 3.9231
+Epoch 55/100
+28/28 - 0s - loss: 4.1474
+Epoch 56/100
+28/28 - 0s - loss: 4.1947
+Epoch 57/100
+28/28 - 0s - loss: 3.7425
+Epoch 58/100
+28/28 - 0s - loss: 3.6219
+Epoch 59/100
+28/28 - 0s - loss: 4.1503
+Epoch 60/100
+28/28 - 0s - loss: 4.1945
+Epoch 61/100
+28/28 - 0s - loss: 3.5830
+Epoch 62/100
+28/28 - 0s - loss: 4.0271
+Epoch 63/100
+28/28 - 0s - loss: 4.0436
+Epoch 64/100
+28/28 - 0s - loss: 4.0728
+Epoch 65/100
+28/28 - 0s - loss: 4.0300
+Epoch 66/100
+28/28 - 0s - loss: 3.9253
+Epoch 67/100
+28/28 - 0s - loss: 3.9704
+Epoch 68/100
+28/28 - 0s - loss: 3.9507
+Epoch 69/100
+28/28 - 0s - loss: 4.1810
+Epoch 70/100
+28/28 - 0s - loss: 4.0647
+Epoch 71/100
+28/28 - 0s - loss: 4.1985
+Epoch 72/100
+28/28 - 0s - loss: 4.1481
+Epoch 73/100
+28/28 - 0s - loss: 4.0116
+Epoch 74/100
+28/28 - 0s - loss: 3.9494
+Epoch 75/100
+28/28 - 0s - loss: 3.9130
+Epoch 76/100
+28/28 - 0s - loss: 3.9064
+Epoch 77/100
+28/28 - 0s - loss: 3.8694
+Epoch 78/100
+28/28 - 0s - loss: 3.8523
+Epoch 79/100
+28/28 - 0s - loss: 3.9759
+Epoch 80/100
+28/28 - 0s - loss: 4.0342
+Epoch 81/100
+28/28 - 0s - loss: 3.9083
+Epoch 82/100
+28/28 - 0s - loss: 4.1890
+Epoch 83/100
+28/28 - 0s - loss: 3.9713
+Epoch 84/100
+28/28 - 0s - loss: 4.1247
+Epoch 85/100
+28/28 - 0s - loss: 4.4938
+Epoch 86/100
+28/28 - 0s - loss: 4.0068
+Epoch 87/100
+28/28 - 0s - loss: 3.8684
+Epoch 88/100
+28/28 - 0s - loss: 3.7362
+Epoch 89/100
+28/28 - 0s - loss: 3.8032
+Epoch 90/100
+28/28 - 0s - loss: 3.8723
+Epoch 91/100
+28/28 - 0s - loss: 3.8965
+Epoch 92/100
+28/28 - 0s - loss: 3.7493
+Epoch 93/100
+28/28 - 0s - loss: 3.6952
+Epoch 94/100
+28/28 - 0s - loss: 3.8224
+Epoch 95/100
+28/28 - 0s - loss: 3.8564
+Epoch 96/100
+28/28 - 0s - loss: 3.6585
+Epoch 97/100
+28/28 - 0s - loss: 3.5836
+Epoch 98/100
+28/28 - 0s - loss: 3.6144
+Epoch 99/100
+28/28 - 0s - loss: 3.7437
+Epoch 100/100
+28/28 - 0s - loss: 3.9819
+'''
+```
+
 ## 03. 다양한 신경망
