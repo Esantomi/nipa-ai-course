@@ -23,6 +23,7 @@
       - [2. 딥러닝 모델 구축하기](#2-딥러닝-모델-구축하기)
       - [3. 딥러닝 모델 학습시키기](#3-딥러닝-모델-학습시키기)
       - [4. 평가 및 예측하기](#4-평가-및-예측하기)
+      - [텐서플로우를 활용하여 신경망 구현하기 - 모델 구현 실습](#텐서플로우를-활용하여-신경망-구현하기---모델-구현)
   - [03. 다양한 신경망](#03-다양한-신경망)
 
 # 딥러닝 시작하기
@@ -481,5 +482,33 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
   model.evaluate(X_test, Y_test)
   predicted_labels_test = model.predict(X_test)
   ```
+
+#### 텐서플로우를 활용하여 신경망 구현하기 - 모델 구현
+앞에 이어서 이번 실습에서는 텐서플로우와 케라스(Keras)를 활용하여 신경망 모델을 구현해 보자.
+- **케라스**는 텐서플로우 내의 신경망 모델 설계와 훈련을 위한 API이다.
+  - 케라스는 연속적으로(Sequential) 레이어(Layer)들을 쌓아가며 모델을 생성하고, sklearn과 같이 한 줄의 코드로 간단하게 학습 방법 설정, 학습, 평가를 진행할 수 있다.
+- 텐서플로우와 케라스를 이용해 신경망 모델을 만들기 위한 함수
+  - `tf.keras.models.Sequential()`
+    - 연속적으로 층을 쌓아 만드는 Sequential 모델을 위한 함수
+    - `tf.keras.models` : 모델 설정
+  - `tf.keras.layers.Dense(units)`
+    - Dense 레이어
+    - `tf.keras.layers` : 신경망 모델의 레이어를 구성하는 데 필요한 keras 함수
+      - `units` : 레이어 안의 노드 수
+  - 예를 들어, 5개의 변수에 따른 label을 예측하는 회귀 분석 신경망을 구현하고 싶다면 아래와 같이 구현할 수 있다.
+    ```
+    tf.keras.models.Sequential([
+      tf.keras.layers.Dense(10, input_shape=(5,)),
+      tf.keras.layers.Dense(1)
+    ])
+    ```
+    - `input_shape` 인자에는 (입력하는 변수의 개수, )로 입력한다. 또한 회귀 분석이기에 마지막 레이어의 유닛 수는 1개로 설정한다.
+    - `input_dim` 인자를 사용하면 아래와 같이 표현할 수 있다.
+      ```
+      tf.keras.models.Sequential([
+        tf.keras.layers.Dense(10, input_dim=5),
+        tf.keras.layers.Dense(1)
+      ])
+      ```
 
 ## 03. 다양한 신경망
