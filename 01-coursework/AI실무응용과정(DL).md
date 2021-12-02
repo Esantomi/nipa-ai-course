@@ -495,20 +495,20 @@ Sales batch 데이터: tf.Tensor([23.8 21.5  5.3 11.8 13.2], shape=(5,), dtype=f
     - Dense 레이어
     - `tf.keras.layers` : 신경망 모델의 레이어를 구성하는 데 필요한 keras 함수
       - `units` : 레이어 안의 노드 수
-  - 예를 들어, 5개의 변수에 따른 label을 예측하는 회귀 분석 신경망을 구현하고 싶다면 아래와 같이 구현할 수 있다.
+- 예를 들어, 5개의 변수에 따른 label을 예측하는 회귀 분석 신경망을 구현하고 싶다면 아래와 같이 구현할 수 있다.
+  ```
+  tf.keras.models.Sequential([
+    tf.keras.layers.Dense(10, input_shape=(5,)),
+    tf.keras.layers.Dense(1)
+  ])
+  ```
+  - `input_shape` 인자에는 (입력하는 변수의 개수, )로 입력한다. 또한 회귀 분석이기에 마지막 레이어의 유닛 수는 1개로 설정한다.
+  - `input_dim` 인자를 사용하면 아래와 같이 표현할 수 있다.
     ```
     tf.keras.models.Sequential([
-      tf.keras.layers.Dense(10, input_shape=(5,)),
+      tf.keras.layers.Dense(10, input_dim=5),
       tf.keras.layers.Dense(1)
     ])
     ```
-    - `input_shape` 인자에는 (입력하는 변수의 개수, )로 입력한다. 또한 회귀 분석이기에 마지막 레이어의 유닛 수는 1개로 설정한다.
-    - `input_dim` 인자를 사용하면 아래와 같이 표현할 수 있다.
-      ```
-      tf.keras.models.Sequential([
-        tf.keras.layers.Dense(10, input_dim=5),
-        tf.keras.layers.Dense(1)
-      ])
-      ```
 
 ## 03. 다양한 신경망
