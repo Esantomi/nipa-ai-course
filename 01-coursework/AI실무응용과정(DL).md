@@ -26,6 +26,7 @@
       - [텐서플로우를 활용하여 신경망 구현하기 - 모델 구현 실습](#텐서플로우를-활용하여-신경망-구현하기---모델-구현)
       - [텐서플로우를 활용하여 신경망 구현하기 - 모델 학습 실습](#텐서플로우를-활용하여-신경망-구현하기---모델-학습)
       - [텐서플로우를 활용하여 신경망 구현하기 - 모델 평가 및 예측 실습](#텐서플로우를-활용하여-신경망-구현하기---모델-평가-및-예측)
+      - [신경망 모델로 분류하기 실습](#신경망-모델로-분류하기)
   - [03. 다양한 신경망](#03-다양한-신경망)
 
 # 딥러닝 시작하기
@@ -1166,5 +1167,24 @@ for i in range(5):
 
 - `evaluate` 메서드를 사용하여 테스트용 데이터의 loss 값을 계산하고 `loss`에 저장한다.
 - `predict` 메서드를 사용하여 테스트용 데이터의 예측값을 계산하고 `predictions`에 저장한다.
+
+#### 신경망 모델로 분류하기
+이번에는 Iris 데이터가 주어졌을 때 붓꽃의 종류를 분류하는 신경망 모델을 구현해 보자.
+- Iris 데이터는 아래와 같이 꽃받침 길이, 꽃받침 넓이, 꽃잎 길이, 꽃잎 넓이 네 가지 변수와 세 종류의 붓꽃 클래스로 구성되어 있다.
+  ![image](https://user-images.githubusercontent.com/61646760/144714349-2f2b26c7-f3c0-44e8-926c-dfa527cdb310.png)
+- 분류를 위한 텐서플로우 신경망 모델 함수
+  - 모델 구현 (5개의 범주를 갖는 label 예시)
+    ```
+    model = tf.keras.models.Sequential([
+      tf.keras.layers.Dense(10, input_dim=4),
+      tf.keras.layers.Dense(5, activation='softmax')
+      ])
+    ```
+    - 분류 모델에서는 마지막 레이어에 분류 데이터의 label 범주의 개수만큼 노드를 설정한다.
+    - 추가로 `activation` 인자로 'softmax'를 설정한다.
+  - 학습 방법
+    - `model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])`
+      - 분류에서는 일반적으로 `loss`를 'sparse_categorical_crossentropy'로 사용한다.
+      - `metrics` 인자는 에포크마다 계산되는 평가 지표를 의미한다. 정확도를 의미하는 'accuracy'를 입력하면 에포크마다 accuracy를 계산하여 출력한다.
 
 ## 03. 다양한 신경망
