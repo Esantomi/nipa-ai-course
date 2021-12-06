@@ -1187,4 +1187,279 @@ for i in range(5):
       - 분류에서는 일반적으로 `loss`를 'sparse_categorical_crossentropy'로 사용한다.
       - `metrics` 인자는 에포크마다 계산되는 평가 지표를 의미한다. 정확도를 의미하는 'accuracy'를 입력하면 에포크마다 accuracy를 계산하여 출력한다.
 
+```
+import tensorflow as tf
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+np.random.seed(100)
+tf.random.set_seed(100)
+
+# sklearn에 저장된 데이터를 불러옵니다.
+X, Y = load_iris(return_X_y = True)
+
+# DataFrame으로 변환
+df = pd.DataFrame(X, columns=['꽃받침 길이','꽃받침 넓이', '꽃잎 길이', '꽃잎 넓이'])
+df['클래스'] = Y
+
+X = df.drop(columns=['클래스'])
+Y = df['클래스']
+
+# 학습용 평가용 데이터로 분리합니다.
+train_X, test_X, train_Y, test_Y = train_test_split(X, Y, test_size=0.2, random_state = 42)
+
+# Dataset 형태로 변환합니다.
+train_ds = tf.data.Dataset.from_tensor_slices((train_X.values, train_Y))
+train_ds = train_ds.shuffle(len(train_X)).batch(batch_size=5)
+
+"""
+1. keras를 활용하여 신경망 모델을 생성합니다.
+   3가지 범주를 갖는 label 데이터를 분류하기 위해서 마지막 레이어 노드를 아래와 같이 설정합니다.
+"""
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(10, input_dim=4),
+    tf.keras.layers.Dense(3, activation='softmax')  # 3개 범주의 label
+    ])
+
+# 학습용 데이터를 바탕으로 모델의 학습을 수행합니다.
+model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+history = model.fit(train_ds, epochs=100, verbose=2)
+
+'''
+Epoch 1/100
+24/24 - 0s - loss: 1.7421 - accuracy: 0.3750
+Epoch 2/100
+24/24 - 0s - loss: 1.3935 - accuracy: 0.5500
+Epoch 3/100
+24/24 - 0s - loss: 1.2528 - accuracy: 0.4833
+Epoch 4/100
+24/24 - 0s - loss: 1.1385 - accuracy: 0.5000
+Epoch 5/100
+24/24 - 0s - loss: 1.0317 - accuracy: 0.5000
+Epoch 6/100
+24/24 - 0s - loss: 0.9339 - accuracy: 0.5083
+Epoch 7/100
+24/24 - 0s - loss: 0.8466 - accuracy: 0.5083
+Epoch 8/100
+24/24 - 0s - loss: 0.7704 - accuracy: 0.5333
+Epoch 9/100
+24/24 - 0s - loss: 0.7053 - accuracy: 0.8167
+Epoch 10/100
+24/24 - 0s - loss: 0.6502 - accuracy: 0.8667
+Epoch 11/100
+24/24 - 0s - loss: 0.6042 - accuracy: 0.8833
+Epoch 12/100
+24/24 - 0s - loss: 0.5657 - accuracy: 0.8917
+Epoch 13/100
+24/24 - 0s - loss: 0.5335 - accuracy: 0.9167
+Epoch 14/100
+24/24 - 0s - loss: 0.5063 - accuracy: 0.9167
+Epoch 15/100
+24/24 - 0s - loss: 0.4831 - accuracy: 0.9167
+Epoch 16/100
+24/24 - 0s - loss: 0.4632 - accuracy: 0.9250
+Epoch 17/100
+24/24 - 0s - loss: 0.4458 - accuracy: 0.9333
+Epoch 18/100
+24/24 - 0s - loss: 0.4304 - accuracy: 0.9333
+Epoch 19/100
+24/24 - 0s - loss: 0.4167 - accuracy: 0.9333
+Epoch 20/100
+24/24 - 0s - loss: 0.4043 - accuracy: 0.9417
+Epoch 21/100
+24/24 - 0s - loss: 0.3929 - accuracy: 0.9417
+Epoch 22/100
+24/24 - 0s - loss: 0.3825 - accuracy: 0.9417
+Epoch 23/100
+24/24 - 0s - loss: 0.3728 - accuracy: 0.9417
+Epoch 24/100
+24/24 - 0s - loss: 0.3637 - accuracy: 0.9417
+Epoch 25/100
+24/24 - 0s - loss: 0.3552 - accuracy: 0.9500
+Epoch 26/100
+24/24 - 0s - loss: 0.3471 - accuracy: 0.9667
+Epoch 27/100
+24/24 - 0s - loss: 0.3393 - accuracy: 0.9667
+Epoch 28/100
+24/24 - 0s - loss: 0.3319 - accuracy: 0.9667
+Epoch 29/100
+24/24 - 0s - loss: 0.3248 - accuracy: 0.9667
+Epoch 30/100
+24/24 - 0s - loss: 0.3179 - accuracy: 0.9667
+Epoch 31/100
+24/24 - 0s - loss: 0.3113 - accuracy: 0.9667
+Epoch 32/100
+24/24 - 0s - loss: 0.3049 - accuracy: 0.9667
+Epoch 33/100
+24/24 - 0s - loss: 0.2986 - accuracy: 0.9583
+Epoch 34/100
+24/24 - 0s - loss: 0.2926 - accuracy: 0.9583
+Epoch 35/100
+24/24 - 0s - loss: 0.2867 - accuracy: 0.9583
+Epoch 36/100
+24/24 - 0s - loss: 0.2810 - accuracy: 0.9583
+Epoch 37/100
+24/24 - 0s - loss: 0.2754 - accuracy: 0.9583
+Epoch 38/100
+24/24 - 0s - loss: 0.2700 - accuracy: 0.9583
+Epoch 39/100
+24/24 - 0s - loss: 0.2647 - accuracy: 0.9583
+Epoch 40/100
+24/24 - 0s - loss: 0.2595 - accuracy: 0.9583
+Epoch 41/100
+24/24 - 0s - loss: 0.2545 - accuracy: 0.9583
+Epoch 42/100
+24/24 - 0s - loss: 0.2496 - accuracy: 0.9583
+Epoch 43/100
+24/24 - 0s - loss: 0.2448 - accuracy: 0.9583
+Epoch 44/100
+24/24 - 0s - loss: 0.2402 - accuracy: 0.9583
+Epoch 45/100
+24/24 - 0s - loss: 0.2356 - accuracy: 0.9667
+Epoch 46/100
+24/24 - 0s - loss: 0.2312 - accuracy: 0.9667
+Epoch 47/100
+24/24 - 0s - loss: 0.2269 - accuracy: 0.9667
+Epoch 48/100
+24/24 - 0s - loss: 0.2227 - accuracy: 0.9667
+Epoch 49/100
+24/24 - 0s - loss: 0.2186 - accuracy: 0.9667
+Epoch 50/100
+24/24 - 0s - loss: 0.2147 - accuracy: 0.9667
+Epoch 51/100
+24/24 - 0s - loss: 0.2108 - accuracy: 0.9667
+Epoch 52/100
+24/24 - 0s - loss: 0.2070 - accuracy: 0.9667
+Epoch 53/100
+24/24 - 0s - loss: 0.2034 - accuracy: 0.9667
+Epoch 54/100
+24/24 - 0s - loss: 0.1998 - accuracy: 0.9667
+Epoch 55/100
+24/24 - 0s - loss: 0.1963 - accuracy: 0.9667
+Epoch 56/100
+24/24 - 0s - loss: 0.1930 - accuracy: 0.9667
+Epoch 57/100
+24/24 - 0s - loss: 0.1897 - accuracy: 0.9667
+Epoch 58/100
+24/24 - 0s - loss: 0.1865 - accuracy: 0.9667
+Epoch 59/100
+24/24 - 0s - loss: 0.1834 - accuracy: 0.9750
+Epoch 60/100
+24/24 - 0s - loss: 0.1804 - accuracy: 0.9750
+Epoch 61/100
+24/24 - 0s - loss: 0.1775 - accuracy: 0.9750
+Epoch 62/100
+24/24 - 0s - loss: 0.1746 - accuracy: 0.9750
+Epoch 63/100
+24/24 - 0s - loss: 0.1718 - accuracy: 0.9750
+Epoch 64/100
+24/24 - 0s - loss: 0.1692 - accuracy: 0.9750
+Epoch 65/100
+24/24 - 0s - loss: 0.1666 - accuracy: 0.9750
+Epoch 66/100
+24/24 - 0s - loss: 0.1640 - accuracy: 0.9750
+Epoch 67/100
+24/24 - 0s - loss: 0.1615 - accuracy: 0.9750
+Epoch 68/100
+24/24 - 0s - loss: 0.1592 - accuracy: 0.9750
+Epoch 69/100
+24/24 - 0s - loss: 0.1568 - accuracy: 0.9750
+Epoch 70/100
+24/24 - 0s - loss: 0.1546 - accuracy: 0.9750
+Epoch 71/100
+24/24 - 0s - loss: 0.1524 - accuracy: 0.9750
+Epoch 72/100
+24/24 - 0s - loss: 0.1502 - accuracy: 0.9750
+Epoch 73/100
+24/24 - 0s - loss: 0.1482 - accuracy: 0.9750
+Epoch 74/100
+24/24 - 0s - loss: 0.1461 - accuracy: 0.9750
+Epoch 75/100
+24/24 - 0s - loss: 0.1442 - accuracy: 0.9750
+Epoch 76/100
+24/24 - 0s - loss: 0.1423 - accuracy: 0.9750
+Epoch 77/100
+24/24 - 0s - loss: 0.1404 - accuracy: 0.9750
+Epoch 78/100
+24/24 - 0s - loss: 0.1386 - accuracy: 0.9750
+Epoch 79/100
+24/24 - 0s - loss: 0.1369 - accuracy: 0.9750
+Epoch 80/100
+24/24 - 0s - loss: 0.1351 - accuracy: 0.9750
+Epoch 81/100
+24/24 - 0s - loss: 0.1335 - accuracy: 0.9750
+Epoch 82/100
+24/24 - 0s - loss: 0.1319 - accuracy: 0.9750
+Epoch 83/100
+24/24 - 0s - loss: 0.1303 - accuracy: 0.9750
+Epoch 84/100
+24/24 - 0s - loss: 0.1288 - accuracy: 0.9750
+Epoch 85/100
+24/24 - 0s - loss: 0.1273 - accuracy: 0.9750
+Epoch 86/100
+24/24 - 0s - loss: 0.1258 - accuracy: 0.9750
+Epoch 87/100
+24/24 - 0s - loss: 0.1244 - accuracy: 0.9750
+Epoch 88/100
+24/24 - 0s - loss: 0.1231 - accuracy: 0.9750
+Epoch 89/100
+24/24 - 0s - loss: 0.1217 - accuracy: 0.9750
+Epoch 90/100
+24/24 - 0s - loss: 0.1204 - accuracy: 0.9750
+Epoch 91/100
+24/24 - 0s - loss: 0.1192 - accuracy: 0.9750
+Epoch 92/100
+24/24 - 0s - loss: 0.1179 - accuracy: 0.9750
+Epoch 93/100
+24/24 - 0s - loss: 0.1167 - accuracy: 0.9750
+Epoch 94/100
+24/24 - 0s - loss: 0.1156 - accuracy: 0.9750
+Epoch 95/100
+24/24 - 0s - loss: 0.1144 - accuracy: 0.9750
+Epoch 96/100
+24/24 - 0s - loss: 0.1133 - accuracy: 0.9750
+Epoch 97/100
+24/24 - 0s - loss: 0.1122 - accuracy: 0.9750
+Epoch 98/100
+24/24 - 0s - loss: 0.1112 - accuracy: 0.9750
+Epoch 99/100
+24/24 - 0s - loss: 0.1102 - accuracy: 0.9750
+Epoch 100/100
+24/24 - 0s - loss: 0.1091 - accuracy: 0.9750
+
+30/30 [==============================] - 0s 480us/sample - loss: 0.1161 - accuracy: 1.0000
+'''
+
+# 테스트용 데이터를 바탕으로 학습된 모델을 평가합니다.
+loss, acc = model.evaluate(test_X, test_Y)
+
+# 테스트용 데이터의 예측값을 구합니다.
+predictions = model.predict(test_X)
+
+# 결과를 출력합니다.
+print("테스트 데이터의 Accuracy 값:", acc)
+for i in range(5):
+    print("%d 번째 테스트 데이터의 실제값: %d" % (i, test_Y.iloc[i]))
+    print("%d 번째 테스트 데이터의 예측값: %d" % (i, np.argmax(predictions[i])))
+
+'''
+테스트 데이터의 Accuracy 값: 1.0
+0 번째 테스트 데이터의 실제값: 1
+0 번째 테스트 데이터의 예측값: 1
+1 번째 테스트 데이터의 실제값: 0
+1 번째 테스트 데이터의 예측값: 0
+2 번째 테스트 데이터의 실제값: 2
+2 번째 테스트 데이터의 예측값: 2
+3 번째 테스트 데이터의 실제값: 1
+3 번째 테스트 데이터의 예측값: 1
+4 번째 테스트 데이터의 실제값: 1
+4 번째 테스트 데이터의 예측값: 1
+'''
+```
+
 ## 03. 다양한 신경망
