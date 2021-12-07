@@ -1570,3 +1570,5 @@ print("변환한 평가용 이미지 데이터 형태:", test_images.shape)
 ```
 - [sample1.png](https://user-images.githubusercontent.com/61646760/145058333-375f7774-fb91-4e4e-8f8b-b86d0ec63eae.png)
 - [sample2.png](https://user-images.githubusercontent.com/61646760/145058460-278391d4-daee-4e7a-8739-5c01d7b3c27e.png)
+- 학습용 및 평가용 데이터를 CNN 모델의 입력으로 사용할 수 있도록 (샘플 개수, 가로 픽셀, 세로 픽셀, 1) 형태로 변환한다.
+  - `tf.expand_dims` 함수를 활용하여 `train_images`, `test_images` 데이터의 형태를 변환하고 각각 `train_images`, `test_images`에 저장한다.
