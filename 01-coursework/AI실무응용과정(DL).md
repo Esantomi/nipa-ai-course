@@ -32,6 +32,7 @@
       - [이미지 전 처리하기](#이미지-전-처리하기)
     - [MNIST 분류 CNN 모델 - 데이터 전 처리 실습](#MNIST-분류-CNN-모델---데이터-전-처리)
       - [CNN을 위한 데이터 전 처리](#CNN을-위한-데이터-전-처리)
+    - [이미지 처리를 위한 딥러닝 모델](#이미지-처리를-위한-딥러닝-모델)
 
 # 딥러닝 시작하기
 - 수강 목표
@@ -1572,3 +1573,34 @@ print("변환한 평가용 이미지 데이터 형태:", test_images.shape)
 - [sample2.png](https://user-images.githubusercontent.com/61646760/145058460-278391d4-daee-4e7a-8739-5c01d7b3c27e.png)
 - 학습용 및 평가용 데이터를 CNN 모델의 입력으로 사용할 수 있도록 (샘플 개수, 가로 픽셀, 세로 픽셀, 1) 형태로 변환한다.
   - `tf.expand_dims` 함수를 활용하여 `train_images`, `test_images` 데이터의 형태를 변환하고 각각 `train_images`, `test_images`에 저장한다.
+
+### 이미지 처리를 위한 딥러닝 모델
+- 기존 다층 퍼셉트론 기반 신경망의 이미지 처리는 극도로 많은 수의 패러미터가 필요하다.
+  - 이미지에 변화가 있다면?
+- **합성곱 신경망(Convolution Neural Network: CNN)**  
+  ![image](https://user-images.githubusercontent.com/61646760/145232338-a9e2f76f-211c-4861-9b81-07ed48b0e060.png)
+  - 작은 필터를 순환시키는 방식
+  - 이미지의 패턴이 아닌 특징을 중점으로 인식
+    - [`예) 고양이`](https://user-images.githubusercontent.com/61646760/145231737-2afa6735-a8a8-4bff-a5d0-04085dac521b.png)
+  - CNN 과정
+    1. 이미지에 어떠한 특징이 있는지를 구하는 과정
+        - 필터가 이미지를 이동하며 새로운 이미지(피쳐맵)를 생성
+          - [이미지 보기](https://user-images.githubusercontent.com/61646760/145232511-c9846f67-468a-402a-bbf6-9a5e8835e9a4.png)
+    2. 피쳐맵의 크기 변형: [Padding, Striding](https://user-images.githubusercontent.com/61646760/145233035-d806c44f-bd54-4dac-9381-e8c7f4bb2f75.png)
+        - **Padding**: 원본 이미지의 상하좌우에 한 줄씩 추가
+        - **Striding**: 필터를 이동시키는 거리(Stride) 설정
+    3. Pooling Layer
+        - 이미지 왜곡의 영향(노이즈)을 축소하는 과정
+          - [이미지 보기](https://user-images.githubusercontent.com/61646760/145233353-7a3a132a-31a8-428f-ac9a-9f29d83751d8.png)
+    4. Fully Connected Layer
+        - 추출된 특징을 사용하여 이미지를 분류
+          - 분류를 위한 Softmax 활성화 함수
+            - [이미지 보기](https://user-images.githubusercontent.com/61646760/145233672-69fa3608-ed97-4c50-ac26-35f4db552879.png)
+  - 정리  
+    ![image](https://user-images.githubusercontent.com/61646760/145233960-2ba6f4d2-f7ea-433b-bf6c-ee9e9c10de54.png)
+    1. Convolution Layer는 특징을 찾아내고, Pooling Layer는 처리할 맵(이미지) 크기를 줄여준다.
+    2. 이를 N번 반복한다.
+    3. 반복할 때마다 줄어든 영역에서의 특징을 찾게 되고, 영역의 크기는 작아졌기 때문에 빠른 학습이 가능해진다.
+  - 합성곱 신경망 기반 다양한 이미지 처리 기술
+    - Object detection & segmentation
+    - Super resolution (SR)
