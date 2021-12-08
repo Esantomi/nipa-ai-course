@@ -1577,11 +1577,13 @@ print("변환한 평가용 이미지 데이터 형태:", test_images.shape)
 ### 이미지 처리를 위한 딥러닝 모델
 - 기존 다층 퍼셉트론 기반 신경망의 이미지 처리는 극도로 많은 수의 패러미터가 필요하다.
   - 이미지에 변화가 있다면?
-- **합성곱 신경망(Convolution Neural Network: CNN)**  
+- **합성곱 신경망(Convolution Neural Network: CNN)**
+  - 합성곱 신경망은 크게 합성곱 층과(Convolution layer)와 풀링 층(Pooling layer)으로 구성되어, 합성곱 연산과 풀링 연산을 통해 이미지 처리에 탁월한 성능을 보이는 신경망  
   ![image](https://user-images.githubusercontent.com/61646760/145232338-a9e2f76f-211c-4861-9b81-07ed48b0e060.png)
   - 작은 필터를 순환시키는 방식
   - 이미지의 패턴이 아닌 특징을 중점으로 인식
     - [`예) 고양이`](https://user-images.githubusercontent.com/61646760/145231737-2afa6735-a8a8-4bff-a5d0-04085dac521b.png)
+    - [자세히 읽기 :  딥 러닝을 이용한 자연어 처리 입문](https://wikidocs.net/64066)  
   - CNN 과정
     1. 이미지에 어떠한 특징이 있는지를 구하는 과정
         - 필터가 이미지를 이동하며 새로운 이미지(피쳐맵)를 생성
