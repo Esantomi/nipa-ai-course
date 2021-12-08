@@ -1586,9 +1586,10 @@ print("변환한 평가용 이미지 데이터 형태:", test_images.shape)
     1. 이미지에 어떠한 특징이 있는지를 구하는 과정
         - 필터가 이미지를 이동하며 새로운 이미지(피쳐맵)를 생성
           - [이미지 보기](https://user-images.githubusercontent.com/61646760/145232511-c9846f67-468a-402a-bbf6-9a5e8835e9a4.png)
-    2. 피쳐맵의 크기 변형: [Padding, Striding](https://user-images.githubusercontent.com/61646760/145233035-d806c44f-bd54-4dac-9381-e8c7f4bb2f75.png)
+    2. 피쳐맵의 크기 변형: Padding, Striding
         - **Padding**: 원본 이미지의 상하좌우에 한 줄씩 추가
         - **Striding**: 필터를 이동시키는 거리(Stride) 설정
+          - [이미지 보기](https://user-images.githubusercontent.com/61646760/145233035-d806c44f-bd54-4dac-9381-e8c7f4bb2f75.png)
     3. Pooling Layer
         - 이미지 왜곡의 영향(노이즈)을 축소하는 과정
           - [이미지 보기](https://user-images.githubusercontent.com/61646760/145233353-7a3a132a-31a8-428f-ac9a-9f29d83751d8.png)
