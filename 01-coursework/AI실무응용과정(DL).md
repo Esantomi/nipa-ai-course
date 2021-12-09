@@ -33,6 +33,7 @@
     - [MNIST 분류 CNN 모델 - 데이터 전 처리 실습](#MNIST-분류-CNN-모델---데이터-전-처리)
       - [CNN을 위한 데이터 전 처리](#CNN을-위한-데이터-전-처리)
     - [이미지 처리를 위한 딥러닝 모델](#이미지-처리를-위한-딥러닝-모델)
+    - [MNIST 분류 CNN 모델 - 모델 구현](#MNIST-분류-CNN-모델---모델-구현)
 
 # 딥러닝 시작하기
 - 수강 목표
@@ -1607,3 +1608,26 @@ print("변환한 평가용 이미지 데이터 형태:", test_images.shape)
   - 합성곱 신경망 기반 다양한 이미지 처리 기술
     - Object detection & segmentation
     - Super resolution (SR)
+
+### MNIST 분류 CNN 모델 - 모델 구현
+앞에 이어서 이번에는 CNN 모델을 구현하고 학습해 보자.
+- Keras에서 CNN 모델을 만들기 위해 필요한 함수
+  1. **CNN 레이어**
+      - 입력 이미지의 특징, 즉 처리할 특징 맵(map)을 추출하는 레이어
+      - `tf.keras.layers.Conv2D(filters, kernel_size, activation, padding)`
+        - `filters` : 필터(커널) 개수
+        - `kernel_size` : 필터(커널)의 크기
+        - `activation` : 활성화 함수
+        - `padding` : 이미지가 필터를 거칠 때 그 크기가 줄어드는 것을 방지하기 위해 가장자리에 0의 값을 가지는 픽셀을 넣을지 말지를 결정하는 변수.
+          - `SAME` 또는 `VALID`
+  2. **Maxpool 레이어**
+      - 처리할 특징 맵(map)의 크기를 줄여주는 레이어
+      - `tf.keras.layers.MaxPool2D(padding)`
+        - `padding` : `SAME` 또는 `VALID` 
+  3. **Flatten 레이어**
+      - Convolution layer 또는 MaxPooling layer의 결과는 N차원의 텐서 형태인데, 이를 1차원으로 평평하게 만들어 주는 함수
+      - `tf.keras.layers.Flatten()`
+  4. **Dense 레이어**
+      - `tf.keras.layers.Dense(node, activation)`
+        - `node` : 노드(뉴런) 개수
+        - `activation` : 활성화 함수
