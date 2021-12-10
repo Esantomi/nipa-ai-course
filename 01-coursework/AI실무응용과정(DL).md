@@ -1766,3 +1766,5 @@ def Visulaize(histories, key='loss'):
 '''
 ```
 ![image](https://user-images.githubusercontent.com/61646760/145599505-6deb67f8-7fe2-474d-838a-b522553ab0bc.png)
+- keras를 활용하여 CNN 모델을 설정
+  - 분류 모델에 맞게 마지막 레이어의 노드 수는 10개, `activation` 함수는 'softmax'로 설정
