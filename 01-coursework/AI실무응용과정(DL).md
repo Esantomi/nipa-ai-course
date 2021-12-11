@@ -2368,3 +2368,154 @@ def imdb_data_load():
   - `model.predict(X)`
     - 예측 방법
     - `X` 데이터의 예측 label 값을 출력한다.
+
+```
+import json
+import numpy as np
+import tensorflow as tf
+import data_process
+from keras.datasets import imdb
+from keras.preprocessing import sequence
+
+import logging, os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+# 동일한 실행 결과 확인을 위한 코드입니다.
+np.random.seed(123)
+tf.random.set_seed(123)
+
+# 학습용 및 평가용 데이터를 불러오고 샘플 문장을 출력합니다.
+X_train, y_train, X_test, y_test = data_process.imdb_data_load()
+
+'''
+Using TensorFlow backend.
+첫 번째 X_train 데이터 샘플 문장 : 
+ the as you with out themselves powerful and and their becomes and had and of lot from anyone to have after out atmosphere never more room and it so heart shows to years of every never going and help moments or of every and and movie except her was several of enough more with is now and film as you of and and unfortunately of you than him that with out themselves her get for was and of you movie sometimes movie that with scary but and to story wonderful that in seeing in character to of and and with heart had and they of here that with her serious to have does when from why what have and they is you that isn't one will very to as itself with other and in of seen over and for anyone of and br and to whether from than out themselves history he name half some br of and and was two most of mean for 1 any an and she he should is thought and but of script you not while history he heart to real at and but when from one bit then have two of script their with her and most that with wasn't to with and acting watch an for with and film want an
+
+첫 번째 y_train 데이터 : 1
+'''
+
+max_review_length = 300
+
+# 패딩을 수행합니다.
+X_train = sequence.pad_sequences(X_train, maxlen=max_review_length, padding='post')
+X_test = sequence.pad_sequences(X_test, maxlen=max_review_length, padding='post')
+
+
+embedding_vector_length = 32
+
+
+# 모델을 구현합니다.
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Embedding(1000, embedding_vector_length, input_length = max_review_length),
+    tf.keras.layers.SimpleRNN(5),
+    tf.keras.layers.Dense(1, activation='sigmoid')
+    ])
+
+# 모델을 확인합니다.
+print(model.summary())
+
+'''
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+embedding (Embedding)        (None, 300, 32)           32000     
+_________________________________________________________________
+simple_rnn (SimpleRNN)       (None, 5)                 190       
+_________________________________________________________________
+dense (Dense)                (None, 1)                 6         
+=================================================================
+Total params: 32,196
+Trainable params: 32,196
+Non-trainable params: 0
+_________________________________________________________________
+None
+'''
+
+# 학습 방법을 설정합니다.
+model.compile(loss = 'binary_crossentropy', optimizer = 'adam', metrics = ['accuracy'])
+
+# 학습을 수행합니다.
+model_history = model.fit(X_train, y_train, epochs = 5, verbose = 2)
+
+'''
+Train on 5000 samples
+Epoch 1/5
+5000/5000 - 11s - loss: 0.6936 - accuracy: 0.5048
+Epoch 2/5
+5000/5000 - 10s - loss: 0.6811 - accuracy: 0.5760
+Epoch 3/5
+5000/5000 - 10s - loss: 0.6664 - accuracy: 0.6102
+Epoch 4/5
+5000/5000 - 9s - loss: 0.6566 - accuracy: 0.6200
+Epoch 5/5
+5000/5000 - 10s - loss: 0.6167 - accuracy: 0.6886
+'''
+
+"""
+1. 평가용 데이터를 활용하여 모델을 평가합니다.
+   loss와 accuracy를 계산하고 loss, test_acc에 저장합니다.
+"""
+loss, test_acc = model.evaluate(X_test, y_test, verbose = 0)
+
+"""
+2. 평가용 데이터에 대한 예측 결과를 predictions에 저장합니다.
+"""
+predictions = model.predict(X_test)
+
+# 모델 평가 및 예측 결과를 출력합니다.
+print('\nTest Loss : {:.4f} | Test Accuracy : {}'.format(loss, test_acc))
+print('예측한 Test Data 클래스 :', 1 if predictions[0] >= 0.5 else 0)
+
+'''
+Test Loss : 0.6145 | Test Accuracy : 0.703000009059906
+예측한 Test Data 클래스 : 1
+'''
+```
+
+```
+# data_process.py
+
+import json
+import numpy as np
+import tensorflow as tf
+from keras.datasets import imdb
+from keras.preprocessing import sequence
+
+import logging, os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+np_load_old = np.load
+np.load = lambda *a,**k: np_load_old(*a, allow_pickle=True, **k)
+
+# 데이터를 불러오고 전처리하는 함수입니다.
+
+n_of_training_ex = 5000
+n_of_testing_ex = 1000
+
+PATH = "./data/"
+
+def imdb_data_load():
+
+    X_train = np.load(PATH + "X_train.npy")[:n_of_training_ex]
+    y_train = np.load(PATH + "y_train.npy")[:n_of_training_ex]
+    X_test = np.load(PATH + "X_test.npy")[:n_of_testing_ex]
+    y_test = np.load(PATH + "y_test.npy")[:n_of_testing_ex]
+
+    # 단어 사전 불러오기
+    with open(PATH+"imdb_word_index.json") as f:
+        word_index = json.load(f)
+    # 인덱스 -> 단어 방식으로 딕셔너리 설정
+    inverted_word_index = dict((i, word) for (word, i) in word_index.items())
+    # 인덱스를 바탕으로 문장으로 변환
+    decoded_sequence = " ".join(inverted_word_index[i] for i in X_train[0])
+
+    
+    print("첫 번째 X_train 데이터 샘플 문장 : \n", decoded_sequence)
+    print("\n첫 번째 y_train 데이터 :", y_train[0])
+    
+    return X_train, y_train, X_test, y_test
+```
