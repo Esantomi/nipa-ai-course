@@ -2519,3 +2519,7 @@ def imdb_data_load():
     
     return X_train, y_train, X_test, y_test
 ```
+
+1. `evaluate` 메서드를 사용하여 평가용 데이터를 활용하여 모델을 평가한다.
+    - loss와 accuracy를 계산하고 `loss`, `test_acc`에 저장한다.
+2. `predict` 메서드를 사용하여 평가용 데이터에 대한 예측 결과를 `predictions`에 저장한다.
