@@ -42,6 +42,7 @@
     - [자연어 처리를 위한 딥러닝 모델](#자연어-처리를-위한-딥러닝-모델)
       - [워드 임베딩(Word Embedding)](#워드-임베딩)
       - [순환 신경망(RNN)](#순환-신경망RNN)
+    - [영화 리뷰 긍정/부정 분류 RNN 모델 - 모델 학습 실습](#영화-리뷰-긍정부정-분류-RNN-모델---모델-학습)
 
 # 딥러닝 시작하기
 - 수강 목표
@@ -2212,4 +2213,19 @@ def imdb_data_load():
     - RNN 기반 자연어 처리 기술
       - Image captioning
       - Chatbot
-- 정리하자면, 임베딩은 토큰의 특징을 찾아내고, RNN이 전 토큰의 영향을 받으며 학습한다.
+- 정리하자면, **임베딩**은 토큰의 특징을 찾아내고, **RNN**은 전 토큰의 영향을 받으며 학습한다.
+
+### 영화 리뷰 긍정/부정 분류 RNN 모델 - 모델 학습
+앞에서 전 처리한 데이터를 바탕으로 RNN 모델을 구현하고 학습시켜 보자.
+- 일반적으로 RNN 모델은 입력층으로 **Embedding 레이어**를 먼저 쌓고, **RNN 레이어**를 몇 개 쌓은 다음, 이후 **Dense 레이어**를 더 쌓아 완성한다.
+  - Keras에서 RNN 모델을 만들기 위해 필요한 함수
+    - **임베딩 레이어(Embedding Layer)**
+      - `tf.keras.layers.Embedding(input_dim, output_dim, input_length)`
+        - 들어온 문장을 단어 임베딩(embedding)하는 레이어 
+        - `input_dim` : 들어올 단어의 개수
+        - `output_dim` : 결과로 나올 임베딩 벡터의 크기(차원)
+        - `input_length` : 들어오는 단어 벡터의 크기
+    - **RNN 레이어(RNN Layer)**
+      - `tf.keras.layers.SimpleRNN(units)`
+        - 단순 RNN 레이어
+        - `units` : 레이어의 노드 수
