@@ -1779,3 +1779,235 @@ def Visulaize(histories, key='loss'):
   - `model.predict_classes(X)`
     - 예측 방법
     - `X` 데이터의 예측 label 값을 출력한다.
+
+```
+import numpy as np
+import tensorflow as tf
+import matplotlib.pyplot as plt
+from visual import *
+from plotter import *
+from elice_utils import EliceUtils
+
+elice_utils = EliceUtils()
+
+import logging, os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+# 동일한 실행 결과 확인을 위한 코드입니다.
+np.random.seed(123)
+tf.random.set_seed(123)
+
+
+# MNIST 데이터 세트를 불러옵니다.
+mnist = tf.keras.datasets.mnist
+
+# MNIST 데이터 세트를 Train set과 Test set으로 나누어 줍니다.
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()    
+
+# Train 데이터 5000개와 Test 데이터 1000개를 사용합니다.
+train_images, train_labels = train_images[:5000], train_labels[:5000]
+test_images, test_labels = test_images[:1000], test_labels[:1000]
+
+# CNN 모델의 입력으로 사용할 수 있도록 (샘플개수, 가로픽셀, 세로픽셀, 1) 형태로 변환합니다.
+train_images = tf.expand_dims(train_images, -1)
+test_images = tf.expand_dims(test_images, -1)
+
+
+# CNN 모델을 설정합니다.
+model = tf.keras.Sequential([
+    tf.keras.layers.Conv2D(filters = 32, kernel_size = (3,3), activation = 'relu', padding = 'SAME', input_shape = (28,28,1)),
+    tf.keras.layers.MaxPool2D(padding = 'SAME'),
+    tf.keras.layers.Conv2D(filters = 32, kernel_size = (3,3), activation = 'relu', padding = 'SAME'),
+    tf.keras.layers.MaxPool2D(padding = 'SAME'),
+    tf.keras.layers.Conv2D(filters = 32, kernel_size = (3,3), activation = 'relu', padding = 'SAME'),
+    tf.keras.layers.MaxPool2D(padding = 'SAME'),
+    tf.keras.layers.Flatten(),
+    tf.keras.layers.Dense(64, activation = 'relu'),
+    tf.keras.layers.Dense(10, activation = 'softmax')
+])
+
+# CNN 모델 구조를 출력합니다.
+print(model.summary())
+
+'''
+Model: "sequential"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d (Conv2D)              (None, 28, 28, 32)        320       
+_________________________________________________________________
+max_pooling2d (MaxPooling2D) (None, 14, 14, 32)        0         
+_________________________________________________________________
+conv2d_1 (Conv2D)            (None, 14, 14, 32)        9248      
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 7, 7, 32)          0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 7, 7, 32)          9248      
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 4, 4, 32)          0         
+_________________________________________________________________
+flatten (Flatten)            (None, 512)               0         
+_________________________________________________________________
+dense (Dense)                (None, 64)                32832     
+_________________________________________________________________
+dense_1 (Dense)              (None, 10)                650       
+=================================================================
+Total params: 52,298
+Trainable params: 52,298
+Non-trainable params: 0
+_________________________________________________________________
+None
+'''
+
+# CNN 모델의 학습 방법을 설정합니다.
+model.compile(loss = 'sparse_categorical_crossentropy',
+              optimizer = 'adam',
+              metrics = ['accuracy'])
+              
+# 학습을 수행합니다. 
+history = model.fit(train_images, train_labels, epochs = 10, batch_size = 128, verbose = 2)
+
+'''
+Train on 5000 samples
+Epoch 1/10
+5000/5000 - 2s - loss: 7.0627 - accuracy: 0.4618
+Epoch 2/10
+5000/5000 - 2s - loss: 5.1598 - accuracy: 0.6436
+Epoch 3/10
+5000/5000 - 2s - loss: 5.0952 - accuracy: 0.6506
+Epoch 4/10
+5000/5000 - 2s - loss: 3.4510 - accuracy: 0.7048
+Epoch 5/10
+5000/5000 - 2s - loss: 0.3488 - accuracy: 0.8970
+Epoch 6/10
+5000/5000 - 2s - loss: 0.1482 - accuracy: 0.9552
+Epoch 7/10
+5000/5000 - 2s - loss: 0.0963 - accuracy: 0.9704
+Epoch 8/10
+5000/5000 - 2s - loss: 0.0609 - accuracy: 0.9840
+Epoch 9/10
+5000/5000 - 2s - loss: 0.0369 - accuracy: 0.9914
+Epoch 10/10
+5000/5000 - 2s - loss: 0.0250 - accuracy: 0.9948
+'''
+
+Visulaize([('CNN', history)], 'loss')  # visual 모듈 사용 (아래 참고)
+
+'''
+# visual.py
+
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.utils import to_categorical
+from elice_utils import EliceUtils
+elice_utils = EliceUtils()
+
+def Visulaize(histories, key='loss'):
+    for name, history in histories:
+        plt.plot(history.epoch, history.history[key], 
+             label=name.title()+' Train')
+
+    plt.xlabel('Epochs')
+    plt.ylabel(key.replace('_',' ').title())
+    plt.legend()
+    plt.xlim([0,max(history.epoch)])    
+    plt.savefig("plot.png")
+    elice_utils.send_image("plot.png")
+'''
+
+"""
+1. 평가용 데이터를 활용하여 모델을 평가합니다.
+   loss와 accuracy를 계산하고 loss, test_acc에 저장합니다.
+"""
+loss, test_acc = model.evaluate(test_images, test_labels, verbose = 0)
+
+"""
+2. 평가용 데이터에 대한 예측 결과를 predictions에 저장합니다.
+"""
+predictions = model.predict_classes(test_images)
+
+# 모델 평가 및 예측 결과를 출력합니다.
+print('\nTest Loss : {:.4f} | Test Accuracy : {}'.format(loss, test_acc))
+print('예측한 Test Data 클래스 :', predictions[:10])
+
+'''
+Test Loss : 0.1703 | Test Accuracy : 0.9490000009536743
+예측한 Test Data 클래스 : [7 2 1 0 4 1 4 9 6 9]
+'''
+
+# 평가용 데이터에 대한 레이어 결과를 시각화합니다.
+Plotter(test_images, model)  # plotter 모듈 사용 (아래 참고)
+
+'''
+레이어 이름 : conv2d
+레이어 이름 : max_pooling2d
+레이어 이름 : conv2d_1
+레이어 이름 : max_pooling2d_1
+레이어 이름 : conv2d_2
+레이어 이름 : max_pooling2d_2
+'''
+
+'''
+# plotter.py
+
+import numpy as np
+np.seterr(divide='ignore', invalid='ignore')
+import tensorflow as tf
+from tensorflow.keras import models
+import matplotlib.pyplot as plt
+
+from elice_utils import EliceUtils
+elice_utils = EliceUtils()
+
+def Plotter(test_images, model):
+
+    img_tensor = test_images[0]
+    img_tensor = np.expand_dims(img_tensor, axis=0) 
+    
+    layer_outputs = [layer.output for layer in model.layers[:6]]
+    activation_model = models.Model(inputs=model.input, outputs=layer_outputs)
+
+    activations = activation_model.predict(img_tensor)
+    
+    layer_names = []
+    for layer in model.layers[:6]:
+        layer_names.append(layer.name)
+    
+    images_per_row = 16
+
+    for layer_name, layer_activation in zip(layer_names, activations):
+        n_features = layer_activation.shape[-1]
+    
+        size = layer_activation.shape[1]
+    
+        n_cols = n_features // images_per_row
+        display_grid = np.zeros((size * n_cols, images_per_row * size))
+    
+        for col in range(n_cols):
+            for row in range(images_per_row):
+                channel_image = layer_activation[0, :, :, col * images_per_row + row]
+            
+                channel_image -= channel_image.mean() 
+                channel_image /= channel_image.std()
+                channel_image *= 64
+                channel_image += 128
+                channel_image = np.clip(channel_image, 0, 255.).astype('uint8')
+            
+                display_grid[col * size : (col+1) * size, row * size : (row+1) * size] = channel_image
+            
+        scale = 1. / size
+        print('레이어 이름 :', layer_name)
+        plt.figure(figsize=(scale * display_grid.shape[1], scale * display_grid.shape[0]))
+        plt.grid(False)
+        plt.imshow(display_grid, aspect='auto', cmap='viridis')
+        plt.savefig("plot.png")
+        elice_utils.send_image("plot.png")
+        
+    plt.show()
+'''
+```
+![image](https://user-images.githubusercontent.com/61646760/145671952-13a58069-efeb-4308-9565-abd67169d87d.png)
+![image](https://user-images.githubusercontent.com/61646760/145672114-2524d068-d0f3-44de-ba06-b09e61bdc799.png)
