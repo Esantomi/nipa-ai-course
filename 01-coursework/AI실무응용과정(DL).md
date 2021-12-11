@@ -1744,9 +1744,9 @@ Epoch 20/20
 
 # 학습 결과를 출력합니다.
 Visulaize([('CNN', history)], 'loss')  # 아래 그래프
+```
 
-
-'''
+```
 # visual.py
 
 import numpy as np
@@ -1768,7 +1768,6 @@ def Visulaize(histories, key='loss'):
     plt.xlim([0,max(history.epoch)])    
     plt.savefig("plot.png")
     elice_utils.send_image("plot.png")
-'''
 ```
 ![image](https://user-images.githubusercontent.com/61646760/145599505-6deb67f8-7fe2-474d-838a-b522553ab0bc.png)
 - keras를 활용하여 CNN 모델을 설정
@@ -1898,29 +1897,6 @@ Epoch 10/10
 
 Visulaize([('CNN', history)], 'loss')  # visual 모듈 사용 (아래 참고)
 
-'''
-# visual.py
-
-import numpy as np
-import matplotlib.pyplot as plt
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras.utils import to_categorical
-from elice_utils import EliceUtils
-elice_utils = EliceUtils()
-
-def Visulaize(histories, key='loss'):
-    for name, history in histories:
-        plt.plot(history.epoch, history.history[key], 
-             label=name.title()+' Train')
-
-    plt.xlabel('Epochs')
-    plt.ylabel(key.replace('_',' ').title())
-    plt.legend()
-    plt.xlim([0,max(history.epoch)])    
-    plt.savefig("plot.png")
-    elice_utils.send_image("plot.png")
-'''
 
 """
 1. 평가용 데이터를 활용하여 모델을 평가합니다.
@@ -1953,8 +1929,33 @@ Plotter(test_images, model)  # plotter 모듈 사용 (아래 참고)
 레이어 이름 : conv2d_2
 레이어 이름 : max_pooling2d_2
 '''
+```
 
-'''
+```
+# visual.py
+
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras.utils import to_categorical
+from elice_utils import EliceUtils
+elice_utils = EliceUtils()
+
+def Visulaize(histories, key='loss'):
+    for name, history in histories:
+        plt.plot(history.epoch, history.history[key], 
+             label=name.title()+' Train')
+
+    plt.xlabel('Epochs')
+    plt.ylabel(key.replace('_',' ').title())
+    plt.legend()
+    plt.xlim([0,max(history.epoch)])    
+    plt.savefig("plot.png")
+    elice_utils.send_image("plot.png")
+```
+
+```
 # plotter.py
 
 import numpy as np
@@ -2011,7 +2012,6 @@ def Plotter(test_images, model):
         elice_utils.send_image("plot.png")
         
     plt.show()
-'''
 ```
 
 ![image](https://user-images.githubusercontent.com/61646760/145671952-13a58069-efeb-4308-9565-abd67169d87d.png)
@@ -2071,3 +2071,109 @@ RNN의 입력으로 사용하기 위해, 자연어 데이터는 토큰화 및 �
     ![image](https://user-images.githubusercontent.com/61646760/145673198-5b5bea22-f148-4386-b675-e4efe21215d0.png)
 - `sequence.pad_sequences(data, maxlen=300, padding='post')`
   - `data` 시퀀스의 크기가 `maxlen` 인자보다 작으면 그 크기에 맞게 패딩을 추가하는 함수
+
+```
+import json
+import numpy as np
+import tensorflow as tf
+import data_process
+from keras.datasets import imdb
+from keras.preprocessing import sequence
+
+import logging, os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+# 학습용 및 평가용 데이터를 불러오고 샘플 문장을 출력합니다.
+X_train, y_train, X_test, y_test = data_process.imdb_data_load()  # data_process 모듈 사용 (아래 참고)
+
+'''
+Using TensorFlow backend.
+첫 번째 X_train 데이터 샘플 문장: 
+ the as you with out themselves powerful and and their becomes and had and of lot from anyone to have after out atmosphere never more room and it so heart shows to years of every never going and help moments or of every and and movie except her was several of enough more with is now and film as you of and and unfortunately of you than him that with out themselves her get for was and of you movie sometimes movie that with scary but and to story wonderful that in seeing in character to of and and with heart had and they of here that with her serious to have does when from why what have and they is you that isn't one will very to as itself with other and in of seen over and for anyone of and br and to whether from than out themselves history he name half some br of and and was two most of mean for 1 any an and she he should is thought and but of script you not while history he heart to real at and but when from one bit then have two of script their with her and most that with wasn't to with and acting watch an for with and film want an
+
+첫 번째 X_train 데이터 샘플 토큰 인덱스 sequence: 
+ [1, 14, 22, 16, 43, 530, 973, 2, 2, 65, 458, 2, 66, 2, 4, 173, 36, 256, 5, 25, 100, 43, 838, 112, 50, 670, 2, 9, 35, 480, 284, 5, 150, 4, 172, 112, 167, 2, 336, 385, 39, 4, 172, 2, 2, 17, 546, 38, 13, 447, 4, 192, 50, 16, 6, 147, 2, 19, 14, 22, 4, 2, 2, 469, 4, 22, 71, 87, 12, 16, 43, 530, 38, 76, 15, 13, 2, 4, 22, 17, 515, 17, 12, 16, 626, 18, 2, 5, 62, 386, 12, 8, 316, 8, 106, 5, 4, 2, 2, 16, 480, 66, 2, 33, 4, 130, 12, 16, 38, 619, 5, 25, 124, 51, 36, 135, 48, 25, 2, 33, 6, 22, 12, 215, 28, 77, 52, 5, 14, 407, 16, 82, 2, 8, 4, 107, 117, 2, 15, 256, 4, 2, 7, 2, 5, 723, 36, 71, 43, 530, 476, 26, 400, 317, 46, 7, 4, 2, 2, 13, 104, 88, 4, 381, 15, 297, 98, 32, 2, 56, 26, 141, 6, 194, 2, 18, 4, 226, 22, 21, 134, 476, 26, 480, 5, 144, 30, 2, 18, 51, 36, 28, 224, 92, 25, 104, 4, 226, 65, 16, 38, 2, 88, 12, 16, 283, 5, 16, 2, 113, 103, 32, 15, 16, 2, 19, 178, 32]
+
+첫 번째 X_train 데이터 샘플 토큰 시퀀스 길이:  218
+
+첫 번째 y_train 데이터:  1
+'''
+
+"""
+1. 인덱스로 변환된 X_train, X_test 시퀀스에 패딩을 수행하고 각각 X_train, X_test에 저장합니다.
+   시퀀스 최대 길이는 300으로 설정합니다.
+"""
+X_train = sequence.pad_sequences(X_train, maxlen=300, padding='post')
+X_test = sequence.pad_sequences(X_test, maxlen=300, padding='post')
+
+print("\n패딩을 추가한 첫 번째 X_train 데이터 샘플 토큰 인덱스 sequence: \n",X_train[0])
+
+'''
+패딩을 추가한 첫 번째 X_train 데이터 샘플 토큰 인덱스 sequence: 
+ [  1  14  22  16  43 530 973   2   2  65 458   2  66   2   4 173  36 256
+   5  25 100  43 838 112  50 670   2   9  35 480 284   5 150   4 172 112
+ 167   2 336 385  39   4 172   2   2  17 546  38  13 447   4 192  50  16
+   6 147   2  19  14  22   4   2   2 469   4  22  71  87  12  16  43 530
+  38  76  15  13   2   4  22  17 515  17  12  16 626  18   2   5  62 386
+  12   8 316   8 106   5   4   2   2  16 480  66   2  33   4 130  12  16
+  38 619   5  25 124  51  36 135  48  25   2  33   6  22  12 215  28  77
+  52   5  14 407  16  82   2   8   4 107 117   2  15 256   4   2   7   2
+   5 723  36  71  43 530 476  26 400 317  46   7   4   2   2  13 104  88
+   4 381  15 297  98  32   2  56  26 141   6 194   2  18   4 226  22  21
+ 134 476  26 480   5 144  30   2  18  51  36  28 224  92  25 104   4 226
+  65  16  38   2  88  12  16 283   5  16   2 113 103  32  15  16   2  19
+ 178  32   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   0   0   0   0   0   0   0   0   0]
+'''
+```
+
+```
+# data_process.py
+
+import json
+import numpy as np
+import tensorflow as tf
+from keras.datasets import imdb
+from keras.preprocessing import sequence
+
+import logging, os
+logging.disable(logging.WARNING)
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+
+np_load_old = np.load
+np.load = lambda *a,**k: np_load_old(*a, allow_pickle=True, **k)
+
+# 데이터를 불러오고 전처리하는 함수입니다.
+
+n_of_training_ex = 5000
+n_of_testing_ex = 1000
+
+PATH = "./data/"
+
+def imdb_data_load():
+
+    X_train = np.load(PATH + "X_train.npy")[:n_of_training_ex]
+    y_train = np.load(PATH + "y_train.npy")[:n_of_training_ex]
+    X_test = np.load(PATH + "X_test.npy")[:n_of_testing_ex]
+    y_test = np.load(PATH + "y_test.npy")[:n_of_testing_ex]
+
+    # 단어 사전 불러오기
+    with open(PATH+"imdb_word_index.json") as f:
+        word_index = json.load(f)
+    # 인덱스 -> 단어 방식으로 딕셔너리 설정
+    inverted_word_index = dict((i, word) for (word, i) in word_index.items())
+    # 인덱스를 바탕으로 문장으로 변환
+    decoded_sequence = " ".join(inverted_word_index[i] for i in X_train[0])
+
+    
+    print("첫 번째 X_train 데이터 샘플 문장: \n",decoded_sequence)
+    print("\n첫 번째 X_train 데이터 샘플 토큰 인덱스 sequence: \n",X_train[0])
+    print("\n첫 번째 X_train 데이터 샘플 토큰 시퀀스 길이: ", len(X_train[0]))
+    print("\n첫 번째 y_train 데이터: ",y_train[0])
+    
+    return X_train, y_train, X_test, y_test
+```
