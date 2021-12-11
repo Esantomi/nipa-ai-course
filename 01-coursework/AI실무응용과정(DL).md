@@ -2354,3 +2354,6 @@ def imdb_data_load():
     
     return X_train, y_train, X_test, y_test
 ```
+
+- RNN 모델을 구현한다.
+  - 임베딩 레이어 다음으로 `SimpleRNN`을 사용하여 RNN 레이어를 쌓고 노드의 개수는 5개로 설정한다.
