@@ -2009,5 +2009,10 @@ def Plotter(test_images, model):
     plt.show()
 '''
 ```
+
 ![image](https://user-images.githubusercontent.com/61646760/145671952-13a58069-efeb-4308-9565-abd67169d87d.png)
 ![image](https://user-images.githubusercontent.com/61646760/145672114-2524d068-d0f3-44de-ba06-b09e61bdc799.png)
+
+1. `evaluate` 메서드와 평가용 데이터를 사용하여 모델을 평가한다.
+    - loss와 accuracy를 계산하고 `loss`, `test_acc`에 저장한다.
+2. `predict_classes` 메서드를 사용하여 평가용 데이터에 대한 예측 결과를 `predictions`에 저장한다.
