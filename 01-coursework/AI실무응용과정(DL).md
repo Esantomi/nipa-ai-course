@@ -34,6 +34,7 @@
       - [CNN을 위한 데이터 전 처리](#CNN을-위한-데이터-전-처리)
     - [이미지 처리를 위한 딥러닝 모델](#이미지-처리를-위한-딥러닝-모델)
     - [MNIST 분류 CNN 모델 - 모델 구현 실습](#MNIST-분류-CNN-모델---모델-구현)
+    - [MNIST 분류 CNN 모델 - 평가 및 예측 실습](#MNIST-분류-CNN-모델---평가-및-예측)
 
 # 딥러닝 시작하기
 - 수강 목표
@@ -1768,3 +1769,13 @@ def Visulaize(histories, key='loss'):
 ![image](https://user-images.githubusercontent.com/61646760/145599505-6deb67f8-7fe2-474d-838a-b522553ab0bc.png)
 - keras를 활용하여 CNN 모델을 설정
   - 분류 모델에 맞게 마지막 레이어의 노드 수는 10개, `activation` 함수는 'softmax'로 설정
+
+### MNIST 분류 CNN 모델 - 평가 및 예측
+앞에 이어서 이번에는 CNN 모델을 평가하고 예측해 보자.
+- Keras에서 CNN 모델의 평가 및 예측을 위해 필요한 함수
+  - `model.evaluate(X, Y)`
+    - 평가 방법
+    - `evaluate()` 메서드는 학습된 모델을 바탕으로 입력한 feature 데이터 `X`와 label `Y`의 loss 값과 metrics 값을 출력한다.
+  - `model.predict_classes(X)`
+    - 예측 방법
+    - `X` 데이터의 예측 label 값을 출력한다.
