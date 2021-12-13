@@ -27,3 +27,25 @@
 - ![image](https://user-images.githubusercontent.com/61646760/145710614-79439ebd-b8bb-4112-bfd2-d8bcdbd63ce6.png) : 정확히 예측한 불량품 수량
 - ![image](https://user-images.githubusercontent.com/61646760/145710623-79756ea9-72f0-4e70-8994-14c9b0bb1526.png) : 실제 불량품 수량
 - ![image](https://user-images.githubusercontent.com/61646760/145710635-64e932f6-8025-482b-9b2c-d158ccb0ceb4.png)
+
+## 답안
+```
+import machine as ma
+
+def main():
+    
+    """
+    지시사항 1번. 예측 정확도 결과를 출력해 보세요.
+    """
+    ma.evaluation()
+
+if __name__ == "__main__":
+    main()
+```
+
+### 실행 결과
+평가 지표인 recall score를 출력합니다.:  0.9473684210526315 
+
+센서들의 중요도를 출력합니다.
+
+![image](https://user-images.githubusercontent.com/61646760/145755248-16258acb-f04c-4b04-a070-f53b0b7ee942.png)
