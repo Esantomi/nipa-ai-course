@@ -32,3 +32,7 @@
 <!-- <p align="center">
   <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="35%" height="35%">
 </p> -->
+
+## 학습 결과
+- 인공지능 전문가(Certified AI Expert) 자격시험 응시 완료 (21-12-13)  
+  ![image](https://user-images.githubusercontent.com/61646760/145805997-57c418ef-48a8-481a-9ae0-f73cf5244587.png)
