@@ -12,3 +12,48 @@
     - `ma.data_predit()`
 2. `실행` 버튼을 눌러 결과를 확인해 보세요.
 3. `제출` 버튼을 눌러 이밎 변환 및 예측을 올바르게 수행했는지 확인해 보세요.
+
+## 답안
+```
+import machine as ma
+
+def main():
+    
+    """
+    지시사항 1번. 이미지 변환 과정과 예측 과정을 수행해 보세요.
+    """
+    ma.data_predit()
+
+if __name__ == "__main__":
+    main()
+```
+
+### 실행 결과
+![image](https://user-images.githubusercontent.com/61646760/145757722-3656bdda-100d-42d8-8563-8312347203fd.png)
+```
+Prediction:  2
+```
+![image](https://user-images.githubusercontent.com/61646760/145757731-bcdf827b-306f-4616-823d-0193b6ad9f14.png)
+```
+Prediction:  8
+```
+![image](https://user-images.githubusercontent.com/61646760/145757748-25b58ef4-9be8-4667-a525-1e843ffde4ba.png)
+```
+Prediction:  4
+```
+![image](https://user-images.githubusercontent.com/61646760/145757766-57e77930-862a-4b6c-afa4-76c60fc1e884.png)
+```
+Prediction:  3
+```
+![image](https://user-images.githubusercontent.com/61646760/145757785-cbcef7e6-6e49-4e6c-a9db-d155f0002430.png)
+```
+Prediction:  9
+```
+![image](https://user-images.githubusercontent.com/61646760/145757804-a2cb9e5d-9ee1-48c3-b5d5-530d82edcf56.png)
+```
+Prediction:  5
+```
+![image](https://user-images.githubusercontent.com/61646760/145757881-0036b455-8320-4872-9c5e-68aedf023fd9.png)
+```
+Prediction:  8
+```
