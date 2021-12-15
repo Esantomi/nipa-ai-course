@@ -31,8 +31,9 @@
 - 끝까지 간다.
 
 ### 시험
-- 인공지능 전문가(Certified AI Expert) 자격시험 [응시 완료](https://user-images.githubusercontent.com/61646760/145805997-57c418ef-48a8-481a-9ae0-f73cf5244587.png) (21-12-13)  
-- 인공지능 전문가(Certified AI Expert) 자격시험 [92점](https://user-images.githubusercontent.com/61646760/145956236-bf0b9d0f-a97c-46bd-97e9-4d3262a6937a.png) (21-12-14)  
+- 인공지능 전문가(Certified AI Expert) 자격시험
+  - [응시 완료](https://user-images.githubusercontent.com/61646760/145805997-57c418ef-48a8-481a-9ae0-f73cf5244587.png) (21-12-13)  
+  - [점수 발표 : 92점](https://user-images.githubusercontent.com/61646760/145956236-bf0b9d0f-a97c-46bd-97e9-4d3262a6937a.png) (21-12-14)  
 - [NIPA] AI 실무 기본 성취도 평가 [100점](https://user-images.githubusercontent.com/61646760/146213459-e932f3a0-d50c-49b2-b546-f8a11afea075.png) (21-12-15)
 - [NIPA] AI 실무 응용 성취도 평가 [100점](https://user-images.githubusercontent.com/61646760/146213301-c7525568-45e5-4fe5-9319-1a3847dcbd52.png) (21-12-16)
 
