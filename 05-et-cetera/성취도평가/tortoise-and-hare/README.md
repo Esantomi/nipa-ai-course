@@ -64,3 +64,5 @@ ax.legend(loc=4)  # 위치 옵션 4 (lower right)
 fig.savefig("plot.png")
 elice_utils.send_image("plot.png")
 ```
+
+![image](https://user-images.githubusercontent.com/61646760/146125987-63f074ea-d325-4395-8752-a1c3adb26564.png)
