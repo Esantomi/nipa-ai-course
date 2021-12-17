@@ -38,7 +38,7 @@
 - [NIPA] AI 실무 응용 성취도 평가 [100점](https://user-images.githubusercontent.com/61646760/146213301-c7525568-45e5-4fe5-9319-1a3847dcbd52.png) (21-12-16)
 
 ## 학습 결과
-- 인공지능 전문가(Certified AI Expert) 자격증 취득 (21-12-??)
+- [인공지능 전문가(Certified AI Expert) 자격증 취득](https://user-images.githubusercontent.com/61646760/146521806-45e87d5e-5044-401e-9b96-d72f431ffbfd.png) (21-12-17)
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="35%" height="35%">
