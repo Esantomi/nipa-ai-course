@@ -3,6 +3,12 @@
 ### [2021 NIPA(National IT Industry Promotion Agency) AI online course](https://2021nipa.elice.io/explore)
 
 <p align="center">
+  <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="35%" height="35%">
+</p>
+
+## 목차
+
+<p align="center">
   <img src="https://user-images.githubusercontent.com/61646760/142892240-472c6ee1-5153-4ade-9e3d-4618774de73a.png" />
 </p>
 
@@ -46,7 +52,3 @@
   - 이수증 발급처 : 정보통신산업진흥원
 - [AI 온라인 실무 응용 교육과정 이수증 수령](https://user-images.githubusercontent.com/61646760/147314592-e37d3bd6-18be-4840-90c2-78abb6380d1e.png)
   - 이수증 발급처 : 정보통신산업진흥원
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/61646760/135088173-e374261d-d1b7-40dc-a108-0e61d64df82f.png" width="35%" height="35%">
-</p>
